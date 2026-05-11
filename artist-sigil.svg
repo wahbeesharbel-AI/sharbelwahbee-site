@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#172436"/><stop offset=".45" stop-color="#0b0d14"/><stop offset="1" stop-color="#050507"/></radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff2cf"/><stop offset=".35" stop-color="#d4a46a"/><stop offset=".7" stop-color="#8b5a2b"/><stop offset="1" stop-color="#f2c17a"/></linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dcecff"/><stop offset=".45" stop-color="#5aa8ff"/><stop offset="1" stop-color="#1d3865"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="16"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <g opacity=".6"><circle cx="600" cy="395" r="260" fill="none" stroke="#d4a46a" stroke-opacity=".08"/><circle cx="600" cy="395" r="190" fill="none" stroke="#5aa8ff" stroke-opacity=".08"/><line x1="120" y1="400" x2="1080" y2="400" stroke="#fff" stroke-opacity=".04"/><line x1="600" y1="80" x2="600" y2="720" stroke="#fff" stroke-opacity=".04"/></g>
+  <g filter="url(#soft)" opacity=".5"><ellipse cx="420" cy="390" rx="260" ry="135" fill="#d46f3d" opacity=".28" transform="rotate(-23 420 390)"/><ellipse cx="780" cy="390" rx="260" ry="135" fill="#3d78d4" opacity=".26" transform="rotate(23 780 390)"/></g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+    <path d="M160 400 C250 150 455 165 600 400 C745 635 950 650 1040 400" stroke="url(#gold)" stroke-width="22"/>
+    <path d="M160 400 C250 650 455 635 600 400 C745 165 950 150 1040 400" stroke="url(#blue)" stroke-width="22"/>
+    <path d="M160 400 C250 150 455 165 600 400 C745 635 950 650 1040 400" stroke="#fff6df" stroke-opacity=".34" stroke-width="4"/>
+    <path d="M160 400 C250 650 455 635 600 400 C745 165 950 150 1040 400" stroke="#dcecff" stroke-opacity=".28" stroke-width="4"/>
+  </g>
+  <circle cx="600" cy="400" r="18" fill="#fff3d6" opacity=".95" filter="url(#glow)"/>
+  <g fill="#fff8e8" opacity=".7"><circle cx="214" cy="207" r="2"/><circle cx="970" cy="205" r="2.5"/><circle cx="1050" cy="568" r="2"/><circle cx="280" cy="610" r="2.2"/><circle cx="710" cy="120" r="1.7"/></g>
+  <text x="600" y="730" text-anchor="middle" fill="#d4a46a" fill-opacity=".55" font-size="24" letter-spacing="14" font-family="Arial, sans-serif">SHARBEL WAHBEE</text>
+</svg>
