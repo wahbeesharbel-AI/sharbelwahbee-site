@@ -858,6 +858,100 @@ h1.hero-title em{
 }
 
 /* ═══════════════════════════════════════
+   RELEASE STRIP — upcoming singles bar
+═══════════════════════════════════════ */
+#release-strip{
+  position:fixed;top:0;left:0;right:0;z-index:501;
+  background:rgba(10,6,3,.97);
+  border-bottom:1px solid rgba(255,100,30,.22);
+  backdrop-filter:blur(16px);
+  transition:transform .4s var(--ease);
+}
+#release-strip.hidden{transform:translateY(-100%);}
+.strip-inner{
+  display:flex;align-items:center;padding:0 52px;
+  height:40px;gap:12px;
+}
+.strip-fire{
+  width:6px;height:6px;border-radius:50%;
+  background:#ff4500;box-shadow:0 0 8px rgba(255,69,0,.8);
+  flex-shrink:0;animation:spulse 1.6s ease-in-out infinite;
+}
+@keyframes spulse{0%,100%{opacity:1;box-shadow:0 0 8px rgba(255,69,0,.8);}50%{opacity:.4;box-shadow:0 0 3px rgba(255,69,0,.3);}}
+.strip-label{
+  font-size:8px;letter-spacing:.35em;text-transform:uppercase;
+  color:rgba(255,120,40,.65);white-space:nowrap;flex-shrink:0;
+}
+.strip-sep{width:1px;height:16px;background:rgba(255,100,30,.2);flex-shrink:0;}
+.strip-releases{
+  display:flex;align-items:center;gap:4px;flex:1;
+  overflow:hidden;
+}
+.strip-card{
+  display:flex;align-items:center;gap:8px;
+  padding:0 12px;height:26px;flex-shrink:0;
+  background:rgba(255,69,0,.06);
+  border:1px solid rgba(255,100,30,.18);
+  transition:border-color .25s,background .25s;
+  white-space:nowrap;
+}
+.strip-card:hover{border-color:rgba(255,100,30,.5);background:rgba(255,69,0,.12);}
+.strip-card-date{
+  font-size:7px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,120,40,.55);
+}
+.strip-card-sep{color:rgba(255,100,30,.2);font-size:9px;margin:0 1px;}
+.strip-card-name{
+  font-family:var(--serif);font-style:italic;
+  font-size:13px;color:rgba(255,248,240,.82);
+}
+.strip-live-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:#22c55e;flex-shrink:0;
+  animation:liveDot 1.6s ease-in-out infinite;
+}
+@keyframes liveDot{0%,100%{opacity:1}50%{opacity:.3}}
+.strip-live-txt{
+  font-size:7px;letter-spacing:.2em;text-transform:uppercase;
+  color:#22c55e;
+}
+.strip-ps-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:7px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,150,60,.9);text-decoration:none;
+  border:1px solid rgba(255,100,30,.35);
+  padding:2px 9px;background:rgba(255,69,0,.09);
+  transition:all .2s;flex-shrink:0;
+}
+.strip-ps-btn:hover{background:rgba(255,69,0,.2);color:#ffcc80;border-color:rgba(255,100,30,.7);}
+.strip-right{
+  display:flex;align-items:center;gap:10px;
+  margin-left:auto;flex-shrink:0;
+}
+.strip-album{
+  font-size:8px;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(255,248,240,.25);white-space:nowrap;
+}
+.strip-close-btn{
+  background:none;border:none;color:rgba(255,248,240,.25);
+  font-size:13px;cursor:pointer;padding:2px 4px;line-height:1;
+  transition:color .2s;
+}
+.strip-close-btn:hover{color:rgba(255,248,240,.6);}
+
+/* Offset nav and hero when strip visible */
+nav{top:40px !important;}
+nav.strip-gone{top:0 !important;}
+#hero{padding-top:40px;}
+
+@media(max-width:960px){
+  .strip-inner{padding:0 16px;gap:8px;}
+  .strip-label,.strip-sep,.strip-album,.strip-card-date,.strip-card-sep{display:none;}
+  .strip-releases{gap:4px;}
+  nav{top:40px !important;}
+}
+
+/* ═══════════════════════════════════════
    TIMELINE
 ═══════════════════════════════════════ */
 #timeline{background:var(--ink);padding:160px 0 80px;}
@@ -1529,6 +1623,65 @@ footer{
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- ══════════ RELEASE STRIP ══════════ -->
+<div id="release-strip">
+  <div class="strip-inner">
+    <span class="strip-fire"></span>
+    <span class="strip-label">Upcoming</span>
+    <span class="strip-sep"></span>
+
+    <div class="strip-releases">
+
+      <!-- Echoes of You — live now -->
+      <div class="strip-card">
+        <span class="strip-live-dot"></span>
+        <span class="strip-live-txt">Live</span>
+        <span class="strip-card-sep">·</span>
+        <span class="strip-card-name">Echoes of You</span>
+        <a href="https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H" target="_blank" class="strip-ps-btn">Listen ↗</a>
+      </div>
+
+      <!-- Built from What Broke Me — pre-save -->
+      <div class="strip-card">
+        <span class="strip-card-date">18 Jun</span>
+        <span class="strip-card-sep">·</span>
+        <span class="strip-card-name">Built from What Broke Me</span>
+        <a href="https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me" target="_blank" class="strip-ps-btn">Pre-Save ↗</a>
+      </div>
+
+      <!-- Noise in My Head -->
+      <div class="strip-card">
+        <span class="strip-card-date">9 Jul</span>
+        <span class="strip-card-sep">·</span>
+        <span class="strip-card-name">Noise in My Head</span>
+        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Follow ↗</a>
+      </div>
+
+      <!-- I Don't Need Saving -->
+      <div class="strip-card">
+        <span class="strip-card-date">30 Jul</span>
+        <span class="strip-card-sep">·</span>
+        <span class="strip-card-name">I Don't Need Saving</span>
+        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Follow ↗</a>
+      </div>
+
+      <!-- Comet — album -->
+      <div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">
+        <span class="strip-card-date">21 Aug</span>
+        <span class="strip-card-sep">·</span>
+        <span class="strip-card-name" style="color:rgba(255,200,120,.9);">COMET — Full Album</span>
+        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">Notify Me ↗</a>
+      </div>
+
+    </div>
+
+    <div class="strip-right">
+      <span class="strip-album">Comet · 21 Aug 2026</span>
+      <button class="strip-close-btn" id="strip-close" aria-label="Close">✕</button>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════ HERO ══════════ -->
 <section id="hero">
@@ -2501,29 +2654,56 @@ document.querySelectorAll('.tl-rel').forEach(r=>tlObs.observe(r));
   canvas.addEventListener('mouseleave',()=>{ tip.style.opacity='0'; });
 })();
 
-/* ── Comet Countdown (release: 21 Aug 2026) ── */
+/* ── Release strip ── */
 (function(){
-  const target = new Date('2026-08-21T00:00:00+04:00').getTime(); // Dubai time
+  const strip = document.getElementById('release-strip');
+  const closeBtn = document.getElementById('strip-close');
+  const nav = document.getElementById('nav');
+  let lastScroll = 0, dismissed = false;
+
+  // Close button
+  closeBtn.addEventListener('click', () => {
+    dismissed = true;
+    strip.classList.add('hidden');
+    nav.classList.add('strip-gone');
+    nav.style.top = '0';
+    document.getElementById('hero').style.paddingTop = '0';
+  });
+
+  // Auto-hide on scroll down, re-show on scroll up
+  window.addEventListener('scroll', () => {
+    if (dismissed) return;
+    const current = window.scrollY;
+    if (current > lastScroll && current > 80) {
+      strip.classList.add('hidden');
+    } else {
+      strip.classList.remove('hidden');
+    }
+    lastScroll = current <= 0 ? 0 : current;
+  }, { passive: true });
+})();
+
+/* ── Comet Countdown (release: 21 Aug 2026 Dubai time) ── */
+(function(){
+  // Explicit UTC ms — avoids all timezone parsing issues
+  // 21 Aug 2026 00:00 Dubai (UTC+4) = 20 Aug 2026 20:00 UTC
+  const TARGET_UTC = Date.UTC(2026, 7, 20, 20, 0, 0); // month is 0-indexed
   const dEl=document.getElementById('cd-d'),
         hEl=document.getElementById('cd-h'),
         mEl=document.getElementById('cd-m'),
         sEl=document.getElementById('cd-s');
   if(!dEl) return;
+  function pad(n){ return String(n).padStart(2,'0'); }
   function tick(){
-    const now  = Date.now();
-    const diff = target - now;
+    const diff = TARGET_UTC - Date.now();
     if(diff <= 0){
       dEl.textContent=hEl.textContent=mEl.textContent=sEl.textContent='00';
       return;
     }
-    const d = Math.floor(diff/86400000);
-    const h = Math.floor((diff%86400000)/3600000);
-    const m = Math.floor((diff%3600000)/60000);
-    const s = Math.floor((diff%60000)/1000);
-    dEl.textContent = String(d).padStart(2,'0');
-    hEl.textContent = String(h).padStart(2,'0');
-    mEl.textContent = String(m).padStart(2,'0');
-    sEl.textContent = String(s).padStart(2,'0');
+    dEl.textContent = pad(Math.floor(diff / 86400000));
+    hEl.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    mEl.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    sEl.textContent = pad(Math.floor((diff % 60000) / 1000));
     setTimeout(tick, 1000);
   }
   tick();

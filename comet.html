@@ -352,18 +352,20 @@ else{
   (function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
 }
 
-// Countdown — 21 Aug 2026 Dubai time
+// Countdown — 21 Aug 2026 Dubai time (UTC+4) = 20 Aug 2026 20:00 UTC
 (function(){
-  const target=new Date('2026-08-21T00:00:00+04:00').getTime();
-  const d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
+  const TARGET_UTC = Date.UTC(2026, 7, 20, 20, 0, 0);
+  const d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),
+        m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
   if(!d)return;
+  function pad(n){return String(n).padStart(2,'0');}
   function tick(){
-    const diff=target-Date.now();
+    const diff=TARGET_UTC-Date.now();
     if(diff<=0){d.textContent=h.textContent=m.textContent=s.textContent='00';return;}
-    d.textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
-    h.textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-    m.textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-    s.textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    d.textContent=pad(Math.floor(diff/86400000));
+    h.textContent=pad(Math.floor((diff%86400000)/3600000));
+    m.textContent=pad(Math.floor((diff%3600000)/60000));
+    s.textContent=pad(Math.floor((diff%60000)/1000));
     setTimeout(tick,1000);
   }
   tick();
