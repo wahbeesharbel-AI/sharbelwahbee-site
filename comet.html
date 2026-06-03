@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMET — Sharbel Wahbee | 21 August 2026</title>
+<meta name="description" content="COMET — the new rock album by Sharbel Wahbee. Releasing 21 August 2026. Seven songs. One arc. It doesn't ask for permission to move.">
+<meta property="og:title" content="COMET — Sharbel Wahbee | 21 August 2026">
+<meta property="og:description" content="It doesn't ask for permission to move. The new rock album by Sharbel Wahbee — 21 August 2026.">
+<meta property="og:image" content="https://www.sharbelwahbee.com/comet-space.png">
+<meta property="og:type" content="music.album">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="COMET — Sharbel Wahbee | 21 August 2026">
+<meta name="twitter:image" content="https://www.sharbelwahbee.com/comet-space.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#050407;--ember:#ff4500;--ember-mid:#ff7b2c;--ember-glow:#ffaa5c;
+  --blue:#1a6fff;--ash:#6b6570;--dust:#a89fb0;--heat:#fff8f0;
+  --serif:'Cormorant Garamond',serif;--display:'Bebas Neue',sans-serif;--sans:'Outfit',sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--void);color:var(--heat);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased;}
+
+/* Grain */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.32;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size:256px;}
+
+/* Cursor */
+.cur-dot{position:fixed;width:6px;height:6px;background:var(--ember-mid);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+.cur-ring{position:fixed;width:28px;height:28px;border:1px solid rgba(255,120,40,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .18s var(--ease);}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 52px;display:flex;align-items:center;justify-content:space-between;z-index:200;}
+.nav-logo{font-family:var(--serif);font-size:15px;color:rgba(255,248,240,.7);text-decoration:none;letter-spacing:.06em;font-weight:300;}
+.nav-back{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--ash);text-decoration:none;transition:color .2s;}
+.nav-back:hover{color:var(--ember-glow);}
+.nav-back::before{content:'← ';}
+
+/* HERO */
+.comet-hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:80px 52px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;background:url('comet-space.png') center 30% / cover no-repeat;opacity:.3;filter:saturate(1.4) brightness(.7);}
+.hero-vignette{position:absolute;inset:0;
+  background:radial-gradient(ellipse 100% 55% at 50% 0%,transparent,var(--void) 75%),
+    radial-gradient(ellipse 100% 55% at 50% 100%,var(--void) 0%,transparent 65%),
+    linear-gradient(to bottom,rgba(5,4,7,.5),rgba(5,4,7,.15) 40%,rgba(5,4,7,.75) 100%);}
+.hero-content{position:relative;z-index:3;}
+.hero-artist{font-family:var(--serif);font-size:clamp(.7rem,1.4vw,.9rem);letter-spacing:.5em;text-transform:uppercase;color:var(--ash);margin-bottom:20px;opacity:0;animation:rise 1s var(--ease) .1s forwards;}
+.hero-title{font-family:var(--display);font-size:clamp(110px,22vw,220px);line-height:.82;letter-spacing:.06em;background:linear-gradient(160deg,#fff8f0 0%,#ffcc99 30%,#ff7b2c 65%,#cc3300 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 60px rgba(255,100,30,.4));opacity:0;animation:rise 1.2s var(--ease) .3s forwards;}
+.hero-tagline{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.8vw,20px);color:rgba(255,248,240,.62);line-height:1.75;margin-top:18px;opacity:0;animation:rise .9s var(--ease) .6s forwards;}
+.hero-rule{width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--ember-mid),transparent);margin:22px auto;opacity:0;animation:rise .9s var(--ease) .8s forwards;}
+
+/* Countdown */
+.countdown{display:flex;gap:2px;justify-content:center;opacity:0;animation:rise .9s var(--ease) 1s forwards;}
+.cd-unit{background:rgba(255,69,0,.08);border:1px solid rgba(255,100,30,.2);padding:18px 22px;min-width:76px;text-align:center;}
+.cd-num{font-family:var(--serif);font-size:34px;color:var(--ember-glow);line-height:1;display:block;}
+.cd-label{font-size:7px;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,180,100,.45);display:block;margin-top:5px;}
+.cd-sep{font-family:var(--serif);font-size:28px;color:rgba(255,100,30,.25);align-self:center;padding:0 4px;}
+
+/* Release badge + CTA */
+.hero-badge{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--ember-glow);background:rgba(255,69,0,.08);border:1px solid rgba(255,100,30,.28);padding:12px 24px;opacity:0;animation:rise .9s var(--ease) 1.15s forwards;}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ember);box-shadow:0 0 8px var(--ember);animation:ep 1.5s ease-in-out infinite;}
+@keyframes ep{0%,100%{opacity:1}50%{opacity:.45}}
+
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px;opacity:0;animation:rise .9s var(--ease) 1.3s forwards;}
+.btn-fire{display:inline-flex;align-items:center;gap:10px;background:var(--ember);color:var(--heat);font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:background .25s;touch-action:manipulation;}
+.btn-fire:hover{background:var(--ember-mid);}
+.btn-ghost-fire{display:inline-flex;align-items:center;gap:10px;color:rgba(255,180,100,.6);font-family:var(--sans);font-size:9px;font-weight:300;letter-spacing:.3em;text-transform:uppercase;padding:14px 24px;border:1px solid rgba(255,100,30,.25);text-decoration:none;transition:all .25s;}
+.btn-ghost-fire:hover{color:var(--ember-glow);border-color:rgba(255,100,30,.55);}
+
+/* Divider */
+.fire-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,120,40,.35),rgba(255,120,40,.6),rgba(255,120,40,.35),transparent);}
+
+/* Section base */
+.cs{max-width:1060px;margin:0 auto;padding:80px 52px;}
+.c-label{font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--ember-mid);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
+.c-label::before{content:'';width:26px;height:1px;background:var(--ember-mid);}
+.c-heading{font-family:var(--serif);font-size:clamp(28px,4vw,52px);font-weight:400;line-height:1.1;color:var(--heat);letter-spacing:-.01em;}
+.c-heading em{font-style:italic;color:var(--ember-glow);}
+
+/* Concept text */
+.concept-text{font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.7vw,20px);line-height:1.85;color:rgba(255,248,240,.68);margin-top:24px;max-width:680px;}
+.concept-text p+p{margin-top:1em;}
+
+/* Artwork + single */
+.artwork-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:40px;}
+.artwork-img{position:relative;}
+.artwork-img::before{content:'';position:absolute;inset:-16px;background:radial-gradient(ellipse at center,rgba(255,69,0,.14),transparent 70%);pointer-events:none;}
+.artwork-img img{width:100%;display:block;border-radius:2px;box-shadow:0 0 0 1px rgba(255,120,40,.1),0 30px 80px rgba(0,0,0,.85),0 0 50px rgba(255,69,0,.12);position:relative;z-index:1;transition:transform .4s var(--ease);}
+.artwork-img:hover img{transform:scale(1.02);}
+.artwork-title{font-family:var(--display);font-size:clamp(28px,4.5vw,56px);line-height:1;letter-spacing:.03em;background:linear-gradient(135deg,#fff8f0,#ffaa5c,#ff4500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;}
+.artwork-sub{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,120,40,.65);margin-bottom:18px;}
+.artwork-quote{font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.7vw,20px);line-height:1.65;color:rgba(255,248,240,.78);border-left:2px solid var(--ember-mid);padding-left:20px;margin-bottom:16px;}
+.artwork-desc{font-size:13px;line-height:1.85;color:rgba(255,248,240,.5);}
+
+/* Tracklist */
+.tracklist{margin-top:0;}
+.track{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,248,240,.05);transition:transform .25s var(--ease);}
+.track:first-child{border-top:1px solid rgba(255,248,240,.05);}
+.track:hover{transform:translateX(4px);}
+.track-num{font-family:var(--serif);font-size:11px;color:rgba(107,101,112,.6);text-align:right;padding-right:12px;border-right:1px solid rgba(255,248,240,.05);}
+.track-name{font-family:var(--serif);font-size:clamp(15px,1.6vw,18px);color:rgba(255,248,240,.88);}
+.track-desc{font-family:var(--serif);font-style:italic;font-size:12px;color:rgba(168,159,176,.6);margin-top:3px;line-height:1.4;}
+.track-badge{font-size:7px;letter-spacing:.2em;text-transform:uppercase;padding:4px 9px;border-radius:1px;white-space:nowrap;flex-shrink:0;}
+.badge-rs{border:1px solid rgba(255,120,40,.4);color:var(--ember-mid);background:rgba(255,69,0,.06);}
+.badge-s{border:1px solid rgba(168,159,176,.18);color:var(--ash);background:rgba(168,159,176,.02);}
+
+/* Live singles */
+.live-singles{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px;}
+.live-single{background:rgba(255,69,0,.04);border:1px solid rgba(255,100,30,.15);padding:24px;}
+.live-single-date{font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:var(--ember-mid);margin-bottom:8px;}
+.live-single-title{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--heat);margin-bottom:6px;}
+.live-single-badge{font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember-glow);display:flex;align-items:center;gap:6px;margin-bottom:14px;}
+.live-single-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ember);animation:ep 1.5s ease-in-out infinite;}
+.live-single-embed{}
+
+/* Release timeline */
+.rtl{margin-top:40px;position:relative;padding-left:20px;}
+.rtl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--ember),var(--ember-mid) 40%,var(--blue) 80%,rgba(26,111,255,.2));}
+.rtl-item{position:relative;padding:0 0 28px 26px;transition:transform .25s var(--ease);}
+.rtl-item:last-child{padding-bottom:0;}
+.rtl-item:hover{transform:translateX(4px);}
+.rtl-dot{position:absolute;left:-5px;top:6px;width:10px;height:10px;border-radius:50%;border:1px solid var(--ember-mid);background:var(--void);}
+.rtl-dot.live{border-color:var(--ember-glow);box-shadow:0 0 10px rgba(255,120,40,.5);}
+.rtl-dot.final{width:16px;height:16px;left:-8px;border-color:var(--ember-glow);background:radial-gradient(circle,rgba(255,120,40,.3),var(--void));box-shadow:0 0 18px rgba(255,120,40,.6);}
+.rtl-date{font-size:8px;letter-spacing:.38em;text-transform:uppercase;color:var(--ember-mid);margin-bottom:4px;}
+.rtl-date.live-label{color:var(--ember-glow);}
+.rtl-title{font-family:var(--serif);font-size:clamp(14px,1.8vw,20px);color:var(--heat);margin-bottom:2px;}
+.rtl-sub{font-family:var(--serif);font-style:italic;font-size:12px;color:var(--ash);}
+.rtl-final .rtl-date{color:var(--ember-glow);}
+.rtl-final .rtl-title{font-size:clamp(18px,2.2vw,26px);background:linear-gradient(90deg,#fff8f0,#ffaa5c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* Email capture */
+.email-box{background:rgba(255,69,0,.05);border:1px solid rgba(255,100,30,.18);padding:40px;margin-top:40px;text-align:center;}
+.email-box-title{font-family:var(--serif);font-size:clamp(22px,2.5vw,32px);font-style:italic;color:var(--heat);margin-bottom:8px;}
+.email-box-sub{font-size:13px;color:rgba(255,248,240,.5);margin-bottom:24px;}
+.email-form{display:flex;gap:0;max-width:440px;margin:0 auto;}
+.email-form input{flex:1;background:rgba(5,4,7,.8);border:1px solid rgba(255,100,30,.2);border-right:none;padding:13px 18px;color:var(--heat);font-family:var(--sans);font-size:13px;font-weight:300;outline:none;transition:border-color .3s;}
+.email-form input:focus{border-color:rgba(255,100,30,.5);}
+.email-form input::placeholder{color:var(--ash);}
+.email-form button{background:var(--ember);color:var(--heat);border:1px solid var(--ember);padding:13px 22px;font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .25s;touch-action:manipulation;}
+.email-form button:hover{background:var(--ember-mid);}
+
+/* Closing */
+.comet-close{text-align:center;padding:80px 52px;position:relative;overflow:hidden;}
+.comet-close::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(255,69,0,.06),transparent);}
+.close-quote{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.5vw,28px);line-height:1.7;color:rgba(255,248,240,.75);max-width:680px;margin:0 auto 18px;position:relative;z-index:1;}
+.close-rule{width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--ember-mid),transparent);margin:0 auto 14px;}
+.close-attr{font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:var(--ash);}
+
+/* Footer */
+footer{border-top:1px solid rgba(255,248,240,.04);padding:32px 52px;display:flex;justify-content:space-between;align-items:center;}
+.footer-name{font-family:var(--serif);font-size:14px;color:var(--ash);}
+.footer-copy{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(107,101,112,.5);}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal.vis{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+/* Toast */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(14px);background:rgba(10,8,14,.97);border:1px solid rgba(255,100,30,.25);color:var(--ember-glow);padding:12px 28px;font-size:9px;letter-spacing:.25em;text-transform:uppercase;opacity:0;transition:all .35s var(--ease);z-index:800;pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@keyframes rise{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:900px){
+  nav,.cs,footer,.comet-close{padding-left:28px;padding-right:28px;}
+  .comet-hero{padding:80px 28px;}
+  .artwork-grid,.live-singles{grid-template-columns:1fr;}
+  .track{grid-template-columns:40px 1fr;}.track-badge{display:none;}
+  .email-form{flex-direction:column;}.email-form input{border-right:1px solid rgba(255,100,30,.2);border-bottom:none;}
+  .email-form button{padding:14px;}
+}
+</style>
+</head>
+<body>
+
+<div class="cur-dot" id="cur-dot"></div>
+<div class="cur-ring" id="cur-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sharbel Wahbee</a>
+  <a href="index.html" class="nav-back">Back to Site</a>
+</nav>
+
+<!-- HERO -->
+<div class="comet-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <p class="hero-artist">Sharbel Wahbee · Rock Album</p>
+    <h1 class="hero-title">COMET</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">Some things move through the dark for years<br>before the world finally sees the light they carry.</p>
+    <div class="countdown">
+      <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Days</span></div>
+      <span class="cd-sep">·</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Hours</span></div>
+      <span class="cd-sep">·</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Min</span></div>
+      <span class="cd-sep">·</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Sec</span></div>
+    </div>
+    <div class="hero-badge">Full Album · 21 August 2026 · Dubai</div>
+    <div class="hero-actions">
+      <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="btn-fire">Get Notified on Drop Day</a>
+      <a href="#tracklist" class="btn-ghost-fire">Explore the Album</a>
+    </div>
+  </div>
+</div>
+
+<div class="fire-divider"></div>
+
+<!-- CONCEPT -->
+<div class="cs reveal">
+  <p class="c-label">The Album</p>
+  <h2 class="c-heading">Not a departure.<br><em>An arrival.</em></h2>
+  <div class="concept-text">
+    <p>Comet is the next chapter in an artistic journey that began with cinematic orchestral worlds, moved through emotional pop and rock territories, and now arrives at its most honest destination.</p>
+    <p>This is not a rock record made for the sake of heaviness. It is a testimony — seven songs drawn from real emotional excavation. Internal chaos. The cost of integrity. The quiet devastation of loss. And the stubborn, unshakeable truth that survives all of it.</p>
+    <p>The comet does not ask permission to move. It burns because that is its nature. It passes through everything and remains itself.</p>
+  </div>
+</div>
+
+<div class="fire-divider"></div>
+
+<!-- FIRST SINGLE -->
+<div class="cs reveal">
+  <p class="c-label">Live Singles</p>
+  <h2 class="c-heading">The journey<br><em>has begun.</em></h2>
+  <div class="live-singles">
+    <div class="live-single reveal">
+      <p class="live-single-date">16 May 2026 · Single 01</p>
+      <p class="live-single-title">Echoes of You</p>
+      <p class="live-single-badge">Live Now</p>
+      <div class="live-single-embed">
+        <iframe style="border-radius:4px" src="https://open.spotify.com/embed/album/7533hMwuvb81q1qNDvt38H?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="live-single reveal d1" style="border-color:rgba(255,100,30,.1);background:rgba(255,69,0,.02);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:32px;gap:10px;">
+      <p style="font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,120,40,.5);">Coming 18 Jun 2026 · Single 02</p>
+      <p style="font-family:var(--serif);font-style:italic;font-size:20px;color:rgba(255,248,240,.5);">Built from What Broke Me</p>
+      <p style="font-size:12px;color:rgba(107,101,112,.7);line-height:1.55;">The first Rock Statement. Follow the channel to be notified.</p>
+      <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" style="margin-top:10px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.65);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.2);padding-bottom:2px;">Notify Me →</a>
+      <a href="https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,150,60,.9);text-decoration:none;background:rgba(255,69,0,.1);border:1px solid rgba(255,100,30,.3);padding:8px 16px;transition:background .2s;">⭐ Pre-Save Now</a>
+    </div>
+  </div>
+</div>
+
+<div class="fire-divider"></div>
+
+<!-- ARTWORK + BFWBM -->
+<div class="cs reveal">
+  <p class="c-label">First Rock Statement · 18 Jun 2026</p>
+  <div class="artwork-grid">
+    <div class="artwork-img">
+      <img src="artwork-bfwbm.png" alt="Built from What Broke Me — Single Artwork">
+    </div>
+    <div class="reveal d1">
+      <h3 class="artwork-title">Built from<br>What Broke Me</h3>
+      <p class="artwork-sub">A Rock Statement</p>
+      <blockquote class="artwork-quote">I didn't stay broken.<br>I became the reason I survived.</blockquote>
+      <p class="artwork-desc">The opening Rock Statement of the Comet era. A hard rock anthem about survival, reconstruction, and what it means to carry your scars not as damage — but as architecture. Coming 18 June 2026.</p>
+      <a href="https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me" target="_blank" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:var(--ember);color:var(--heat);font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:background .25s;touch-action:manipulation;">
+        Pre-Save Now ↗
+      </a>
+      <p style="font-size:10px;color:var(--ash);margin-top:10px;font-style:italic;">Available 18 June 2026 — pre-save to be notified at release</p>
+    </div>
+  </div>
+</div>
+
+<div class="fire-divider"></div>
+
+<!-- TRACKLIST -->
+<div class="cs" id="tracklist">
+  <p class="c-label reveal">The Journey</p>
+  <h2 class="c-heading reveal d1">Seven songs.<br><em>One arc.</em></h2>
+  <div class="tracklist reveal">
+    <div class="track"><div class="track-num">01</div><div><div class="track-name">Noise in My Head</div><div class="track-desc">The internal war. Where the journey begins — fractured, honest, unresolved.</div></div><span class="track-badge badge-s">Song</span></div>
+    <div class="track"><div class="track-num">02</div><div><div class="track-name">Built from What Broke Me</div><div class="track-desc">The reconstruction. Survival not as recovery — as transformation built from the wreckage up.</div><a href="https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--ember-glow);text-decoration:none;border-bottom:1px solid rgba(255,120,40,.3);padding-bottom:1px;">Pre-Save ↗</a></div><span class="track-badge badge-rs">Rock Statement</span></div>
+    <div class="track"><div class="track-num">03</div><div><div class="track-name">I Don't Need Saving</div><div class="track-desc">The declaration. Help offered with conditions attached is not help. Autonomy without apology.</div></div><span class="track-badge badge-s">Song</span></div>
+    <div class="track"><div class="track-num">04</div><div><div class="track-name">Standing in the Fire</div><div class="track-desc">The moral stand. Choosing truth over comfort, even when it costs everything.</div></div><span class="track-badge badge-s">Song</span></div>
+    <div class="track"><div class="track-num">05</div><div><div class="track-name">Caught in Crossfire</div><div class="track-desc">The cost arrives. The price of not bending — paid in full, without regret.</div></div><span class="track-badge badge-rs">Rock Statement</span></div>
+    <div class="track"><div class="track-num">06</div><div><div class="track-name">Ashes Learn to Breathe</div><div class="track-desc">The grief. The quiet devastation of losing someone you never outgrew. The loudest silence.</div></div><span class="track-badge badge-rs">Rock Statement</span></div>
+    <div class="track"><div class="track-num">07</div><div><div class="track-name">Still Here</div><div class="track-desc">The closure. Nothing left to prove. Paid in nights and patience. Father strength, I choose.</div></div><span class="track-badge badge-rs">Rock Statement</span></div>
+  </div>
+</div>
+
+<div class="fire-divider"></div>
+
+<!-- RELEASE TIMELINE -->
+<div class="cs reveal">
+  <p class="c-label">Road to Comet</p>
+  <h2 class="c-heading reveal d1">Every step<br><em>on the way.</em></h2>
+  <div class="rtl">
+    <div class="rtl-item"><div class="rtl-dot live"></div><p class="rtl-date live-label">16 May 2026 · Single 01 · Live Now</p><p class="rtl-title">Echoes of You</p><p class="rtl-sub">The rock awakening has begun.</p></div>
+    <div class="rtl-item"><div class="rtl-dot"></div><p class="rtl-date">18 Jun 2026 · Single 02</p><p class="rtl-title">Built from What Broke Me</p><p class="rtl-sub">The first Rock Statement.</p></div>
+    <div class="rtl-item"><div class="rtl-dot"></div><p class="rtl-date">16 Jul 2026 · Single 03</p><p class="rtl-title">Noise in My Head</p><p class="rtl-sub">Where the journey began.</p></div>
+    <div class="rtl-item rtl-final"><div class="rtl-dot final"></div><p class="rtl-date">21 Aug 2026 · Full Album</p><p class="rtl-title">COMET — The Complete Journey</p><p class="rtl-sub">All seven songs. The full arc. Available everywhere.</p></div>
+  </div>
+</div>
+
+<div class="fire-divider"></div>
+
+<!-- EMAIL CAPTURE -->
+<div class="cs reveal">
+  <div class="email-box">
+    <p class="email-box-title">Be first to hear it.</p>
+    <p class="email-box-sub">Get notified the moment Comet drops — and early access to everything leading up to it.</p>
+    <form class="email-form" onsubmit="handleEmail(event)">
+      <input type="email" placeholder="Sharbelwahbee.official@gmail.com" required>
+      <button type="submit">Notify Me</button>
+    </form>
+    <p style="font-size:10px;color:rgba(107,101,112,.5);margin-top:14px;">Or <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" style="color:rgba(255,120,40,.5);text-decoration:none;">join on WhatsApp →</a></p>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="comet-close reveal">
+  <div class="close-rule"></div>
+  <p class="close-quote">The comet does not ask permission to move. It burns because that is its nature. It passes through everything — and remains itself.</p>
+  <div class="close-rule"></div>
+  <p class="close-attr">Sharbel Wahbee · Comet · 21 August 2026</p>
+</div>
+
+<footer>
+  <p class="footer-name">Sharbel Wahbee</p>
+  <p class="footer-copy">© 2026 · Independent</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Cursor
+const isMobile=window.matchMedia('(pointer:coarse)').matches;
+if(isMobile){document.getElementById('cur-dot').style.display='none';document.getElementById('cur-ring').style.display='none';document.body.style.cursor='auto';}
+else{
+  const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+}
+
+// Countdown — 21 Aug 2026 Dubai time
+(function(){
+  const target=new Date('2026-08-21T00:00:00+04:00').getTime();
+  const d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
+  if(!d)return;
+  function tick(){
+    const diff=target-Date.now();
+    if(diff<=0){d.textContent=h.textContent=m.textContent=s.textContent='00';return;}
+    d.textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+    h.textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    m.textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    s.textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    setTimeout(tick,1000);
+  }
+  tick();
+})();
+
+// Reveal
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Email / toast
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+function handleEmail(e){e.preventDefault();toast("You're on the list.");e.target.reset();}
+</script>
+</body>
+</html>
