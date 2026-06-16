@@ -249,6 +249,14 @@ footer{border-top:1px solid rgba(255,248,240,.05);padding:36px 52px;display:flex
   footer{flex-direction:column;gap:16px;text-align:center;}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18239802603"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18239802603');
+</script>
 </head>
 <body>
 
@@ -505,5 +513,6 @@ addEventListener('scroll',()=>{
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

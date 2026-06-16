@@ -90,7 +90,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
-  background:var(--ink);color:var(--fog);
+  background:#070709;color:#C8C0B4;
   font-family:var(--sans);font-weight:300;
   overflow-x:hidden;cursor:none;
   -webkit-font-smoothing:antialiased;
@@ -1059,6 +1059,60 @@ nav.strip-gone{top:0 !important;}
 
 .tl-embed-wrap{margin-bottom:10px;border-radius:4px;overflow:hidden;}
 .tl-embed-wrap iframe{display:block;}
+
+/* ── Sound Map mobile card view ── */
+#sm-mobile{display:none;}
+@media(max-width:768px){
+  #sm-canvas,#sm-tip,.sm-axes{display:none!important;}
+  #sm-mobile{display:block;}
+}
+@media(min-width:769px){
+  #sm-mobile{display:none!important;}
+  #sm-canvas{display:block!important;}
+}
+.sm-groups{display:flex;flex-direction:column;gap:2px;}
+.sm-group-header{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;
+  border-left:2px solid var(--gc,rgba(184,134,78,.6));
+  background:rgba(255,255,255,.02);margin-bottom:2px;
+}
+.sm-group-dot{width:8px;height:8px;border-radius:50%;background:var(--gc,rgba(184,134,78,.8));flex-shrink:0;}
+.sm-group-name{font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:var(--gc,rgba(184,134,78,.8));}
+.sm-cards{display:flex;flex-direction:column;gap:2px;margin-bottom:6px;}
+.sm-card{
+  background:var(--ink-2);padding:16px 14px;
+  border:1px solid rgba(255,255,255,.05);
+  border-left:2px solid var(--gc,rgba(184,134,78,.3));
+  transition:background .25s;
+}
+.sm-card.sm-upcoming{border-style:dashed;border-left-style:dashed;opacity:.7;}
+.sm-card:active{background:var(--ink-3);}
+.sm-card-top{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:10px;margin-bottom:10px;
+}
+.sm-card-title{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--white);line-height:1.2;flex:1;}
+.sm-card-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.sm-card-year{font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--fog-dim);}
+.sm-card-streams{font-size:9px;letter-spacing:.1em;color:var(--amber);}
+.sm-card-live{
+  display:flex;align-items:center;gap:5px;
+  font-size:7px;letter-spacing:.22em;text-transform:uppercase;color:#22c55e;
+}
+.sm-card-live::before{content:'';width:5px;height:5px;border-radius:50%;background:#22c55e;
+  animation:smLive 1.6s ease-in-out infinite;}
+@keyframes smLive{0%,100%{opacity:1}50%{opacity:.3}}
+.sm-card-upcoming-lbl{
+  font-size:7px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gc,rgba(184,134,78,.5));
+  border:1px solid var(--gc,rgba(184,134,78,.2));padding:2px 7px;
+}
+.sm-bars{display:flex;flex-direction:column;gap:6px;}
+.sm-bar-row{display:flex;align-items:center;gap:8px;}
+.sm-bar-lbl{font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--fog-dim);width:46px;flex-shrink:0;}
+.sm-bar-track{flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+.sm-bar-fill{height:100%;border-radius:2px;background:var(--gc,rgba(184,134,78,.7));min-width:3px;}
+.sm-bar-val{font-size:8px;color:var(--fog-dim);width:24px;text-align:right;flex-shrink:0;}
 .tl-drawer-inner{
   background:linear-gradient(160deg,rgba(16,16,22,.9),rgba(10,10,16,.9));
   border:1px solid rgba(255,255,255,.06);border-radius:10px;
@@ -1598,8 +1652,31 @@ footer{
   #behind{padding:80px 28px;}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18239802603"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18239802603');
+</script>
 </head>
 <body>
+<script>
+/* ── Content loader: fills data-c elements from content.json ── */
+(async function(){
+  try {
+    const res = await fetch('content.json?v=' + Date.now());
+    if(!res.ok) return;
+    const data = await res.json();
+    const get = (path) => path.split('.').reduce((o,k)=> (o||{})[k], data);
+    document.querySelectorAll('[data-c]').forEach(el=>{
+      const val = get(el.getAttribute('data-c'));
+      if(val !== undefined && val !== null) el.textContent = val;
+    });
+  } catch(e){ /* fail silent — hardcoded fallback values stay */ }
+})();
+</script>
 
 <div class="cur-dot" id="cur-dot"></div>
 <div class="cur-ring" id="cur-ring"></div>
@@ -1638,37 +1715,37 @@ footer{
         <span class="strip-live-dot"></span>
         <span class="strip-live-txt">Live</span>
         <span class="strip-card-sep">·</span>
-        <span class="strip-card-name">Echoes of You</span>
+        <span class="strip-card-name" data-c="releases.echoes.title">Echoes of You</span>
         <a href="https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H" target="_blank" class="strip-ps-btn">Listen ↗</a>
       </div>
 
       <!-- Built from What Broke Me — pre-save -->
       <div class="strip-card">
-        <span class="strip-card-date">18 Jun</span>
+        <span class="strip-card-date" data-c="releases.bfwbm.dateShort">18 Jun</span>
         <span class="strip-card-sep">·</span>
-        <span class="strip-card-name">Built from What Broke Me</span>
+        <span class="strip-card-name" data-c="releases.bfwbm.title">Built from What Broke Me</span>
         <a href="https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me" target="_blank" class="strip-ps-btn">Pre-Save ↗</a>
       </div>
 
       <!-- Noise in My Head -->
       <div class="strip-card">
-        <span class="strip-card-date">9 Jul</span>
+        <span class="strip-card-date" data-c="releases.noise.dateShort">9 Jul</span>
         <span class="strip-card-sep">·</span>
-        <span class="strip-card-name">Noise in My Head</span>
+        <span class="strip-card-name" data-c="releases.noise.title">Noise in My Head</span>
         <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Follow ↗</a>
       </div>
 
       <!-- I Don't Need Saving -->
       <div class="strip-card">
-        <span class="strip-card-date">30 Jul</span>
+        <span class="strip-card-date" data-c="releases.saving.dateShort">30 Jul</span>
         <span class="strip-card-sep">·</span>
-        <span class="strip-card-name">I Don't Need Saving</span>
+        <span class="strip-card-name" data-c="releases.saving.title">I Don't Need Saving</span>
         <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Follow ↗</a>
       </div>
 
       <!-- Comet — album -->
       <div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">
-        <span class="strip-card-date">21 Aug</span>
+        <span class="strip-card-date" data-c="album.releaseDateShort">21 Aug</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" style="color:rgba(255,200,120,.9);">COMET — Full Album</span>
         <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">Notify Me ↗</a>
@@ -1677,7 +1754,7 @@ footer{
     </div>
 
     <div class="strip-right">
-      <span class="strip-album">Comet · 21 Aug 2026</span>
+      <span class="strip-album"><span data-c="album.title">COMET</span> · <span data-c="album.releaseDateMid">21 Aug 2026</span></span>
       <button class="strip-close-btn" id="strip-close" aria-label="Close">✕</button>
     </div>
   </div>
@@ -1751,11 +1828,11 @@ footer{
       <p class="feat-desc">The invisible forces that pull people together and apart — love, loss, and the gravity of everything we carry. Not songs. A system in motion.</p>
       <div class="feat-stats">
         <div>
-          <div class="feat-stat-n">18K</div>
+          <div class="feat-stat-n" data-c="stats.monthlyListeners">18K</div>
           <div class="feat-stat-l">Monthly Listeners</div>
         </div>
         <div>
-          <div class="feat-stat-n">160K+</div>
+          <div class="feat-stat-n" data-c="stats.topTrackStreams">160K+</div>
           <div class="feat-stat-l">Top Track Streams</div>
         </div>
         <div>
@@ -1815,7 +1892,7 @@ footer{
       </form>
     </div>
     <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="community-btn">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.1,290c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Join on WhatsApp
     </a>
     <div class="community-qr">
@@ -1862,15 +1939,15 @@ footer{
 
     <div class="metrics reveal">
       <div class="metric">
-        <div class="metric-n">18K</div>
+        <div class="metric-n" data-c="stats.monthlyListeners">18K</div>
         <div class="metric-l">Monthly Listeners</div>
       </div>
       <div class="metric">
-        <div class="metric-n">160K+</div>
+        <div class="metric-n" data-c="stats.topTrackStreams">160K+</div>
         <div class="metric-l">Top Track Streams</div>
       </div>
       <div class="metric">
-        <div class="metric-n">1,290</div>
+        <div class="metric-n" data-c="stats.followers">1,290</div>
         <div class="metric-l">Spotify Followers</div>
       </div>
       <div class="metric">
@@ -2119,11 +2196,216 @@ footer{
   <div class="sm-header reveal">
     <p class="section-kicker">Sound Spectrum</p>
     <h2 class="section-title">The <em>Sound Map</em></h2>
-    <p class="sm-sub">Where each release falls across energy, emotion & genre — hover any point to explore.</p>
+    <p class="sm-sub">Where each release falls across energy, emotion & genre. <span id="sm-hint-desktop">Hover any point to explore.</span><span id="sm-hint-mobile" style="display:none">Each card shows the sonic position of the release.</span></p>
   </div>
   <div class="sm-wrap reveal d1">
     <canvas id="sm-canvas"></canvas>
     <div id="sm-tip"></div>
+
+    <!-- Mobile card view: replaces canvas on screens < 768px -->
+    <div id="sm-mobile">
+      <div class="sm-groups">
+
+        <!-- Cinematic -->
+        <div class="sm-group">
+          <div class="sm-group-header" style="--gc:rgba(210,190,140,.8)">
+            <span class="sm-group-dot"></span>
+            <span class="sm-group-name">Cinematic</span>
+          </div>
+          <div class="sm-cards">
+            <div class="sm-card" style="--gc:rgba(210,190,140,.6)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Whispers from Beyond</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-year">EP · Nov 2025</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:14%"></div></div><span class="sm-bar-val">Soft</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:28%"></div></div><span class="sm-bar-val">Dark</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Holiday -->
+        <div class="sm-group">
+          <div class="sm-group-header" style="--gc:rgba(80,180,130,.8)">
+            <span class="sm-group-dot"></span>
+            <span class="sm-group-name">Holiday</span>
+          </div>
+          <div class="sm-cards">
+            <div class="sm-card" style="--gc:rgba(80,180,130,.6)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Christmas Vibes</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-year">Album · Nov 2025</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:20%"></div></div><span class="sm-bar-val">Soft</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:90%"></div></div><span class="sm-bar-val">Warm</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alt Rock -->
+        <div class="sm-group">
+          <div class="sm-group-header" style="--gc:rgba(120,170,195,.8)">
+            <span class="sm-group-dot"></span>
+            <span class="sm-group-name">Alt Rock</span>
+          </div>
+          <div class="sm-cards">
+            <div class="sm-card" style="--gc:rgba(120,170,195,.6)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">The Portrait of Us</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-year">Single · Jan 2026</span>
+                  <span class="sm-card-streams">21K streams</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:42%"></div></div><span class="sm-bar-val">Mid</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:40%"></div></div><span class="sm-bar-val">Neutral</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pop -->
+        <div class="sm-group">
+          <div class="sm-group-header" style="--gc:rgba(160,148,220,.8)">
+            <span class="sm-group-dot"></span>
+            <span class="sm-group-name">Pop</span>
+          </div>
+          <div class="sm-cards">
+            <div class="sm-card" style="--gc:rgba(160,148,220,.6)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">You Are My Safe Chaos</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-year">Single · Jan 2026</span>
+                  <span class="sm-card-streams">17K streams</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:50%"></div></div><span class="sm-bar-val">Mid</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:74%"></div></div><span class="sm-bar-val">Warm</span></div>
+              </div>
+            </div>
+            <div class="sm-card" style="--gc:rgba(160,148,220,.6)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Under the Skin of Night</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-year">Single · Feb 2026</span>
+                  <span class="sm-card-streams">22K streams</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:46%"></div></div><span class="sm-bar-val">Mid</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:32%"></div></div><span class="sm-bar-val">Dark</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pop Rock -->
+        <div class="sm-group">
+          <div class="sm-group-header" style="--gc:rgba(210,130,110,.8)">
+            <span class="sm-group-dot"></span>
+            <span class="sm-group-name">Pop Rock</span>
+          </div>
+          <div class="sm-cards">
+            <div class="sm-card" style="--gc:rgba(210,130,110,.6)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">The Weight of Missing You</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-year">Single · Feb 2026</span>
+                  <span class="sm-card-streams">160K streams</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:60%"></div></div><span class="sm-bar-val">Mid</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:46%"></div></div><span class="sm-bar-val">Neutral</span></div>
+              </div>
+            </div>
+            <div class="sm-card" style="--gc:rgba(210,130,110,.6)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Orbital</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-year">Album · Mar 2026</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:66%"></div></div><span class="sm-bar-val">High</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:62%"></div></div><span class="sm-bar-val">Warm</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rock -->
+        <div class="sm-group">
+          <div class="sm-group-header" style="--gc:rgba(195,75,60,.8)">
+            <span class="sm-group-dot"></span>
+            <span class="sm-group-name">Rock</span>
+          </div>
+          <div class="sm-cards">
+            <div class="sm-card" style="--gc:rgba(195,75,60,.6)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Echoes of You</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-live">Live Now</span>
+                  <span class="sm-card-year">Single · May 2026</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:79%"></div></div><span class="sm-bar-val">High</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:36%"></div></div><span class="sm-bar-val">Dark</span></div>
+              </div>
+            </div>
+            <div class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Built from What Broke Me</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-upcoming-lbl">18 Jun 2026</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:84%"></div></div><span class="sm-bar-val">High</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:27%"></div></div><span class="sm-bar-val">Dark</span></div>
+              </div>
+            </div>
+            <div class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Noise in My Head</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-upcoming-lbl">9 Jul 2026</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:88%"></div></div><span class="sm-bar-val">Intense</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:20%"></div></div><span class="sm-bar-val">Dark</span></div>
+              </div>
+            </div>
+            <div class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Comet</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-upcoming-lbl">21 Aug 2026</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:93%"></div></div><span class="sm-bar-val">Intense</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:28%"></div></div><span class="sm-bar-val">Dark</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /sm-groups -->
+    </div><!-- /sm-mobile -->
+
   </div>
   <div class="sm-axes">
     <span>← Intimate / Soft</span>
@@ -2175,6 +2457,10 @@ footer{
         <p>This is not a rock record made for the sake of heaviness. It is a testimony — seven songs drawn from real emotional excavation. Internal chaos. The cost of integrity. The quiet devastation of loss. And the stubborn, unshakeable truth that survives all of it.</p>
         <p>The comet does not ask permission to move. It burns because that is its nature. It passes through everything and remains itself.</p>
       </div>
+      <a href="rockstatement.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:32px;background:linear-gradient(135deg,rgba(255,69,0,.12),rgba(255,120,40,.06));border:1px solid rgba(255,100,30,.35);color:#ffaa5c;font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;padding:16px 32px;text-decoration:none;transition:all .3s;touch-action:manipulation;">
+        ☄ Discover the Rock Statement →
+      </a>
+      <p style="font-size:11px;font-family:var(--serif);font-style:italic;color:var(--ash,rgba(168,159,176,.6));margin-top:10px;">Most songs end when the lyrics stop. A Rock Statement begins there.</p>
     </div>
 
     <div class="comet-divider"></div>
@@ -2458,6 +2744,14 @@ if(isMobile){
     el.addEventListener('mouseenter',()=>ring.classList.add('expand'));
     el.addEventListener('mouseleave',()=>ring.classList.remove('expand'));
   });
+}
+
+/* ── Mobile hint text for sound map ── */
+if(isMobile){
+  const hd=document.getElementById('sm-hint-desktop');
+  const hm=document.getElementById('sm-hint-mobile');
+  if(hd) hd.style.display='none';
+  if(hm) hm.style.display='inline';
 }
 
 /* ── Nav scroll + mobile ── */
@@ -2764,5 +3058,6 @@ async function handleEmailCapture(e){
   }
 }
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

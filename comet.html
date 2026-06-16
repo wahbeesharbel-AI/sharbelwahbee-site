@@ -183,6 +183,14 @@ footer{border-top:1px solid rgba(255,248,240,.04);padding:32px 52px;display:flex
   .email-form button{padding:14px;}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18239802603"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18239802603');
+</script>
 </head>
 <body>
 
@@ -379,5 +387,6 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
 function handleEmail(e){e.preventDefault();toast("You're on the list.");e.target.reset();}
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

@@ -151,6 +151,14 @@ footer{border-top:1px solid rgba(184,134,78,.07);padding:36px 52px;display:flex;
   .three-col,.genre-grid,.trust-row,.lic-contact{grid-template-columns:1fr;}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18239802603"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18239802603');
+</script>
 </head>
 <body>
 
@@ -365,5 +373,6 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
 function handleSubmit(e){e.preventDefault();toast('Request sent — you will hear back within 48 hours.');e.target.reset();}
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

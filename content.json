@@ -1,0 +1,44 @@
+{
+  "_comment": "EDIT THIS FILE to update your site. After editing, commit to GitHub and Vercel auto-deploys. Numbers and dates cascade to every page automatically.",
+
+  "stats": {
+    "monthlyListeners": "18K",
+    "topTrackStreams": "160K+",
+    "followers": "1,290"
+  },
+
+  "album": {
+    "title": "COMET",
+    "releaseDateShort": "21 Aug",
+    "releaseDateFull": "21 August 2026",
+    "releaseDateMid": "21 Aug 2026",
+    "countdownUTC": "2026-08-20T20:00:00Z"
+  },
+
+  "releases": {
+    "echoes": {
+      "title": "Echoes of You",
+      "dateShort": "Live",
+      "status": "live",
+      "link": "https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H"
+    },
+    "bfwbm": {
+      "title": "Built from What Broke Me",
+      "dateShort": "18 Jun",
+      "status": "presave",
+      "link": "https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me"
+    },
+    "noise": {
+      "title": "Noise in My Head",
+      "dateShort": "9 Jul",
+      "status": "upcoming",
+      "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27"
+    },
+    "saving": {
+      "title": "I Don't Need Saving",
+      "dateShort": "30 Jul",
+      "status": "upcoming",
+      "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27"
+    }
+  }
+}
