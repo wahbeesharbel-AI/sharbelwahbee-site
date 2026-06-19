@@ -1663,18 +1663,61 @@ footer{
 </head>
 <body>
 <script>
-/* ── Content loader: fills data-c elements from content.json ── */
+/* ── Content loader: fills data-c text + renders release strip from content.json ── */
 (async function(){
   try {
     const res = await fetch('content.json?v=' + Date.now());
     if(!res.ok) return;
     const data = await res.json();
+
+    // 1. Text replacement for simple data-c elements (stats, album date, etc.)
     const get = (path) => path.split('.').reduce((o,k)=> (o||{})[k], data);
     document.querySelectorAll('[data-c]').forEach(el=>{
       const val = get(el.getAttribute('data-c'));
-      if(val !== undefined && val !== null) el.textContent = val;
+      if(val !== undefined && val !== null && typeof val !== 'object') el.textContent = val;
     });
-  } catch(e){ /* fail silent — hardcoded fallback values stay */ }
+
+    // 2. Render the release strip from the releases array + album
+    const wrap = document.getElementById('strip-releases');
+    if(wrap && Array.isArray(data.releases)){
+      const esc = (s)=> String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      let html = '';
+
+      data.releases.forEach(r=>{
+        const link = esc(r.link||'#');
+        const label = esc(r.linkLabel||'Open');
+        const title = esc(r.title||'');
+        if(r.status === 'live'){
+          html += `<div class="strip-card">
+            <span class="strip-live-dot"></span>
+            <span class="strip-live-txt">Live</span>
+            <span class="strip-card-sep">·</span>
+            <span class="strip-card-name">${title}</span>
+            <a href="${link}" target="_blank" class="strip-ps-btn">${label} ↗</a>
+          </div>`;
+        } else {
+          html += `<div class="strip-card">
+            <span class="strip-card-date">${esc(r.dateShort||'')}</span>
+            <span class="strip-card-sep">·</span>
+            <span class="strip-card-name">${title}</span>
+            <a href="${link}" target="_blank" class="strip-ps-btn">${label} ↗</a>
+          </div>`;
+        }
+      });
+
+      // Album card (always last, highlighted)
+      if(data.album){
+        html += `<div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">
+          <span class="strip-card-date">${esc(data.album.releaseDateShort||'')}</span>
+          <span class="strip-card-sep">·</span>
+          <span class="strip-card-name" style="color:rgba(255,200,120,.9);">${esc(data.album.title||'')} — Full Album</span>
+          <a href="${esc(data.album.link||'#')}" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">${esc(data.album.linkLabel||'Notify Me')} ↗</a>
+        </div>`;
+      }
+
+      wrap.innerHTML = html;
+    }
+  } catch(e){ /* fail silent — hardcoded fallback cards stay visible */ }
 })();
 </script>
 
@@ -1708,8 +1751,9 @@ footer{
     <span class="strip-label">Upcoming</span>
     <span class="strip-sep"></span>
 
-    <div class="strip-releases">
+    <div class="strip-releases" id="strip-releases">
 
+      <!-- Fallback cards (shown if content.json fails to load; otherwise replaced by JS) -->
       <!-- Echoes of You — live now -->
       <div class="strip-card">
         <span class="strip-live-dot"></span>

@@ -1,10 +1,10 @@
 {
-  "_comment": "EDIT THIS FILE to update your site. After editing, commit to GitHub and Vercel auto-deploys. Numbers and dates cascade to every page automatically.",
+  "_comment": "EDIT THIS FILE to update your site, then commit to GitHub (Vercel auto-deploys). The release strip, stats, and dates update automatically. For each release: status can be 'live', 'presave', or 'upcoming'. 'live' shows a green dot + your link label; 'presave'/'upcoming' show the date + link. Change the link to point anywhere (Spotify, Distrokid, WhatsApp).",
 
   "stats": {
     "monthlyListeners": "18K",
-    "topTrackStreams": "170K+",
-    "followers": "1,387"
+    "topTrackStreams": "160K+",
+    "followers": "1,290"
   },
 
   "album": {
@@ -12,33 +12,42 @@
     "releaseDateShort": "21 Aug",
     "releaseDateFull": "21 August 2026",
     "releaseDateMid": "21 Aug 2026",
-    "countdownUTC": "2026-08-20T20:00:00Z"
+    "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
+    "linkLabel": "Notify Me"
   },
 
-  "releases": {
-    "echoes": {
+  "releases": [
+    {
+      "id": "echoes",
       "title": "Echoes of You",
       "dateShort": "Live",
       "status": "live",
-      "link": "https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H"
+      "link": "https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H",
+      "linkLabel": "Listen"
     },
-    "bfwbm": {
+    {
+      "id": "bfwbm",
       "title": "Built from What Broke Me",
-      "dateShort": "Live",
-      "status": "Live",
-      "link": "https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP?si=1a89acee71de4417"
+      "dateShort": "18 Jun",
+      "status": "presave",
+      "link": "https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me",
+      "linkLabel": "Pre-Save"
     },
-    "noise": {
+    {
+      "id": "noise",
       "title": "Noise in My Head",
       "dateShort": "9 Jul",
       "status": "upcoming",
-      "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27"
+      "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
+      "linkLabel": "Follow"
     },
-    "saving": {
+    {
+      "id": "saving",
       "title": "I Don't Need Saving",
       "dateShort": "30 Jul",
       "status": "upcoming",
-      "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27"
+      "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
+      "linkLabel": "Follow"
     }
-  }
+  ]
 }
