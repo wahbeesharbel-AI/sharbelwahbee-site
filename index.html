@@ -1713,6 +1713,33 @@ function loadSiteContent(){
         }
         wrap.innerHTML = html;
       }
+
+      // 3. Render player tabs from content.json
+      var ptabs = document.getElementById('player-tabs');
+      if(ptabs && Array.isArray(data.player) && data.player.length){
+        var esc2 = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+        var ph = '';
+        data.player.forEach(function(p, i){
+          if(!p.spotifyAlbumId) return;
+          var src = 'https://open.spotify.com/embed/album/' + esc2(p.spotifyAlbumId) + '?utm_source=generator&theme=0';
+          ph += '<button class="ptab' + (i===0?' active':'') + '" data-src="' + src + '">' + esc2(p.title||'Untitled') + '</button>';
+        });
+        ptabs.innerHTML = ph;
+        // Set the player iframe to the first tab
+        var frame = document.getElementById('player-frame');
+        var first = data.player[0];
+        if(frame && first && first.spotifyAlbumId){
+          frame.src = 'https://open.spotify.com/embed/album/' + first.spotifyAlbumId + '?utm_source=generator&theme=0';
+        }
+        // Re-bind tab clicks (since we replaced the buttons)
+        ptabs.querySelectorAll('.ptab').forEach(function(btn){
+          btn.addEventListener('click', function(){
+            ptabs.querySelectorAll('.ptab').forEach(function(b){ b.classList.remove('active'); });
+            btn.classList.add('active');
+            if(frame) frame.src = btn.getAttribute('data-src');
+          });
+        });
+      }
     })
     .catch(function(e){ /* fail silent — hardcoded fallback cards stay visible */ });
 }
@@ -1906,7 +1933,8 @@ if(document.readyState === 'loading'){
     <h2 class="section-title reveal d1" style="font-size:clamp(26px,3vw,40px);margin-bottom:36px;">Listen <em>right here.</em></h2>
 
     <!-- Tab switcher -->
-    <div class="player-tabs reveal d2">
+    <div class="player-tabs reveal d2" id="player-tabs">
+      <!-- Fallback tabs (replaced by JS from content.json if available) -->
       <button class="ptab active" data-src="https://open.spotify.com/embed/album/3NG9toZECFCRFrQpEN1sbJ?utm_source=generator&theme=0">Orbital</button>
       <button class="ptab" data-src="https://open.spotify.com/embed/album/1dGABv2hEySigsjT7q5SIf?utm_source=generator&theme=0">The Weight of Missing You</button>
       <button class="ptab" data-src="https://open.spotify.com/embed/album/7533hMwuvb81q1qNDvt38H?utm_source=generator&theme=0">Echoes of You</button>
