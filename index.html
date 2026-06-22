@@ -1740,6 +1740,40 @@ function loadSiteContent(){
           });
         });
       }
+
+      // 4. Render Comet journey timeline from content.json
+      var journey = document.getElementById('comet-journey');
+      if(journey && Array.isArray(releases)){
+        var esc3 = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+        var jh = '';
+        releases.forEach(function(r){
+          var status = (r.status||'').toString().trim().toLowerCase();
+          var dateLine = esc3(r.dateMid||'') + ' · ' + esc3(r.single||'');
+          if(status === 'live'){
+            jh += '<div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div>'
+              + '<p class="comet-tl-date" style="color:#ffaa5c;">' + dateLine + ' · Live Now</p>'
+              + '<p class="comet-tl-title">' + esc3(r.title) + '</p>'
+              + '<p class="comet-tl-sub">' + esc3(r.journeySub||'') + '</p></div>';
+          } else {
+            var psLink = '';
+            if(status === 'presave' && r.link){
+              psLink = '<a href="' + esc3(r.link) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">' + esc3(r.linkLabel||'Pre-Save') + ' ↗</a>';
+            }
+            jh += '<div class="comet-tl-item"><div class="comet-tl-dot"></div>'
+              + '<p class="comet-tl-date">' + dateLine + '</p>'
+              + '<p class="comet-tl-title">' + esc3(r.title) + '</p>'
+              + '<p class="comet-tl-sub">' + esc3(r.journeySub||'') + '</p>' + psLink + '</div>';
+          }
+        });
+        // Album finale
+        if(data.album){
+          jh += '<div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div>'
+            + '<p class="comet-tl-date">' + esc3(data.album.releaseDateMid||'') + ' · Full Album</p>'
+            + '<p class="comet-tl-title">' + esc3(data.album.title||'') + ' — The Complete Journey</p>'
+            + '<p class="comet-tl-sub">All seven songs. The full arc. Available everywhere.</p></div>';
+        }
+        journey.innerHTML = jh;
+      }
     })
     .catch(function(e){ /* fail silent — hardcoded fallback cards stay visible */ });
 }
@@ -2227,13 +2261,13 @@ if(document.readyState === 'loading'){
       <div class="tl-col">
         <div class="tl-card">
           <div class="tl-upcoming-pill">Upcoming</div>
-          <div class="tl-card-date">16 Jul 2026</div>
+          <div class="tl-card-date">9 Jul 2026</div>
           <div class="tl-card-title">Noise in My Head</div>
           <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
           <p class="tl-desc">"The relentless static of over-thinking turned into something loud and beautiful. A rock exorcism for thoughts that won't rest."</p>
-          <div class="tl-locked">Coming 16 Jul 2026</div>
+          <div class="tl-locked">Coming 9 Jul 2026</div>
         </div></div>
       </div>
     </div>
@@ -2608,7 +2642,8 @@ if(document.readyState === 'loading'){
     <div class="comet-section reveal">
       <p class="comet-kicker">Release Journey</p>
       <h3 class="comet-heading">The road<br><em>to Comet.</em></h3>
-      <div class="comet-tl">
+      <div class="comet-tl" id="comet-journey">
+        <!-- Fallback (replaced by JS from content.json) -->
         <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">16 May 2026 · Single 01 · Live Now</p><p class="comet-tl-title">Echoes of You</p><p class="comet-tl-sub">The first signal. The rock awakening has begun.</p></div>
         <div class="comet-tl-item"><div class="comet-tl-dot"></div><p class="comet-tl-date">18 Jun 2026 · Single 02</p><p class="comet-tl-title">Built from What Broke Me</p><p class="comet-tl-sub">The first Rock Statement. The defining sound of the era.</p><a href="https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Pre-Save on Spotify ↗</a></div>
         <div class="comet-tl-item"><div class="comet-tl-dot"></div><p class="comet-tl-date">16 Jul 2026 · Single 03</p><p class="comet-tl-title">Noise in My Head</p><p class="comet-tl-sub">Where the journey began — now shared with the world.</p></div>
