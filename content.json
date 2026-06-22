@@ -2,8 +2,8 @@
   "_comment": "EDIT THIS FILE to update your site, then commit to GitHub (Vercel auto-deploys). RELEASE STRIP: each release has status 'live'/'presave'/'upcoming', a link, and linkLabel. PLAYER TABS: add/remove albums in the 'player' list — just need a title and the Spotify album ID (the code after /album/ in a Spotify link). STATS & DATES update everywhere automatically.",
   "stats": {
     "monthlyListeners": "18K",
-    "topTrackStreams": "160K+",
-    "followers": "1,290"
+    "topTrackStreams": "175K+",
+    "followers": "1,402"
   },
   "album": {
     "title": "COMET",
