@@ -2,8 +2,8 @@
   "_comment": "EDIT THIS FILE to update your site, then commit to GitHub (Vercel auto-deploys). RELEASE STRIP: each release has status 'live'/'presave'/'upcoming', a link, and linkLabel. PLAYER TABS: add/remove albums in the 'player' list — just need a title and the Spotify album ID (the code after /album/ in a Spotify link). STATS & DATES update everywhere automatically.",
   "stats": {
     "monthlyListeners": "18K",
-    "topTrackStreams": "175K+",
-    "followers": "1,402"
+    "topTrackStreams": "160K+",
+    "followers": "1,290"
   },
   "album": {
     "title": "COMET",
@@ -17,34 +17,50 @@
     {
       "id": "echoes",
       "title": "Echoes of You",
-      "dateShort": "Live",
       "status": "live",
+      "dateShort": "Live",
+      "dateMid": "16 May 2026",
+      "dateFull": "16 May 2026",
       "link": "https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H",
-      "linkLabel": "Listen"
+      "linkLabel": "Listen",
+      "single": "Single 01",
+      "journeySub": "The first signal. The rock awakening has begun."
     },
     {
       "id": "bfwbm",
       "title": "Built from What Broke Me",
-      "dateShort": "Live",
-      "status": "Live",
-      "link": "https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP?si=38e66cee42ff4d9b",
-      "linkLabel": "Listen"
+      "status": "presave",
+      "dateShort": "18 Jun",
+      "dateMid": "18 Jun 2026",
+      "dateFull": "18 June 2026",
+      "link": "https://distrokid.com/hyperfollow/sharbelwahbee/built-from-what-broke-me",
+      "linkLabel": "Pre-Save",
+      "single": "Single 02",
+      "journeySub": "The first Rock Statement. The defining sound of the era."
     },
     {
       "id": "noise",
       "title": "Noise in My Head",
-      "dateShort": "9 Jul",
       "status": "upcoming",
+      "dateShort": "9 Jul",
+      "dateMid": "9 Jul 2026",
+      "dateFull": "9 July 2026",
       "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
-      "linkLabel": "Follow"
+      "linkLabel": "Follow",
+      "single": "Single 03",
+      "journeySub": "Where the journey began — now shared with the world."
     },
     {
       "id": "saving",
       "title": "I Don't Need Saving",
-      "dateShort": "30 Jul",
       "status": "upcoming",
+      "dateShort": "30 Jul",
+      "dateMid": "30 Jul 2026",
+      "dateFull": "30 July 2026",
       "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
-      "linkLabel": "Follow"
+      "linkLabel": "Follow",
+      "single": "Single 04",
+      "journeySub": "The declaration. Autonomy without apology."
     }
   ],
   "player": [
@@ -63,10 +79,6 @@
     {
       "title": "Whispers from Beyond",
       "spotifyAlbumId": "1bkWA2JEvV7OXe07j7kTXi"
-    },
-    {
-      "title": "Built From What Broke Me",
-      "spotifyAlbumId": "0cF52hNek3oEZNBMgjqgwt"
     },
     {
       "title": "Under the Skin of Night",
