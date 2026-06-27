@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sharbel Wahbee — Cinematic Composer</title>
-<link rel="canonical" href="https://www.sharbelwahbee.com/">
+<title>Sharbel Wahbee — Compositor Cinematográfico</title>
+<link rel="canonical" href="https://www.sharbelwahbee.com/index-pt.html">
 <link rel="alternate" hreflang="en" href="https://www.sharbelwahbee.com/">
 <link rel="alternate" hreflang="pt-BR" href="https://www.sharbelwahbee.com/index-pt.html">
 <link rel="alternate" hreflang="es" href="https://www.sharbelwahbee.com/index-es.html">
 <link rel="alternate" hreflang="x-default" href="https://www.sharbelwahbee.com/">
-<meta name="description" content="Cinematic composer and storyteller based in Dubai. Music for the soul, the screen, and the spaces in between. Listen to Orbital — out now.">
+<meta name="description" content="Compositor cinematográfico e contador de histórias baseado em Dubai. Música para a alma, para a tela e para os espaços entre elas. Ouça Orbital — já disponível.">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.sharbelwahbee.com/">
 <meta property="og:title" content="Sharbel Wahbee — Cinematic Composer">
-<meta property="og:description" content="Where sound becomes something felt. Independent cinematic composer based in Dubai.">
+<meta property="og:description" content="Where sound becomes algo que se sente. Independent cinematic composer based in Dubai.">
 <meta property="og:image" content="https://www.sharbelwahbee.com/sharbel.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sharbel Wahbee — Cinematic Composer">
-<meta name="twitter:description" content="Where sound becomes something felt.">
+<meta name="twitter:description" content="Where sound becomes algo que se sente.">
 <meta name="twitter:image" content="https://www.sharbelwahbee.com/sharbel.jpg">
 
 <!-- Google Analytics — replace G-XXXXXXXXXX with your real Measurement ID -->
@@ -1694,12 +1694,12 @@ function loadSiteContent(){
         var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
         var html = '';
         releases.forEach(function(r){
-          var link = esc(r.link||'#'), label = esc(r.linkLabel||'Open'), title = esc(r.title||'');
+          var link = esc(r.link||'#'), label = esc(r.linkLabel||'Abrir'), title = esc(r.title||'');
           var status = (r.status||'').toString().trim().toLowerCase();
           if(status === 'live'){
             html += '<div class="strip-card">'
               + '<span class="strip-live-dot"></span>'
-              + '<span class="strip-live-txt">Live</span>'
+              + '<span class="strip-live-txt">No ar</span>'
               + '<span class="strip-card-sep">·</span>'
               + '<span class="strip-card-name">'+title+'</span>'
               + '<a href="'+link+'" target="_blank" class="strip-ps-btn">'+label+' ↗</a>'
@@ -1717,8 +1717,8 @@ function loadSiteContent(){
           html += '<div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">'
             + '<span class="strip-card-date">'+esc(data.album.releaseDateShort||'')+'</span>'
             + '<span class="strip-card-sep">·</span>'
-            + '<span class="strip-card-name" style="color:rgba(255,200,120,.9);">'+esc(data.album.title||'')+' — Full Album</span>'
-            + '<a href="'+esc(data.album.link||'#')+'" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">'+esc(data.album.linkLabel||'Notify Me')+' ↗</a>'
+            + '<span class="strip-card-name" style="color:rgba(255,200,120,.9);">'+esc(data.album.title||'')+' — Álbum Completo</span>'
+            + '<a href="'+esc(data.album.link||'#')+'" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">'+esc(data.album.linkLabel||'Avise-me')+' ↗</a>'
             + '</div>';
         }
         wrap.innerHTML = html;
@@ -1761,13 +1761,13 @@ function loadSiteContent(){
           var dateLine = esc3(r.dateMid||'') + ' · ' + esc3(r.single||'');
           if(status === 'live'){
             jh += '<div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div>'
-              + '<p class="comet-tl-date" style="color:#ffaa5c;">' + dateLine + ' · Live Now</p>'
+              + '<p class="comet-tl-date" style="color:#ffaa5c;">' + dateLine + ' · Já Disponível</p>'
               + '<p class="comet-tl-title">' + esc3(r.title) + '</p>'
               + '<p class="comet-tl-sub">' + esc3(r.journeySub||'') + '</p></div>';
           } else {
             var psLink = '';
             if(status === 'presave' && r.link){
-              psLink = '<a href="' + esc3(r.link) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">' + esc3(r.linkLabel||'Pre-Save') + ' ↗</a>';
+              psLink = '<a href="' + esc3(r.link) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">' + esc3(r.linkLabel||'Pré-salvar') + ' ↗</a>';
             }
             jh += '<div class="comet-tl-item"><div class="comet-tl-dot"></div>'
               + '<p class="comet-tl-date">' + dateLine + '</p>'
@@ -1778,9 +1778,9 @@ function loadSiteContent(){
         // Album finale
         if(data.album){
           jh += '<div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div>'
-            + '<p class="comet-tl-date">' + esc3(data.album.releaseDateMid||'') + ' · Full Album</p>'
-            + '<p class="comet-tl-title">' + esc3(data.album.title||'') + ' — The Complete Journey</p>'
-            + '<p class="comet-tl-sub">All seven songs. The full arc. Available everywhere.</p></div>';
+            + '<p class="comet-tl-date">' + esc3(data.album.releaseDateMid||'') + ' · Álbum Completo</p>'
+            + '<p class="comet-tl-title">' + esc3(data.album.title||'') + ' — A Jornada Completa</p>'
+            + '<p class="comet-tl-sub">Todas as sete músicas. O arco completo. Disponível em todos os lugares.</p></div>';
         }
         journey.innerHTML = jh;
       }
@@ -1804,16 +1804,16 @@ if(document.readyState === 'loading'){
 <nav id="nav">
   <a href="#hero" class="nav-logo">Sharbel <em>Wahbee</em></a>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#featured">Listen</a></li>
-    <li><a href="#world">The World</a></li>
-    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#featured">Ouvir</a></li>
+    <li><a href="#world">O Universo</a></li>
+    <li><a href="#timeline">Linha do Tempo</a></li>
     <li><a href="#comet" style="color:rgba(255,120,40,.8);">Comet</a></li>
     <li><a href="licensing.html">Licensing</a></li>
     <li><a href="epk.html">EPK</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">Contato</a></li>
   </ul>
-  <a href="https://open.spotify.com/artist/6WR63hJPJOrxD2h8rtNl8x" target="_blank" class="nav-cta">Listen Now</a>
-  <div class="lang-switch-idx"><a href="/" class="active">EN</a><span>·</span><a href="/index-pt.html">PT</a><span>·</span><a href="/index-es.html">ES</a></div>
+  <a href="https://open.spotify.com/artist/6WR63hJPJOrxD2h8rtNl8x" target="_blank" class="nav-cta">Ouça Agora</a>
+  <div class="lang-switch-idx"><a href="/">EN</a><span>·</span><a href="/index-pt.html" class="active">PT</a><span>·</span><a href="/index-es.html">ES</a></div>
   <button class="nav-burger" id="nav-burger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1823,7 +1823,7 @@ if(document.readyState === 'loading'){
 <div id="release-strip">
   <div class="strip-inner">
     <span class="strip-fire"></span>
-    <span class="strip-label">Upcoming</span>
+    <span class="strip-label">Em Breve</span>
     <span class="strip-sep"></span>
 
     <div class="strip-releases" id="strip-releases">
@@ -1832,19 +1832,19 @@ if(document.readyState === 'loading'){
       <!-- Echoes of You — live now -->
       <div class="strip-card">
         <span class="strip-live-dot"></span>
-        <span class="strip-live-txt">Live</span>
+        <span class="strip-live-txt">No ar</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" data-c="releases.echoes.title">Echoes of You</span>
-        <a href="https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H" target="_blank" class="strip-ps-btn">Listen ↗</a>
+        <a href="https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H" target="_blank" class="strip-ps-btn">Ouvir ↗</a>
       </div>
 
       <!-- Built from What Broke Me — live now -->
       <div class="strip-card">
         <span class="strip-live-dot"></span>
-        <span class="strip-live-txt">Live</span>
+        <span class="strip-live-txt">No ar</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" data-c="releases.bfwbm.title">Built from What Broke Me</span>
-        <a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" class="strip-ps-btn">Listen ↗</a>
+        <a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" class="strip-ps-btn">Ouvir ↗</a>
       </div>
 
       <!-- Noise in My Head -->
@@ -1852,7 +1852,7 @@ if(document.readyState === 'loading'){
         <span class="strip-card-date" data-c="releases.noise.dateShort">9 Jul</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" data-c="releases.noise.title">Noise in My Head</span>
-        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Follow ↗</a>
+        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Seguir ↗</a>
       </div>
 
       <!-- I Don't Need Saving -->
@@ -1860,15 +1860,15 @@ if(document.readyState === 'loading'){
         <span class="strip-card-date" data-c="releases.saving.dateShort">30 Jul</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" data-c="releases.saving.title">I Don't Need Saving</span>
-        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Follow ↗</a>
+        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Seguir ↗</a>
       </div>
 
       <!-- Comet — album -->
       <div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">
         <span class="strip-card-date" data-c="album.releaseDateShort">21 Aug</span>
         <span class="strip-card-sep">·</span>
-        <span class="strip-card-name" style="color:rgba(255,200,120,.9);">COMET — Full Album</span>
-        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">Notify Me ↗</a>
+        <span class="strip-card-name" style="color:rgba(255,200,120,.9);">COMET — Álbum Completo</span>
+        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">Avise-me ↗</a>
       </div>
 
     </div>
@@ -1886,35 +1886,35 @@ if(document.readyState === 'loading'){
   <div class="hero-ghost" aria-hidden="true">SW</div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">Cinematic Composer · Dubai</p>
+    <p class="hero-eyebrow">Compositor Cinematográfico · Dubai</p>
 
     <h1 class="hero-title">
-      Where sound becomes<br>
-      <em>something felt.</em>
+      Onde o som se torna<br>
+      <em>algo que se sente.</em>
     </h1>
 
     <p class="hero-hook">
-      Cinematic compositions that don't describe emotion —<br>
-      they become it. Stories built for the moments<br>
-      that resist language.
+      Composições cinematográficas que não descrevem a emoção —<br>
+      elas se tornam ela. Histórias criadas para os momentos<br>
+      que resistem às palavras.
     </p>
 
     <div class="hero-actions">
       <a href="https://open.spotify.com/artist/6WR63hJPJOrxD2h8rtNl8x" target="_blank" class="btn-primary">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 11-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.972c3.632-1.102 8.147-.568 11.233 1.328a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.794c3.532-1.072 9.404-.865 13.115 1.338a.937.937 0 01-.955 1.613z"/></svg>
-        Listen on Spotify
+        Ouça no Spotify
       </a>
       <a href="https://www.youtube.com/channel/UCQySSIih8fLYuFE5x6xX0Pg" target="_blank" class="btn-secondary">
         <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-        Watch on YouTube
+        Assista no YouTube
       </a>
       <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="btn-outline">
-        Join the Channel
+        Entre no Canal
       </a>
     </div>
 
     <a href="#featured" class="start-here">
-      <span>Start here — Orbital</span>
+      <span>Comece aqui — Orbital</span>
       <span class="start-here-arrow">
         <span></span><span></span><span></span>
       </span>
@@ -1923,7 +1923,7 @@ if(document.readyState === 'loading'){
 
   <div class="hero-scroll">
     <div class="scroll-line"></div>
-    <span>Scroll</span>
+    <span>Rolar</span>
   </div>
 </section>
 
@@ -1935,37 +1935,37 @@ if(document.readyState === 'loading'){
       <a href="https://open.spotify.com/album/3NG9toZECFCRFrQpEN1sbJ" target="_blank" class="orb-img-wrap">
         <img src="orbital-cover.png" alt="Orbital — Sharbel Wahbee" class="orb-img">
         <div class="orb-img-overlay">
-          <span>Listen on Spotify ↗</span>
+          <span>Ouça no Spotify ↗</span>
         </div>
       </a>
-      <p class="feat-cue">Click to listen on Spotify ↗</p>
+      <p class="feat-cue">Clique para ouvir no Spotify ↗</p>
     </div>
 
     <div class="reveal d1">
-      <p class="feat-label">Latest Album · March 2026</p>
-      <h2 class="feat-title"><em>Orbital</em><br>is now out.</h2>
-      <p style="font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;margin-top:4px;opacity:.9;">Start here — the full experience.</p>
-      <p class="feat-desc">The invisible forces that pull people together and apart — love, loss, and the gravity of everything we carry. Not songs. A system in motion.</p>
+      <p class="feat-label">Álbum Mais Recente · Março de 2026</p>
+      <h2 class="feat-title"><em>Orbital</em><br>já disponível.</h2>
+      <p style="font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;margin-top:4px;opacity:.9;">Comece por aqui — a experiência completa.</p>
+      <p class="feat-desc">As forças invisíveis que aproximam e afastam as pessoas — amor, perda e a gravidade de tudo o que carregamos. Não são músicas. É um sistema em movimento.</p>
       <div class="feat-stats">
         <div>
           <div class="feat-stat-n" data-c="stats.monthlyListeners">18K</div>
-          <div class="feat-stat-l">Monthly Listeners</div>
+          <div class="feat-stat-l">Ouvintes Mensais</div>
         </div>
         <div>
           <div class="feat-stat-n" data-c="stats.topTrackStreams">160K+</div>
-          <div class="feat-stat-l">Top Track Streams</div>
+          <div class="feat-stat-l">Streams da Faixa Principal</div>
         </div>
         <div>
           <div class="feat-stat-n">100%</div>
-          <div class="feat-stat-l">Independent</div>
+          <div class="feat-stat-l">Independente</div>
         </div>
       </div>
       <div class="feat-actions">
         <a href="https://open.spotify.com/album/3NG9toZECFCRFrQpEN1sbJ" target="_blank" class="btn-primary">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 11-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.972c3.632-1.102 8.147-.568 11.233 1.328a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.794c3.532-1.072 9.404-.865 13.115 1.338a.937.937 0 01-.955 1.613z"/></svg>
-          Listen to Orbital
+          Ouça Orbital
         </a>
-        <a href="https://www.youtube.com/watch?v=videoseries&list=OLAK5uy_ni4yl-FdxBFIbTcaattYZuaKrDK0VG4eU" target="_blank" class="btn-outline">Watch the Experience</a>
+        <a href="https://www.youtube.com/watch?v=videoseries&list=OLAK5uy_ni4yl-FdxBFIbTcaattYZuaKrDK0VG4eU" target="_blank" class="btn-outline">Assista à Experiência</a>
       </div>
     </div>
 
@@ -1975,8 +1975,8 @@ if(document.readyState === 'loading'){
 <!-- ══════════ INLINE PLAYER ══════════ -->
 <section id="player" style="background:var(--ink);padding:80px 56px;border-top:1px solid rgba(184,134,78,.06);">
   <div style="max-width:760px;margin:0 auto;">
-    <p class="section-kicker reveal">Play Without Leaving</p>
-    <h2 class="section-title reveal d1" style="font-size:clamp(26px,3vw,40px);margin-bottom:36px;">Listen <em>right here.</em></h2>
+    <p class="section-kicker reveal">Ouça Sem Sair Daqui</p>
+    <h2 class="section-title reveal d1" style="font-size:clamp(26px,3vw,40px);margin-bottom:36px;">Ouça <em>aqui mesmo.</em></h2>
 
     <!-- Tab switcher -->
     <div class="player-tabs reveal d2" id="player-tabs">
@@ -1996,7 +1996,7 @@ if(document.readyState === 'loading'){
         style="display:block;border-radius:4px;">
       </iframe>
     </div>
-    <p style="margin-top:16px;font-size:11px;font-family:var(--serif);font-style:italic;color:var(--fog-dim);text-align:center;">Full playback opens in Spotify if not logged in.</p>
+    <p style="margin-top:16px;font-size:11px;font-family:var(--serif);font-style:italic;color:var(--fog-dim);text-align:center;">A reprodução completa abre no Spotify se você não estiver conectado.</p>
   </div>
 </section>
 
@@ -2004,21 +2004,21 @@ if(document.readyState === 'loading'){
 <section id="community">
   <div class="community-inner reveal">
     <div class="community-text">
-      <p class="community-eyebrow">Join the Inner Circle</p>
-      <h3 class="community-title">Before anyone else <em>hears it.</em></h3>
-      <p class="community-sub">Early access to new releases, behind-the-scenes process, and unreleased sketches — directly on WhatsApp. No noise. No algorithm.</p>
+      <p class="community-eyebrow">Entre no Círculo Íntimo</p>
+      <h3 class="community-title">Antes de todo mundo <em>ouvir.</em></h3>
+      <p class="community-sub">Acesso antecipado a novos lançamentos, bastidores do processo e esboços inéditos — direto no WhatsApp. Sem ruído. Sem algoritmo.</p>
       <form class="email-capture" onsubmit="handleEmailCapture(event)">
-        <input type="email" placeholder="Your email" required>
-        <button type="submit">Get Early Releases</button>
+        <input type="email" placeholder="Seu email" required>
+        <button type="submit">Receba em Primeira Mão</button>
       </form>
     </div>
     <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="community-btn">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Join on WhatsApp
+      Entrar no WhatsApp
     </a>
     <div class="community-qr">
       <img src="whatsapp-qr.png" alt="Scan to join Sharbel Wahbee WhatsApp Channel">
-      <p>Or scan to join</p>
+      <p>Ou escaneie para entrar</p>
     </div>
   </div>
 </section>
@@ -2026,54 +2026,54 @@ if(document.readyState === 'loading'){
 <!-- ══════════ THE WORLD ══════════ -->
 <section id="world">
   <div class="world-inner">
-    <p class="section-kicker reveal">The World</p>
+    <p class="section-kicker reveal">O Universo</p>
     <h2 class="world-statement reveal d1">
-      Music built not to accompany<br>
-      emotion — but to <em>become it.</em>
+      Música feita não para acompanhar<br>
+      a emoção — mas para <em>become it.</em>
     </h2>
 
     <div class="world-pillars">
       <div class="pillar reveal">
         <div class="pillar-n">01</div>
-        <div class="pillar-h">Cinematic First</div>
-        <p class="pillar-b">Every release is architected as a narrative experience. The track is the scene. The silence between notes is the cut. Nothing is accidental.</p>
+        <div class="pillar-h">Cinematográfico Antes de Tudo</div>
+        <p class="pillar-b">Cada lançamento é arquitetado como uma experiência narrativa. A faixa é a cena. O silêncio entre as notas é o corte. Nada é por acaso.</p>
       </div>
       <div class="pillar reveal d1">
         <div class="pillar-n">02</div>
-        <div class="pillar-h">Emotional Precision</div>
-        <p class="pillar-b">Not vague feelings. Specific human moments — the weight of missing someone, the orbit of two people, the noise that won't let you sleep. Named and scored.</p>
+        <div class="pillar-h">Precisão Emocional</div>
+        <p class="pillar-b">Não são sentimentos vagos. São momentos humanos específicos — o peso da saudade, a órbita de duas pessoas, o ruído que não deixa você dormir. Nomeados e musicados.</p>
       </div>
       <div class="pillar reveal d2">
         <div class="pillar-n">03</div>
-        <div class="pillar-h">Expanding Universe</div>
-        <p class="pillar-b">From the depth of <em>Whispers from Beyond</em> to the rock urgency of the upcoming <em>Comet</em> — a world that grows without losing its emotional core.</p>
+        <div class="pillar-h">Universo em Expansão</div>
+        <p class="pillar-b">Da profundidade de <em>Whispers from Beyond</em>  à urgência rock do próximo <em>Comet</em> — um mundo que cresce sem perder seu núcleo emocional.</p>
       </div>
     </div>
 
     <div class="world-quote reveal">
       <div class="quote-mark">"</div>
       <div>
-        <p class="quote-text">Music is not only heard, but felt — a space where longing, intimacy, and imagination orbit the same emotional core.</p>
-        <p class="quote-attr">— Sharbel Wahbee, Spotify Artist Bio</p>
+        <p class="quote-text">A música não é apenas ouvida, mas sentida — um espaço onde saudade, intimidade e imaginação orbitam o mesmo núcleo emocional.</p>
+        <p class="quote-attr">— Sharbel Wahbee, Bio de Artista no Spotify</p>
       </div>
     </div>
 
     <div class="metrics reveal">
       <div class="metric">
         <div class="metric-n" data-c="stats.monthlyListeners">18K</div>
-        <div class="metric-l">Monthly Listeners</div>
+        <div class="metric-l">Ouvintes Mensais</div>
       </div>
       <div class="metric">
         <div class="metric-n" data-c="stats.topTrackStreams">160K+</div>
-        <div class="metric-l">Top Track Streams</div>
+        <div class="metric-l">Streams da Faixa Principal</div>
       </div>
       <div class="metric">
         <div class="metric-n" data-c="stats.followers">1,290</div>
-        <div class="metric-l">Spotify Followers</div>
+        <div class="metric-l">Seguidores no Spotify</div>
       </div>
       <div class="metric">
         <div class="metric-n">100%</div>
-        <div class="metric-l">Independent</div>
+        <div class="metric-l">Independente</div>
       </div>
     </div>
   </div>
@@ -2082,15 +2082,15 @@ if(document.readyState === 'loading'){
 <!-- ══════════ TIMELINE ══════════ -->
 <section id="timeline">
   <div class="tl-header">
-    <p class="section-kicker reveal">Discography</p>
-    <h2 class="section-title reveal d1">A Journey <em>in Sound</em></h2>
-    <p style="margin-top:16px;font-size:14px;font-family:var(--serif);font-style:italic;color:var(--fog-dim);line-height:1.65;max-width:520px;" class="reveal d2">For those who want to go deeper — every chapter of the world, in order. Click any card to read the story behind the release.</p>
+    <p class="section-kicker reveal">Discografia</p>
+    <h2 class="section-title reveal d1">Uma Jornada <em>em Som</em></h2>
+    <p style="margin-top:16px;font-size:14px;font-family:var(--serif);font-style:italic;color:var(--fog-dim);line-height:1.65;max-width:520px;" class="reveal d2">Para quem quer ir mais fundo — cada capítulo do universo, em ordem. Clique em qualquer card para ler a história por trás do lançamento.</p>
   </div>
 
   <!-- YT Modal -->
   <div class="yt-overlay" id="yt-overlay">
     <div class="yt-box">
-      <button class="yt-close" id="yt-close">✕ &nbsp; close</button>
+      <button class="yt-close" id="yt-close">✕ &nbsp; fechar</button>
       <iframe id="yt-frame" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
     </div>
   </div>
@@ -2106,12 +2106,12 @@ if(document.readyState === 'loading'){
         <div class="tl-card tl-album">
           <div class="tl-card-date">14 Nov 2025</div>
           <div class="tl-card-title">Whispers from Beyond</div>
-          <div class="tl-meta"><span class="tl-badge">EP · 6 Tracks</span><span class="tl-gtag">Cinematic Epic</span></div>
+          <div class="tl-meta"><span class="tl-badge">EP · 6 Faixas</span><span class="tl-gtag">Épico Cinematográfico</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"Blending emotional orchestral soundscapes with modern ambient storytelling — exploring the edge between mystery, memory, and imagination."</p>
+          <p class="tl-desc">"Mesclando paisagens orquestrais emocionais com uma narrativa ambiente moderna — explorando a fronteira entre mistério, memória e imaginação."</p>
           <button class="tl-watch" data-yt="https://www.youtube.com/embed/videoseries?list=OLAK5uy_k9LaHDViZMKq6yl4gbaJbOj9_VB7yhliU&autoplay=1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Watch on YouTube
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Assista no YouTube
           </button>
         </div></div>
       </div>
@@ -2124,12 +2124,12 @@ if(document.readyState === 'loading'){
         <div class="tl-card tl-album">
           <div class="tl-card-date">21 Nov 2025</div>
           <div class="tl-card-title">Christmas Vibes</div>
-          <div class="tl-meta"><span class="tl-badge">Album · 10 Tracks</span><span class="tl-gtag">Holiday</span></div>
+          <div class="tl-meta"><span class="tl-badge">Álbum · 10 Faixas</span><span class="tl-gtag">Natalino</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"Warmth, nostalgia, and the gentle ache of the season — where soft pianos and ethereal choirs transform December into something sacred."</p>
+          <p class="tl-desc">"Calor, nostalgia e a doce melancolia da época — onde pianos suaves e coros etéreos transformam dezembro em algo sagrado."</p>
           <button class="tl-watch" data-yt="https://www.youtube.com/embed/videoseries?list=OLAK5uy_m37MTqYANnRi1Y11Fkwsnf6REFkULAjz8&autoplay=1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Watch on YouTube
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Assista no YouTube
           </button>
         </div></div>
       </div>
@@ -2144,12 +2144,12 @@ if(document.readyState === 'loading'){
         <div class="tl-card">
           <div class="tl-card-date">06 Jan 2026</div>
           <div class="tl-card-title">The Portrait of Us</div>
-          <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Alt · Cinematic Rock</span></div>
+          <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Alt · Rock Cinematográfico</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"Not just a song — a mirror to the soul. A meditation on shared humanity rather than personal romance."</p>
+          <p class="tl-desc">"Não é só uma música — é um espelho da alma. Uma meditação sobre a humanidade compartilhada, mais do que um romance pessoal."</p>
           <button class="tl-watch" data-yt="https://www.youtube.com/embed/w1zV7Rjjz5g?autoplay=1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Watch on YouTube
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Assista no YouTube
           </button>
         </div></div>
       </div>
@@ -2165,9 +2165,9 @@ if(document.readyState === 'loading'){
           <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Pop</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"The beautiful contradiction of love — where disorder becomes shelter and the person who shakes your world holds it together."</p>
+          <p class="tl-desc">"A bela contradição do amor — onde a desordem vira abrigo e a pessoa que abala o seu mundo é a mesma que o mantém inteiro."</p>
           <button class="tl-watch" data-yt="https://www.youtube.com/embed/videoseries?list=OLAK5uy_lGHw9y_jGXs9RSJXBQxGrCqUsCqoJnEP4&autoplay=1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Watch on YouTube
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Assista no YouTube
           </button>
         </div></div>
       </div>
@@ -2180,15 +2180,15 @@ if(document.readyState === 'loading'){
         <div class="tl-card">
           <div class="tl-card-date">02 Feb 2026</div>
           <div class="tl-card-title">The Weight of Missing You</div>
-          <div class="tl-meta"><span class="tl-badge">Single · 160K Streams</span><span class="tl-gtag">Pop Rock</span></div>
+          <div class="tl-meta"><span class="tl-badge">Single · 160 mil Streams</span><span class="tl-gtag">Pop Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"Absence has gravity. The heaviness of missing someone — not dramatically, but quietly, in ordinary moments where their echo still lingers."</p>
+          <p class="tl-desc">"A ausência tem gravidade. O peso da saudade — não de forma dramática, mas silenciosa, nos momentos comuns onde o eco da pessoa ainda permanece."</p>
           <div class="tl-embed-wrap">
             <iframe style="border-radius:4px" src="https://open.spotify.com/embed/album/1dGABv2hEySigsjT7q5SIf?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
           <button class="tl-watch" style="margin-top:10px;" data-yt="https://www.youtube.com/embed/cSuXBg1-EBY?autoplay=1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Watch on YouTube
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Assista no YouTube
           </button>
         </div></div>
       </div>
@@ -2204,9 +2204,9 @@ if(document.readyState === 'loading'){
           <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Pop</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"When the city goes quiet and the walls grow thin — the sound of what lives beneath the surface of darkness. Intimate, atmospheric, deeply personal."</p>
+          <p class="tl-desc">"Quando a cidade silencia e as paredes ficam finas — o som do que vive sob a superfície da escuridão. Íntimo, atmosférico, profundamente pessoal."</p>
           <button class="tl-watch" data-yt="https://www.youtube.com/embed/videoseries?list=OLAK5uy_kh9YPxOHoxfUfFTFMVMuNXMaOy4-A4YAY&autoplay=1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Watch on YouTube
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Assista no YouTube
           </button>
         </div></div>
       </div>
@@ -2219,18 +2219,18 @@ if(document.readyState === 'loading'){
         <div class="tl-card tl-album">
           <div class="tl-card-date">21 Mar 2026</div>
           <div class="tl-card-title">Orbital</div>
-          <div class="tl-meta"><span class="tl-badge">Album · Latest</span><span class="tl-gtag">Pop · Pop Rock</span></div>
+          <div class="tl-meta"><span class="tl-badge">Álbum · Mais Recente</span><span class="tl-gtag">Pop · Pop Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"A full world in motion. Orbital traces the invisible forces that pull people together and apart — love, loss, and the gravity of everything we carry."</p>
+          <p class="tl-desc">"Um mundo inteiro em movimento. Orbital traça as forças invisíveis que aproximam e afastam as pessoas — amor, perda e a gravidade de tudo o que carregamos."</p>
           <button class="tl-watch" data-yt="https://www.youtube.com/embed/videoseries?list=OLAK5uy_ni4yl-FdxBFIbTcaattYZuaKrDK0VG4eU&autoplay=1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Watch on YouTube
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Assista no YouTube
           </button>
         </div></div>
       </div>
     </div>
 
-    <div class="year-lbl"><span>Upcoming</span></div>
+    <div class="year-lbl"><span>Em Breve</span></div>
 
     <!-- Echoes of You -->
     <div class="tl-rel tl-right gc-rock">
@@ -2239,10 +2239,10 @@ if(document.readyState === 'loading'){
         <div class="tl-card">
           <div class="tl-card-date">16 May 2026</div>
           <div class="tl-card-title">Echoes of You</div>
-          <div class="tl-meta"><span class="tl-badge">Single · Live Now</span><span class="tl-gtag">Rock</span></div>
+          <div class="tl-meta"><span class="tl-badge">Single · Já Disponível</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"Some people leave marks that silence doesn't erase. The rock awakening — raw, electric, honest about what memory does to us."</p>
+          <p class="tl-desc">"Algumas pessoas deixam marcas que o silêncio não apaga. O despertar do rock — cru, elétrico, honesto sobre o que a memória faz com a gente."</p>
           <div class="tl-embed-wrap">
             <iframe style="border-radius:4px" src="https://open.spotify.com/embed/album/7533hMwuvb81q1qNDvt38H?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
@@ -2257,15 +2257,15 @@ if(document.readyState === 'loading'){
         <div class="tl-card">
           <div class="tl-card-date">18 Jun 2026</div>
           <div class="tl-card-title">Built from What Broke Me</div>
-          <div class="tl-meta"><span class="tl-badge">Single · Live Now</span><span class="tl-gtag">Rock</span></div>
+          <div class="tl-meta"><span class="tl-badge">Single · Já Disponível</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"Not despite the damage — because of it. Resilience forged in the exact places we once fell apart. The first Rock Statement of COMET."</p>
+          <p class="tl-desc">"Não apesar do dano — por causa dele. Resiliência forjada exatamente nos lugares onde um dia desmoronamos. O primeiro Rock Statement de COMET."</p>
           <div class="tl-embed-wrap">
             <iframe style="border-radius:4px" src="https://open.spotify.com/embed/track/1RbWNXNcirT4oUnOJZoFNP?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
           <button class="tl-watch" style="margin-top:10px;" data-yt="https://www.youtube.com/embed/xg12o_2Kimw?autoplay=1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Watch on YouTube
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Assista no YouTube
           </button>
         </div></div>
       </div>
@@ -2276,14 +2276,14 @@ if(document.readyState === 'loading'){
       <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
       <div class="tl-col">
         <div class="tl-card">
-          <div class="tl-upcoming-pill">Upcoming</div>
+          <div class="tl-upcoming-pill">Em Breve</div>
           <div class="tl-card-date">9 Jul 2026</div>
           <div class="tl-card-title">Noise in My Head</div>
           <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"The relentless static of over-thinking turned into something loud and beautiful. A rock exorcism for thoughts that won't rest."</p>
-          <div class="tl-locked">Coming 9 Jul 2026</div>
+          <p class="tl-desc">"O ruído incessante do excesso de pensamento transformado em algo alto e belo. Um exorcismo rock para os pensamentos que não descansam."</p>
+          <div class="tl-locked">Chega em 9 jul 2026</div>
         </div></div>
       </div>
     </div>
@@ -2293,22 +2293,22 @@ if(document.readyState === 'loading'){
       <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
       <div class="tl-col">
         <div class="tl-card tl-album">
-          <div class="tl-upcoming-pill">Upcoming</div>
+          <div class="tl-upcoming-pill">Em Breve</div>
           <div class="tl-card-date">21 Aug 2026</div>
           <div class="tl-card-title">Comet</div>
-          <div class="tl-meta"><span class="tl-badge">Album</span><span class="tl-gtag">Rock</span></div>
+          <div class="tl-meta"><span class="tl-badge">Álbum</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
-          <p class="tl-desc">"It doesn't ask for permission. Blazing, unstoppable — arriving with the force of something cosmic. The most electrifying collection yet."</p>
-          <div class="tl-locked">Coming 21 Aug 2026</div>
+          <p class="tl-desc">"Não pede permissão. Ardente, imparável — chegando com a força de algo cósmico. A coleção mais eletrizante até agora."</p>
+          <div class="tl-locked">Chega em 21 ago 2026</div>
         </div></div>
       </div>
     </div>
   </div>
 
   <div class="tl-legend">
-    <div class="tl-leg" style="color:rgba(210,190,140,.7)"><div class="tl-leg-dot"></div>Cinematic</div>
-    <div class="tl-leg" style="color:rgba(80,180,130,.7)"><div class="tl-leg-dot"></div>Holiday</div>
+    <div class="tl-leg" style="color:rgba(210,190,140,.7)"><div class="tl-leg-dot"></div>Cinematográfico</div>
+    <div class="tl-leg" style="color:rgba(80,180,130,.7)"><div class="tl-leg-dot"></div>Natalino</div>
     <div class="tl-leg" style="color:rgba(120,170,195,.7)"><div class="tl-leg-dot"></div>Alt Rock</div>
     <div class="tl-leg" style="color:rgba(160,148,220,.7)"><div class="tl-leg-dot"></div>Pop</div>
     <div class="tl-leg" style="color:rgba(210,130,110,.7)"><div class="tl-leg-dot"></div>Pop Rock</div>
@@ -2319,9 +2319,9 @@ if(document.readyState === 'loading'){
 <!-- ══════════ SOUND MAP ══════════ -->
 <section id="soundmap">
   <div class="sm-header reveal">
-    <p class="section-kicker">Sound Spectrum</p>
-    <h2 class="section-title">The <em>Sound Map</em></h2>
-    <p class="sm-sub">Where each release falls across energy, emotion & genre. <span id="sm-hint-desktop">Hover any point to explore.</span><span id="sm-hint-mobile" style="display:none">Each card shows the sonic position of the release.</span></p>
+    <p class="section-kicker">Espectro Sonoro</p>
+    <h2 class="section-title">O <em>Mapa Sonoro</em></h2>
+    <p class="sm-sub">Onde cada lançamento se posiciona em energia, emoção e gênero. <span id="sm-hint-desktop">Passe o mouse sobre qualquer ponto para explorar.</span><span id="sm-hint-mobile" style="display:none">Cada card mostra a posição sonora do lançamento.</span></p>
   </div>
   <div class="sm-wrap reveal d1">
     <canvas id="sm-canvas"></canvas>
@@ -2335,7 +2335,7 @@ if(document.readyState === 'loading'){
         <div class="sm-group">
           <div class="sm-group-header" style="--gc:rgba(210,190,140,.8)">
             <span class="sm-group-dot"></span>
-            <span class="sm-group-name">Cinematic</span>
+            <span class="sm-group-name">Cinematográfico</span>
           </div>
           <div class="sm-cards">
             <div class="sm-card" style="--gc:rgba(210,190,140,.6)">
@@ -2346,8 +2346,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:14%"></div></div><span class="sm-bar-val">Soft</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:28%"></div></div><span class="sm-bar-val">Dark</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:14%"></div></div><span class="sm-bar-val">Suave</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:28%"></div></div><span class="sm-bar-val">Escuro</span></div>
               </div>
             </div>
           </div>
@@ -2357,7 +2357,7 @@ if(document.readyState === 'loading'){
         <div class="sm-group">
           <div class="sm-group-header" style="--gc:rgba(80,180,130,.8)">
             <span class="sm-group-dot"></span>
-            <span class="sm-group-name">Holiday</span>
+            <span class="sm-group-name">Natalino</span>
           </div>
           <div class="sm-cards">
             <div class="sm-card" style="--gc:rgba(80,180,130,.6)">
@@ -2368,8 +2368,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:20%"></div></div><span class="sm-bar-val">Soft</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:90%"></div></div><span class="sm-bar-val">Warm</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:20%"></div></div><span class="sm-bar-val">Suave</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:90%"></div></div><span class="sm-bar-val">Caloroso</span></div>
               </div>
             </div>
           </div>
@@ -2391,8 +2391,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:42%"></div></div><span class="sm-bar-val">Mid</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:40%"></div></div><span class="sm-bar-val">Neutral</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:42%"></div></div><span class="sm-bar-val">Médio</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:40%"></div></div><span class="sm-bar-val">Neutro</span></div>
               </div>
             </div>
           </div>
@@ -2414,8 +2414,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:50%"></div></div><span class="sm-bar-val">Mid</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:74%"></div></div><span class="sm-bar-val">Warm</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:50%"></div></div><span class="sm-bar-val">Médio</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:74%"></div></div><span class="sm-bar-val">Caloroso</span></div>
               </div>
             </div>
             <div class="sm-card" style="--gc:rgba(160,148,220,.6)">
@@ -2427,8 +2427,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:46%"></div></div><span class="sm-bar-val">Mid</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:32%"></div></div><span class="sm-bar-val">Dark</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:46%"></div></div><span class="sm-bar-val">Médio</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:32%"></div></div><span class="sm-bar-val">Escuro</span></div>
               </div>
             </div>
           </div>
@@ -2450,8 +2450,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:60%"></div></div><span class="sm-bar-val">Mid</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:46%"></div></div><span class="sm-bar-val">Neutral</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:60%"></div></div><span class="sm-bar-val">Médio</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:46%"></div></div><span class="sm-bar-val">Neutro</span></div>
               </div>
             </div>
             <div class="sm-card" style="--gc:rgba(210,130,110,.6)">
@@ -2462,8 +2462,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:66%"></div></div><span class="sm-bar-val">High</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:62%"></div></div><span class="sm-bar-val">Warm</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:66%"></div></div><span class="sm-bar-val">Alto</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:62%"></div></div><span class="sm-bar-val">Caloroso</span></div>
               </div>
             </div>
           </div>
@@ -2480,26 +2480,26 @@ if(document.readyState === 'loading'){
               <div class="sm-card-top">
                 <span class="sm-card-title">Echoes of You</span>
                 <div class="sm-card-meta">
-                  <span class="sm-card-live">Live Now</span>
+                  <span class="sm-card-live">Já Disponível</span>
                   <span class="sm-card-year">Single · May 2026</span>
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:79%"></div></div><span class="sm-bar-val">High</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:36%"></div></div><span class="sm-bar-val">Dark</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:79%"></div></div><span class="sm-bar-val">Alto</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:36%"></div></div><span class="sm-bar-val">Escuro</span></div>
               </div>
             </div>
             <div class="sm-card" style="--gc:rgba(195,75,60,.6)">
               <div class="sm-card-top">
                 <span class="sm-card-title">Built from What Broke Me</span>
                 <div class="sm-card-meta">
-                  <span class="sm-card-live">Live Now</span>
+                  <span class="sm-card-live">Já Disponível</span>
                   <span class="sm-card-year">Single · Jun 2026</span>
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:84%"></div></div><span class="sm-bar-val">High</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:27%"></div></div><span class="sm-bar-val">Dark</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:84%"></div></div><span class="sm-bar-val">Alto</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:27%"></div></div><span class="sm-bar-val">Escuro</span></div>
               </div>
             </div>
             <div class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
@@ -2510,8 +2510,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:88%"></div></div><span class="sm-bar-val">Intense</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:20%"></div></div><span class="sm-bar-val">Dark</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:88%"></div></div><span class="sm-bar-val">Intenso</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:20%"></div></div><span class="sm-bar-val">Escuro</span></div>
               </div>
             </div>
             <div class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
@@ -2522,8 +2522,8 @@ if(document.readyState === 'loading'){
                 </div>
               </div>
               <div class="sm-bars">
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:93%"></div></div><span class="sm-bar-val">Intense</span></div>
-                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:28%"></div></div><span class="sm-bar-val">Dark</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:93%"></div></div><span class="sm-bar-val">Intenso</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:28%"></div></div><span class="sm-bar-val">Escuro</span></div>
               </div>
             </div>
           </div>
@@ -2534,13 +2534,13 @@ if(document.readyState === 'loading'){
 
   </div>
   <div class="sm-axes">
-    <span>← Intimate / Soft</span>
-    <span>Energy →</span>
-    <span>Raw / Intense →</span>
+    <span>← Íntimo / Suave</span>
+    <span>Energia →</span>
+    <span>Cru / Intenso →</span>
   </div>
   <div class="sm-legend">
-    <span style="color:rgba(210,190,140,.8)"><span class="sm-dot" style="background:rgba(210,190,140,.8)"></span>Cinematic</span>
-    <span style="color:rgba(80,180,130,.8)"><span class="sm-dot" style="background:rgba(80,180,130,.8)"></span>Holiday</span>
+    <span style="color:rgba(210,190,140,.8)"><span class="sm-dot" style="background:rgba(210,190,140,.8)"></span>Cinematográfico</span>
+    <span style="color:rgba(80,180,130,.8)"><span class="sm-dot" style="background:rgba(80,180,130,.8)"></span>Natalino</span>
     <span style="color:rgba(120,170,195,.8)"><span class="sm-dot" style="background:rgba(120,170,195,.8)"></span>Alt Rock</span>
     <span style="color:rgba(160,148,220,.8)"><span class="sm-dot" style="background:rgba(160,148,220,.8)"></span>Pop</span>
     <span style="color:rgba(210,130,110,.8)"><span class="sm-dot" style="background:rgba(210,130,110,.8)"></span>Pop Rock</span>
@@ -2555,20 +2555,20 @@ if(document.readyState === 'loading'){
   <div class="comet-hero">
     <div class="comet-hero-bg"></div>
     <div class="comet-hero-overlay"></div>
-    <p class="comet-eyebrow">Sharbel Wahbee · The Next Chapter · Rock</p>
+    <p class="comet-eyebrow">Sharbel Wahbee · O Próximo Capítulo · Rock</p>
     <h2 class="comet-title">COMET</h2>
     <div class="comet-rule"></div>
-    <p class="comet-tagline">Some things move through the dark for years<br>before the world finally sees the light they carry.</p>
+    <p class="comet-tagline">Algumas coisas se movem pela escuridão por anos<br>antes de o mundo finalmente ver a luz que elas carregam.</p>
     <div class="comet-countdown" id="comet-countdown">
-      <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Days</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Dias</span></div>
       <span class="cd-sep">·</span>
-      <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Hours</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Horas</span></div>
       <span class="cd-sep">·</span>
       <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Min</span></div>
       <span class="cd-sep">·</span>
-      <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Sec</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Seg</span></div>
     </div>
-    <div class="comet-badge">Full Album · 21 August 2026</div>
+    <div class="comet-badge">Álbum Completo · 21 de agosto de 2026</div>
   </div>
 
   <div class="comet-body">
@@ -2576,17 +2576,17 @@ if(document.readyState === 'loading'){
 
     <!-- What is Comet -->
     <div class="comet-section reveal">
-      <p class="comet-kicker">The Album</p>
-      <h3 class="comet-heading">Not a departure.<br><em>An arrival.</em></h3>
+      <p class="comet-kicker">O Álbum</p>
+      <h3 class="comet-heading">Não é uma ruptura.<br><em>É uma chegada.</em></h3>
       <div class="comet-body-text">
-        <p>Comet is the next chapter in an artistic journey that began with cinematic orchestral worlds, moved through emotional pop and rock territories, and now arrives at its most honest destination.</p>
-        <p>This is not a rock record made for the sake of heaviness. It is a testimony — seven songs drawn from real emotional excavation. Internal chaos. The cost of integrity. The quiet devastation of loss. And the stubborn, unshakeable truth that survives all of it.</p>
-        <p>The comet does not ask permission to move. It burns because that is its nature. It passes through everything and remains itself.</p>
+        <p>Comet é o próximo capítulo de uma jornada artística que começou em mundos orquestrais cinematográficos, passou por territórios de pop e rock emocional e agora chega ao seu destino mais honesto.</p>
+        <p>Este não é um disco de rock feito pelo peso em si. É um testemunho — sete músicas extraídas de uma escavação emocional real. O caos interno. O preço da integridade. A devastação silenciosa da perda. E a verdade teimosa e inabalável que sobrevive a tudo isso.</p>
+        <p>O cometa não pede permissão para se mover. Ele queima porque essa é a sua natureza. Atravessa tudo e permanece sendo ele mesmo.</p>
       </div>
       <a href="rockstatement.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:32px;background:linear-gradient(135deg,rgba(255,69,0,.12),rgba(255,120,40,.06));border:1px solid rgba(255,100,30,.35);color:#ffaa5c;font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;padding:16px 32px;text-decoration:none;transition:all .3s;touch-action:manipulation;">
-        ☄ Discover the Rock Statement →
+        ☄ Descubra o Rock Statement →
       </a>
-      <p style="font-size:11px;font-family:var(--serif);font-style:italic;color:var(--ash,rgba(168,159,176,.6));margin-top:10px;">Most songs end when the lyrics stop. A Rock Statement begins there.</p>
+      <p style="font-size:11px;font-family:var(--serif);font-style:italic;color:var(--ash,rgba(168,159,176,.6));margin-top:10px;">A maioria das músicas termina quando a letra acaba. Um Rock Statement começa aí.</p>
     </div>
 
     <div class="comet-divider"></div>
@@ -2598,13 +2598,13 @@ if(document.readyState === 'loading'){
           <img src="artwork-bfwbm.png" alt="Built from What Broke Me — Single Artwork">
         </div>
         <div class="reveal d1">
-          <p class="comet-kicker">First Single · Out Now</p>
+          <p class="comet-kicker">Primeiro Single · Já Disponível</p>
           <h3 class="comet-artwork-title">Built from<br>What Broke Me</h3>
           <p class="comet-artwork-sub">A Rock Statement</p>
-          <blockquote class="comet-artwork-quote">I didn't stay broken.<br>I became the reason I survived.</blockquote>
-          <p class="comet-artwork-desc">The opening statement of the Comet era. A hard rock anthem about survival, reconstruction, and what it means to carry your scars not as damage — but as architecture.</p>
-          <a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:var(--ember);color:#fff8f0;font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;padding:13px 26px;text-decoration:none;transition:background .25s;touch-action:manipulation;">Listen on Spotify ↗</a>
-          <p style="font-size:10px;font-family:var(--serif);font-style:italic;color:var(--ash);margin-top:8px;">Out now · Stream on all platforms · <a href="https://youtu.be/xg12o_2Kimw" target="_blank" style="color:rgba(255,170,92,.85);text-decoration:none;border-bottom:1px solid rgba(255,120,40,.3);">Watch the video ↗</a></p>
+          <blockquote class="comet-artwork-quote">Eu não continuei quebrado.<br>Eu me tornei a razão da minha sobrevivência.</blockquote>
+          <p class="comet-artwork-desc">A declaração de abertura da era Comet. Um hino de hard rock sobre sobrevivência, reconstrução e o que significa carregar as cicatrizes não como dano — mas como arquitetura.</p>
+          <a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:var(--ember);color:#fff8f0;font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;padding:13px 26px;text-decoration:none;transition:background .25s;touch-action:manipulation;">Ouça no Spotify ↗</a>
+          <p style="font-size:10px;font-family:var(--serif);font-style:italic;color:var(--ash);margin-top:8px;">Já disponível · Em todas as plataformas · <a href="https://youtu.be/xg12o_2Kimw" target="_blank" style="color:rgba(255,170,92,.85);text-decoration:none;border-bottom:1px solid rgba(255,120,40,.3);">Assista ao clipe ↗</a></p>
         </div>
       </div>
     </div>
@@ -2617,9 +2617,9 @@ if(document.readyState === 'loading'){
         <img src="rock-core.jpeg" alt="" class="comet-panel-img" aria-hidden="true">
         <div class="comet-panel-ghost">I</div>
         <div class="comet-panel-content">
-          <p class="comet-panel-tag">The Core</p>
-          <p class="comet-panel-title">Where the fire starts</p>
-          <p class="comet-panel-desc">Honest, unresolved, fracturing — the emotional core of every hard rock track on this record. Not performed anger. Real weight.</p>
+          <p class="comet-panel-tag">O Núcleo</p>
+          <p class="comet-panel-title">Onde o fogo começa</p>
+          <p class="comet-panel-desc">Honesto, não resolvido, em ruptura — o núcleo emocional de cada faixa de hard rock deste disco. Não é raiva encenada. É peso real.</p>
         </div>
       </div>
       <div class="comet-connector">
@@ -2629,9 +2629,9 @@ if(document.readyState === 'loading'){
         <img src="rock-tail.jpeg" alt="" class="comet-panel-img" aria-hidden="true">
         <div class="comet-panel-ghost">II</div>
         <div class="comet-panel-content">
-          <p class="comet-panel-tag">The Trail</p>
-          <p class="comet-panel-title">What survives the impact</p>
-          <p class="comet-panel-desc">The light left behind. What remains after the burn — clarity, resolution, and the quiet strength of something that passed through everything and endured.</p>
+          <p class="comet-panel-tag">O Rastro</p>
+          <p class="comet-panel-title">O que sobrevive ao impacto</p>
+          <p class="comet-panel-desc">A luz deixada para trás. O que resta depois da queima — clareza, resolução e a força silenciosa de algo que atravessou tudo e resistiu.</p>
         </div>
       </div>
     </div>
@@ -2640,16 +2640,16 @@ if(document.readyState === 'loading'){
 
     <!-- Tracklist -->
     <div class="comet-section reveal">
-      <p class="comet-kicker">The Journey</p>
-      <h3 class="comet-heading">Seven songs.<br><em>One arc.</em></h3>
+      <p class="comet-kicker">A Jornada</p>
+      <h3 class="comet-heading">Sete músicas.<br><em>Um só arco.</em></h3>
       <div class="comet-tracklist">
-        <div class="comet-track"><div class="comet-track-num">01</div><div><div class="comet-track-name">Noise in My Head</div><div class="comet-track-desc">The internal war. Where the journey begins — fractured, honest, unresolved.</div></div><span class="comet-track-badge badge-s">Song</span></div>
-        <div class="comet-track"><div class="comet-track-num">02</div><div><div class="comet-track-name">Built from What Broke Me</div><div class="comet-track-desc">The reconstruction. Survival not as recovery — as transformation built from the wreckage up.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
-        <div class="comet-track"><div class="comet-track-num">03</div><div><div class="comet-track-name">I Don't Need Saving</div><div class="comet-track-desc">The declaration. Help offered with conditions attached is not help. Autonomy without apology.</div></div><span class="comet-track-badge badge-s">Song</span></div>
-        <div class="comet-track"><div class="comet-track-num">04</div><div><div class="comet-track-name">Standing in the Fire</div><div class="comet-track-desc">The moral stand. Choosing truth over comfort, even when it costs everything.</div></div><span class="comet-track-badge badge-s">Song</span></div>
-        <div class="comet-track"><div class="comet-track-num">05</div><div><div class="comet-track-name">Caught in Crossfire</div><div class="comet-track-desc">The cost arrives. The price of not bending — paid in full, without regret.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
-        <div class="comet-track"><div class="comet-track-num">06</div><div><div class="comet-track-name">Ashes Learn to Breathe</div><div class="comet-track-desc">The grief. The quiet devastation of losing someone you never outgrew. The loudest silence.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
-        <div class="comet-track"><div class="comet-track-num">07</div><div><div class="comet-track-name">Still Here</div><div class="comet-track-desc">The closure. Nothing left to prove. Paid in nights and patience. Father strength, I choose.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
+        <div class="comet-track"><div class="comet-track-num">01</div><div><div class="comet-track-name">Noise in My Head</div><div class="comet-track-desc">A guerra interna. Onde a jornada começa — fragmentada, honesta, não resolvida.</div></div><span class="comet-track-badge badge-s">Música</span></div>
+        <div class="comet-track"><div class="comet-track-num">02</div><div><div class="comet-track-name">Built from What Broke Me</div><div class="comet-track-desc">A reconstrução. Sobrevivência não como recuperação — mas como transformação erguida a partir dos escombros.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
+        <div class="comet-track"><div class="comet-track-num">03</div><div><div class="comet-track-name">I Don't Need Saving</div><div class="comet-track-desc">A declaração. Ajuda oferecida com condições não é ajuda. Autonomia sem pedir desculpas.</div></div><span class="comet-track-badge badge-s">Música</span></div>
+        <div class="comet-track"><div class="comet-track-num">04</div><div><div class="comet-track-name">Standing in the Fire</div><div class="comet-track-desc">A postura moral. Escolher a verdade em vez do conforto, mesmo quando custa tudo.</div></div><span class="comet-track-badge badge-s">Música</span></div>
+        <div class="comet-track"><div class="comet-track-num">05</div><div><div class="comet-track-name">Caught in Crossfire</div><div class="comet-track-desc">O preço chega. O custo de não se curvar — pago integralmente, sem arrependimento.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
+        <div class="comet-track"><div class="comet-track-num">06</div><div><div class="comet-track-name">Ashes Learn to Breathe</div><div class="comet-track-desc">O luto. A devastação silenciosa de perder alguém que você nunca superou. O silêncio mais alto.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
+        <div class="comet-track"><div class="comet-track-num">07</div><div><div class="comet-track-name">Still Here</div><div class="comet-track-desc">O encerramento. Nada mais a provar. Pago em noites e paciência. Força de pai, eu escolho.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
       </div>
     </div>
 
@@ -2657,21 +2657,21 @@ if(document.readyState === 'loading'){
 
     <!-- Release timeline -->
     <div class="comet-section reveal">
-      <p class="comet-kicker">Release Journey</p>
-      <h3 class="comet-heading">The road<br><em>to Comet.</em></h3>
+      <p class="comet-kicker">Jornada de Lançamento</p>
+      <h3 class="comet-heading">A estrada<br><em>até Comet.</em></h3>
       <div class="comet-tl" id="comet-journey">
         <!-- Fallback (replaced by JS from content.json) -->
-        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">16 May 2026 · Single 01 · Live Now</p><p class="comet-tl-title">Echoes of You</p><p class="comet-tl-sub">The first signal. The rock awakening has begun.</p></div>
-        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">18 Jun 2026 · Single 02 · Live Now</p><p class="comet-tl-title">Built from What Broke Me</p><p class="comet-tl-sub">The first Rock Statement. The defining sound of the era.</p><a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Listen on Spotify ↗</a></div>
-        <div class="comet-tl-item"><div class="comet-tl-dot"></div><p class="comet-tl-date">9 Jul 2026 · Single 03</p><p class="comet-tl-title">Noise in My Head</p><p class="comet-tl-sub">Where the journey began — now shared with the world.</p></div>
-        <div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div><p class="comet-tl-date">21 Aug 2026 · Full Album</p><p class="comet-tl-title">COMET — The Complete Journey</p><p class="comet-tl-sub">All seven songs. The full arc. Available everywhere.</p></div>
+        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">16 mai 2026 · Single 01 · Já Disponível</p><p class="comet-tl-title">Echoes of You</p><p class="comet-tl-sub">O primeiro sinal. O despertar do rock começou.</p></div>
+        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">18 jun 2026 · Single 02 · Já Disponível</p><p class="comet-tl-title">Built from What Broke Me</p><p class="comet-tl-sub">O primeiro Rock Statement. O som que define a era.</p><a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Ouça no Spotify ↗</a></div>
+        <div class="comet-tl-item"><div class="comet-tl-dot"></div><p class="comet-tl-date">9 jul 2026 · Single 03</p><p class="comet-tl-title">Noise in My Head</p><p class="comet-tl-sub">Onde a jornada começou — agora compartilhada com o mundo.</p></div>
+        <div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div><p class="comet-tl-date">21 ago 2026 · Álbum Completo</p><p class="comet-tl-title">COMET — A Jornada Completa</p><p class="comet-tl-sub">Todas as sete músicas. O arco completo. Disponível em todos os lugares.</p></div>
       </div>
     </div>
 
     <!-- Closing quote -->
     <div class="comet-closing reveal">
       <div class="comet-closing-rule"></div>
-      <p class="comet-closing-quote">The comet does not ask permission to move. It burns because that is its nature. It passes through everything — and remains itself.</p>
+      <p class="comet-closing-quote">O cometa não pede permissão para se mover. Ele queima porque essa é a sua natureza. Atravessa tudo — e permanece sendo ele mesmo.</p>
       <div class="comet-closing-rule"></div>
       <p class="comet-closing-attr">Sharbel Wahbee · Comet · 21 August 2026</p>
     </div>
@@ -2684,25 +2684,25 @@ if(document.readyState === 'loading'){
   <div class="behind-inner">
 
     <div>
-      <p class="behind-kicker reveal">Behind the Music</p>
-      <h2 class="behind-title reveal d1">The person<br><em>behind the sound.</em></h2>
-      <p class="behind-lead reveal d2">Not a producer hiding behind a desk. A composer who builds entire emotional worlds — from silence, from memory, from things that couldn't be said any other way.</p>
+      <p class="behind-kicker reveal">Por Trás da Música</p>
+      <h2 class="behind-title reveal d1">A pessoa<br><em>por trás do som.</em></h2>
+      <p class="behind-lead reveal d2">Não é um produtor escondido atrás de uma mesa. É um compositor que constrói mundos emocionais inteiros — a partir do silêncio, da memória, de coisas que não poderiam ser ditas de outra forma.</p>
       <div class="behind-facts reveal d3">
         <div class="behind-fact">
           <span class="fact-dot"></span>
-          <p class="fact-text"><strong>Based in Dubai,</strong> writing music that crosses every border — because emotion has no geography.</p>
+          <p class="fact-text"><strong>Baseado em Dubai,</strong>  criando música que cruza todas as fronteiras — porque a emoção não tem geografia.</p>
         </div>
         <div class="behind-fact">
           <span class="fact-dot"></span>
-          <p class="fact-text"><strong>Every release is a chapter.</strong> Not a single. The titles are deliberate. The sequencing is intentional. Nothing is filler.</p>
+          <p class="fact-text"><strong>Cada lançamento é um capítulo.</strong>  Não um single. Os títulos são deliberados. A sequência é intencional. Nada é enchimento.</p>
         </div>
         <div class="behind-fact">
           <span class="fact-dot"></span>
-          <p class="fact-text"><strong>100% independent.</strong> No label. No committee. The artistic vision is entirely intact — and entirely his.</p>
+          <p class="fact-text"><strong>100% independent.</strong>  Sem gravadora. Sem comitê. A visão artística está totalmente intacta — e é totalmente dele.</p>
         </div>
         <div class="behind-fact">
           <span class="fact-dot"></span>
-          <p class="fact-text"><strong>Next: Comet.</strong> A full rock album arriving August 2026 — a deliberate, necessary left turn that the cinematic foundation made possible.</p>
+          <p class="fact-text"><strong>A seguir: Comet.</strong>  Um álbum de rock completo chegando em agosto de 2026 — uma guinada deliberada e necessária que a base cinematográfica tornou possível.</p>
         </div>
       </div>
     </div>
@@ -2712,24 +2712,24 @@ if(document.readyState === 'loading'){
         <img src="cosmic.jpg" alt="" class="behind-img" aria-hidden="true">
       </div>
       <blockquote class="behind-quote-large">
-        "I don't write songs about emotions. I write the emotion itself — then give it a title so you can find it again when you need it."
+        "Eu não escrevo músicas sobre emoções. Eu escrevo a própria emoção — e depois dou um título a ela para que você possa encontrá-la de novo quando precisar."
       </blockquote>
       <div class="behind-since">
         <div class="behind-since-item">
           <div class="behind-since-n">2025</div>
-          <div class="behind-since-l">First Release</div>
+          <div class="behind-since-l">Primeiro Lançamento</div>
         </div>
         <div class="behind-since-item">
           <div class="behind-since-n">11</div>
-          <div class="behind-since-l">Works Released &amp; Planned</div>
+          <div class="behind-since-l">Obras Lançadas e Planejadas</div>
         </div>
         <div class="behind-since-item">
           <div class="behind-since-n">6</div>
-          <div class="behind-since-l">Genres Explored</div>
+          <div class="behind-since-l">Gêneros Explorados</div>
         </div>
         <div class="behind-since-item">
           <div class="behind-since-n">∞</div>
-          <div class="behind-since-l">Stories Left to Tell</div>
+          <div class="behind-since-l">Histórias por Contar</div>
         </div>
       </div>
     </div>
@@ -2740,51 +2740,51 @@ if(document.readyState === 'loading'){
 <!-- ══════════ SYNC LICENSING ══════════ -->
 <section id="sync">
   <div class="sync-inner">
-    <p class="section-kicker reveal">For Industry</p>
-    <h2 class="sync-title reveal d1">Music for Film,<br><em>TV &amp; Trailers</em></h2>
-    <p class="sync-desc reveal d2">Cinematic compositions built for emotional storytelling — available for sync licensing, media placement, and commissioned work.</p>
-    <p class="sync-quick reveal d2">Quick access: <a href="https://open.spotify.com/artist/6WR63hJPJOrxD2h8rtNl8x" target="_blank">Spotify</a> · <a href="https://www.youtube.com/channel/UCQySSIih8fLYuFE5x6xX0Pg" target="_blank">YouTube</a></p>
+    <p class="section-kicker reveal">Para a Indústria</p>
+    <h2 class="sync-title reveal d1">Música para Cinema,<br><em>TV e Trailers</em></h2>
+    <p class="sync-desc reveal d2">Composições cinematográficas feitas para narrativas emocionais — disponíveis para licenciamento sync, uso em mídia e trabalhos sob encomenda.</p>
+    <p class="sync-quick reveal d2">Acesso rápido: <a href="https://open.spotify.com/artist/6WR63hJPJOrxD2h8rtNl8x" target="_blank">Spotify</a> · <a href="https://www.youtube.com/channel/UCQySSIih8fLYuFE5x6xX0Pg" target="_blank">YouTube</a></p>
     <div class="sync-grid reveal">
       <div class="sync-cell">
-        <div class="sync-cell-head">Genres Available</div>
+        <div class="sync-cell-head">Gêneros Disponíveis</div>
         <ul>
-          <li>Cinematic Orchestral</li>
-          <li>Cinematic Pop</li>
-          <li>Ambient / Atmospheric</li>
-          <li>Emotional Pop Rock</li>
-          <li>Dramatic Rock</li>
+          <li>Orquestral Cinematográfico</li>
+          <li>Pop Cinematográfico</li>
+          <li>Ambient / Atmosférico</li>
+          <li>Pop Rock Emocional</li>
+          <li>Rock Dramático</li>
         </ul>
       </div>
       <div class="sync-cell">
-        <div class="sync-cell-head">Use Cases</div>
+        <div class="sync-cell-head">Aplicações</div>
         <ul>
-          <li>Feature Films &amp; Short Films</li>
-          <li>TV Drama &amp; Documentaries</li>
-          <li>Trailers &amp; Teasers</li>
-          <li>Advertising Campaigns</li>
-          <li>Game Soundtracks</li>
+          <li>Longas e Curtas-Metragens</li>
+          <li>Séries de TV e Documentários</li>
+          <li>Trailers e Teasers</li>
+          <li>Campanhas Publicitárias</li>
+          <li>Trilhas de Games</li>
         </ul>
       </div>
       <div class="sync-cell">
-        <div class="sync-cell-head">Formats</div>
+        <div class="sync-cell-head">Formatos</div>
         <ul>
-          <li>Stems &amp; Full Mixes</li>
-          <li>Custom Compositions</li>
-          <li>Exclusive Licensing</li>
-          <li>Non-Exclusive Licensing</li>
-          <li>Global Rights Available</li>
+          <li>Stems e Mixagens Completas</li>
+          <li>Composições Sob Medida</li>
+          <li>Licenciamento Exclusivo</li>
+          <li>Licenciamento Não Exclusivo</li>
+          <li>Direitos Globais Disponíveis</li>
         </ul>
       </div>
     </div>
     <div class="sync-cta reveal">
-      <a href="mailto:Sharbelwahbee.official@gmail.com?subject=Licensing%20Inquiry" class="btn-primary">Request Licensing Catalogue</a>
-      <p style="font-size:11px;font-family:'EB Garamond',serif;font-style:italic;color:var(--fog-dim);margin-top:10px;letter-spacing:.02em;line-height:1.5;opacity:.75;">Catalogue shared privately upon request — tailored to your project.</p>
-      <a href="mailto:Sharbelwahbee.official@gmail.com?subject=Licensing%20Inquiry" class="btn-outline">Contact Directly</a>
-      <p class="sync-note">All licensing inquiries responded to within 48 hours.</p>
+      <a href="mailto:Sharbelwahbee.official@gmail.com?subject=Licensing%20Inquiry" class="btn-primary">Solicitar Catálogo de Licenciamento</a>
+      <p style="font-size:11px;font-family:'EB Garamond',serif;font-style:italic;color:var(--fog-dim);margin-top:10px;letter-spacing:.02em;line-height:1.5;opacity:.75;">Catálogo compartilhado de forma privada mediante solicitação — adaptado ao seu projeto.</p>
+      <a href="mailto:Sharbelwahbee.official@gmail.com?subject=Licensing%20Inquiry" class="btn-outline">Falar Diretamente</a>
+      <p class="sync-note">Todas as consultas de licenciamento são respondidas em até 48 horas.</p>
     </div>
     <div class="sync-package reveal">
-      <p class="sync-package-text">Includes: Full track, instrumentals, 60s / 30s / 15s edits, and custom scoring options.</p>
-      <p class="sync-avail">Available for current and upcoming projects.</p>
+      <p class="sync-package-text">Inclui: faixa completa, instrumentais, edições de 60s / 30s / 15s e opções de trilha sob medida.</p>
+      <p class="sync-avail">Disponível para projetos atuais e futuros.</p>
     </div>
   </div>
 </section>
@@ -2793,9 +2793,9 @@ if(document.readyState === 'loading'){
 <section id="contact">
   <div class="contact-inner">
     <div>
-      <p class="section-kicker reveal">Connect</p>
-      <h2 class="contact-title reveal d1">Let's build<br><em>something felt.</em></h2>
-      <p class="contact-intro reveal d2">For bookings, collaborations, sync licensing, press, or simply to say something honest about music.</p>
+      <p class="section-kicker reveal">Conecte-se</p>
+      <h2 class="contact-title reveal d1">Vamos construir<br><em>algo que se sente.</em></h2>
+      <p class="contact-intro reveal d2">Para shows, colaborações, licenciamento sync, imprensa ou simplesmente para dizer algo sincero sobre música.</p>
       <div class="reveal d3">
         <a href="https://www.instagram.com/sharbelwahbee/" target="_blank" class="ch-link">
           <span class="ch-label"><span class="ch-dot"></span>Instagram</span><span class="ch-arr">→</span>
@@ -2813,21 +2813,21 @@ if(document.readyState === 'loading'){
     </div>
 
     <form class="contact-form reveal d1" onsubmit="handleSubmit(event)">
-      <div class="fg"><label>Name</label><input type="text" placeholder="Your name" required></div>
+      <div class="fg"><label>Nome</label><input type="text" placeholder="Seu nome" required></div>
       <div class="fg"><label>Email</label><input type="email" placeholder="Sharbelwahbee.official@gmail.com" required></div>
       <div class="fg">
-        <label>Inquiry</label>
+        <label>Assunto</label>
         <select>
-          <option value="">Select type</option>
-          <option>Sync Licensing</option>
-          <option>Collaboration</option>
-          <option>Booking</option>
-          <option>Press &amp; Media</option>
-          <option>General</option>
+          <option value="">Selecione o tipo</option>
+          <option>Licenciamento Sync</option>
+          <option>Colaboração</option>
+          <option>Shows</option>
+          <option>Imprensa &amp; Mídia</option>
+          <option>Geral</option>
         </select>
       </div>
-      <div class="fg"><label>Message</label><textarea placeholder="Tell me about your project..."></textarea></div>
-      <button type="submit" class="submit-btn">Send Message</button>
+      <div class="fg"><label>Mensagem</label><textarea placeholder="Conte sobre o seu projeto..."></textarea></div>
+      <button type="submit" class="submit-btn">Enviar Mensagem</button>
     </form>
   </div>
 </section>
@@ -3020,7 +3020,7 @@ document.querySelectorAll('.tl-rel').forEach(r=>tlObs.observe(r));
     // Y label
     ctx.save(); ctx.translate(14,P.t+ph*.5); ctx.rotate(-Math.PI/2);
     ctx.font=`300 9px 'Outfit',sans-serif`; ctx.fillStyle='rgba(110,103,94,.7)'; ctx.textAlign='center';
-    ctx.fillText('← MELANCHOLIC · EMOTION · WARM →',0,0); ctx.restore();
+    ctx.fillText('← MELANCÓLICO · EMOÇÃO · CALOROSO →',0,0); ctx.restore();
     // dots
     releases.forEach(r=>{
       const cx=P.l+r.x*pw, cy=P.t+(1-r.y)*ph;
