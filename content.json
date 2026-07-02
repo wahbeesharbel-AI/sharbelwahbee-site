@@ -1,9 +1,9 @@
 {
   "_comment": "EDIT THIS FILE to update the site (commit to GitHub, Vercel auto-deploys). stats = global numbers (monthly listeners, top streams, followers) shown on the homepage + EPK. trackStats = per-song stream counts shown in the EPK, timeline, and sound map. releases = each single (status live/presave/upcoming, link, dates). album = the COMET record + countdown (releaseDateISO drives the clock). player = Spotify album IDs for the inline player.",
   "stats": {
-    "monthlyListeners": "18K",
-    "topTrackStreams": "160K+",
-    "followers": "1,290"
+    "monthlyListeners": "15K",
+    "topTrackStreams": "180K+",
+    "followers": "1,473"
   },
   "album": {
     "title": "COMET",
@@ -100,9 +100,10 @@
     }
   ],
   "trackStats": {
-    "weightOfMissingYou": "160K",
-    "portraitOfUs": "21K",
-    "safeChaos": "17K",
-    "underSkinOfNight": "22K"
+    "weightOfMissingYou": "180K",
+    "underSkinOfNight": "36K",
+    "portraitOfUs": "30K",
+    "safeChaos": "25K",
+    "whenyournameturnstofire": "22K"
   }
 }
