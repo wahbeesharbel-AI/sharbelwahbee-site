@@ -1,9 +1,9 @@
 {
-  "_comment": "EDIT THIS FILE to update your site, then commit to GitHub (Vercel auto-deploys). RELEASE STRIP: each release has status 'live'/'presave'/'upcoming', a link, and linkLabel. PLAYER TABS: add/remove albums in the 'player' list — just need a title and the Spotify album ID (the code after /album/ in a Spotify link). STATS & DATES update everywhere automatically.",
+  "_comment": "EDIT THIS FILE to update the site (commit to GitHub, Vercel auto-deploys). stats = global numbers (monthly listeners, top streams, followers) shown on the homepage + EPK. trackStats = per-song stream counts shown in the EPK, timeline, and sound map. releases = each single (status live/presave/upcoming, link, dates). album = the COMET record + countdown (releaseDateISO drives the clock). player = Spotify album IDs for the inline player.",
   "stats": {
-    "monthlyListeners": "15K",
-    "topTrackStreams": "180K+",
-    "followers": "1,465"
+    "monthlyListeners": "18K",
+    "topTrackStreams": "160K+",
+    "followers": "1,290"
   },
   "album": {
     "title": "COMET",
@@ -13,7 +13,11 @@
     "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
     "linkLabel": "Notify Me",
     "releaseDateISO": "2026-09-04T00:00:00+04:00",
-    "featuredSingle": "bfwbm"
+    "featuredSingle": "bfwbm",
+    "releaseDateMidPt": "4 set 2026",
+    "releaseDateMidEs": "4 sept 2026",
+    "releaseDateFullPt": "4 de setembro de 2026",
+    "releaseDateFullEs": "4 de septiembre de 2026"
   },
   "releases": [
     {
@@ -26,7 +30,9 @@
       "link": "https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H",
       "linkLabel": "Listen",
       "single": "Single 01",
-      "journeySub": "The first signal. The rock awakening has begun."
+      "journeySub": "The first signal. The rock awakening has begun.",
+      "dateMidPt": "16 mai 2026",
+      "dateMidEs": "16 may 2026"
     },
     {
       "id": "bfwbm",
@@ -38,7 +44,9 @@
       "link": "https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP",
       "linkLabel": "Listen",
       "single": "Single 02",
-      "journeySub": "The first Rock Statement. The defining sound of the era."
+      "journeySub": "The first Rock Statement. The defining sound of the era.",
+      "dateMidPt": "18 jun 2026",
+      "dateMidEs": "18 jun 2026"
     },
     {
       "id": "noise",
@@ -50,7 +58,9 @@
       "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
       "linkLabel": "Follow",
       "single": "Single 03",
-      "journeySub": "Where the journey began — now shared with the world."
+      "journeySub": "Where the journey began — now shared with the world.",
+      "dateMidPt": "24 jul 2026",
+      "dateMidEs": "24 jul 2026"
     },
     {
       "id": "saving",
@@ -62,7 +72,9 @@
       "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
       "linkLabel": "Follow",
       "single": "Single 04",
-      "journeySub": "The declaration. Autonomy without apology."
+      "journeySub": "The declaration. Autonomy without apology.",
+      "dateMidPt": "14 ago 2026",
+      "dateMidEs": "14 ago 2026"
     }
   ],
   "player": [
@@ -86,5 +98,11 @@
       "title": "Under the Skin of Night",
       "spotifyAlbumId": "5nvhmSx6Rm0KayIFvoukWH"
     }
-  ]
+  ],
+  "trackStats": {
+    "weightOfMissingYou": "160K",
+    "portraitOfUs": "21K",
+    "safeChaos": "17K",
+    "underSkinOfNight": "22K"
+  }
 }

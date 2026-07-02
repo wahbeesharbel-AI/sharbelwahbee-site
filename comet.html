@@ -220,7 +220,7 @@ footer{border-top:1px solid rgba(255,248,240,.04);padding:32px 52px;display:flex
       <span class="cd-sep">·</span>
       <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Sec</span></div>
     </div>
-    <div class="hero-badge">Full Album · 4 September 2026 · Dubai</div>
+    <div class="hero-badge">Full Album · <span data-c="album.releaseDateFull">4 September 2026</span> · Dubai</div>
     <div class="hero-actions">
       <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="btn-fire">Get Notified on Drop Day</a>
       <a href="#tracklist" class="btn-ghost-fire">Explore the Album</a>
@@ -312,10 +312,10 @@ footer{border-top:1px solid rgba(255,248,240,.04);padding:32px 52px;display:flex
   <p class="c-label">Road to Comet</p>
   <h2 class="c-heading reveal d1">Every step<br><em>on the way.</em></h2>
   <div class="rtl">
-    <div class="rtl-item"><div class="rtl-dot live"></div><p class="rtl-date live-label">16 May 2026 · Single 01 · Live Now</p><p class="rtl-title">Echoes of You</p><p class="rtl-sub">The rock awakening has begun.</p></div>
-    <div class="rtl-item"><div class="rtl-dot"></div><p class="rtl-date">18 Jun 2026 · Single 02</p><p class="rtl-title">Built from What Broke Me</p><p class="rtl-sub">The first Rock Statement.</p></div>
-    <div class="rtl-item"><div class="rtl-dot"></div><p class="rtl-date">24 Jul 2026 · Single 03</p><p class="rtl-title">Noise in My Head</p><p class="rtl-sub">Where the journey began.</p></div>
-    <div class="rtl-item rtl-final"><div class="rtl-dot final"></div><p class="rtl-date">4 Sep 2026 · Full Album</p><p class="rtl-title">COMET — The Complete Journey</p><p class="rtl-sub">All seven songs. The full arc. Available everywhere.</p></div>
+    <div class="rtl-item" data-rtl="echoes"><div class="rtl-dot live"></div><p class="rtl-date live-label">16 May 2026 · Single 01 · Live Now</p><p class="rtl-title">Echoes of You</p><p class="rtl-sub">The rock awakening has begun.</p></div>
+    <div class="rtl-item" data-rtl="bfwbm"><div class="rtl-dot"></div><p class="rtl-date">18 Jun 2026 · Single 02</p><p class="rtl-title">Built from What Broke Me</p><p class="rtl-sub">The first Rock Statement.</p></div>
+    <div class="rtl-item" data-rtl="noise"><div class="rtl-dot"></div><p class="rtl-date">24 Jul 2026 · Single 03</p><p class="rtl-title">Noise in My Head</p><p class="rtl-sub">Where the journey began.</p></div>
+    <div class="rtl-item rtl-final" data-rtl="album"><div class="rtl-dot final"></div><p class="rtl-date">4 Sep 2026 · Full Album</p><p class="rtl-title">COMET — The Complete Journey</p><p class="rtl-sub">All seven songs. The full arc. Available everywhere.</p></div>
   </div>
 </div>
 
@@ -339,7 +339,7 @@ footer{border-top:1px solid rgba(255,248,240,.04);padding:32px 52px;display:flex
   <div class="close-rule"></div>
   <p class="close-quote">The comet does not ask permission to move. It burns because that is its nature. It passes through everything — and remains itself.</p>
   <div class="close-rule"></div>
-  <p class="close-attr">Sharbel Wahbee · Comet · 4 September 2026</p>
+  <p class="close-attr">Sharbel Wahbee · Comet · <span data-c="album.releaseDateFull">4 September 2026</span></p>
 </div>
 
 <footer>
@@ -371,5 +371,6 @@ function toast(m){const t=document.getElementById('toast');t.textContent=m;t.cla
 function handleEmail(e){e.preventDefault();toast("You're on the list.");e.target.reset();}
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="site-data.js"></script>
 </body>
 </html>

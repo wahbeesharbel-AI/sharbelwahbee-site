@@ -77,3 +77,26 @@ Set it to the `id` of whichever release should appear in the large showcase.
 If you ever find yourself editing a **date or a release status inside a `.html` file**,
 stop — that value belongs in `content.json`. Editing it in the HTML is what caused the
 old "it still says pre-save" problem.
+
+
+---
+
+## NEW — localized dates (PT/ES pages read these)
+The album block now also has localized forms — change them together with the English ones:
+```json
+"releaseDateMidPt": "4 set 2026",     "releaseDateMidEs": "4 sept 2026",
+"releaseDateFullPt": "4 de setembro de 2026",  "releaseDateFullEs": "4 de septiembre de 2026"
+```
+Each release also has `dateMidPt` / `dateMidEs` (used by the "Chega em…/Disponible el…" labels).
+
+## NEW — what flipping a status to "live" now does automatically
+- Top release strip → green Live dot (all 3 languages)
+- Comet journey → "Live Now" entry
+- **Discography timeline** → "Upcoming" pill and "Coming <date>" removed, badge becomes "Single · Live Now / Já Disponível / Ya Disponible"
+- **Sound map** (mobile card label → "Out Now"; desktop constellation label → "Single · <month year>")
+- comet.html release timeline → dot lights up + "· Live Now"
+- Comet showcase block (featured single) → "Out Now" + "Listen on Spotify"
+
+## Permanent limits (honest — cannot be JS-driven)
+- **Meta tags / SEO descriptions / JSON-LD / page <title>**: search engines read raw HTML, so JavaScript can never update these. When the album date changes, these need one hand edit per page (rare).
+- **licensing.html**: has no release data at all — nothing to wire.

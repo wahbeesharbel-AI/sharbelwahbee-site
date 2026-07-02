@@ -2151,7 +2151,7 @@ footer{
     </div>
 
     <!-- Noise in My Head -->
-    <div class="tl-rel tl-right gc-rock">
+    <div data-tl="noise" class="tl-rel tl-right gc-rock">
       <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
       <div class="tl-col">
         <div class="tl-card">
@@ -2168,7 +2168,7 @@ footer{
     </div>
 
     <!-- Comet -->
-    <div class="tl-rel tl-left gc-rock">
+    <div data-tl="album" class="tl-rel tl-left gc-rock">
       <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
       <div class="tl-col">
         <div class="tl-card tl-album">
@@ -2266,7 +2266,7 @@ footer{
                 <span class="sm-card-title">The Portrait of Us</span>
                 <div class="sm-card-meta">
                   <span class="sm-card-year">Single · Jan 2026</span>
-                  <span class="sm-card-streams">21K streams</span>
+                  <span class="sm-card-streams"><span data-c="trackStats.portraitOfUs">21K</span> streams</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2289,7 +2289,7 @@ footer{
                 <span class="sm-card-title">You Are My Safe Chaos</span>
                 <div class="sm-card-meta">
                   <span class="sm-card-year">Single · Jan 2026</span>
-                  <span class="sm-card-streams">17K streams</span>
+                  <span class="sm-card-streams"><span data-c="trackStats.safeChaos">17K</span> streams</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2302,7 +2302,7 @@ footer{
                 <span class="sm-card-title">Under the Skin of Night</span>
                 <div class="sm-card-meta">
                   <span class="sm-card-year">Single · Feb 2026</span>
-                  <span class="sm-card-streams">22K streams</span>
+                  <span class="sm-card-streams"><span data-c="trackStats.underSkinOfNight">22K</span> streams</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2325,7 +2325,7 @@ footer{
                 <span class="sm-card-title">The Weight of Missing You</span>
                 <div class="sm-card-meta">
                   <span class="sm-card-year">Single · Feb 2026</span>
-                  <span class="sm-card-streams">160K streams</span>
+                  <span class="sm-card-streams"><span data-c="trackStats.weightOfMissingYou">160K</span> streams</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2381,7 +2381,7 @@ footer{
                 <div class="sm-bar-row"><span class="sm-bar-lbl" >Ánimo</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:27%"></div></div><span class="sm-bar-val">Oscuro</span></div>
               </div>
             </div>
-            <div class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
+            <div data-sm="noise" class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
               <div class="sm-card-top">
                 <span class="sm-card-title">Noise in My Head</span>
                 <div class="sm-card-meta">
@@ -2393,7 +2393,7 @@ footer{
                 <div class="sm-bar-row"><span class="sm-bar-lbl" >Ánimo</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:20%"></div></div><span class="sm-bar-val">Oscuro</span></div>
               </div>
             </div>
-            <div class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
+            <div data-sm="album" class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
               <div class="sm-card-top">
                 <span class="sm-card-title">Comet</span>
                 <div class="sm-card-meta">
@@ -2447,7 +2447,7 @@ footer{
       <span class="cd-sep">·</span>
       <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label" >Seg</span></div>
     </div>
-    <div class="comet-badge">Álbum Completo · 4 de septiembre de 2026</div>
+    <div class="comet-badge">Álbum Completo · <span data-c="album.releaseDateFullEs">4 de septiembre de 2026</span></div>
   </div>
 
   <div class="comet-body">
@@ -2552,7 +2552,7 @@ footer{
       <div class="comet-closing-rule"></div>
       <p class="comet-closing-quote">El cometa no pide permiso para moverse. Arde porque esa es su naturaleza. Atraviesa todo — y sigue siendo él mismo.</p>
       <div class="comet-closing-rule"></div>
-      <p class="comet-closing-attr">Sharbel Wahbee · Comet · 4 September 2026</p>
+      <p class="comet-closing-attr">Sharbel Wahbee · Comet · <span data-c="album.releaseDateFull">4 September 2026</span></p>
     </div>
 
   </div>
@@ -2926,6 +2926,7 @@ document.querySelectorAll('.tl-rel').forEach(r=>tlObs.observe(r));
       ctx.textAlign='left';
     });
   }
+  window.__smReleases = releases; window.__smDraw = draw;
   draw(); window.addEventListener('resize',draw);
   canvas.addEventListener('mousemove',e=>{
     const rect=canvas.getBoundingClientRect();
@@ -3041,5 +3042,6 @@ async function handleEmailCapture(e){
 }
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="site-data.js"></script>
 </body>
 </html>

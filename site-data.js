@@ -183,6 +183,108 @@
         }
       }
     }
+
+    /* 7 ── data-r fills: release fields by id ("noise.dateMid") ── */
+    var byId = {};
+    releases.forEach(function (r) { if (r.id) byId[r.id] = r; });
+    var lang = (document.documentElement.lang || 'en').toLowerCase();
+    var isPt = lang.indexOf('pt') === 0, isEs = lang.indexOf('es') === 0;
+    var locMid = function (r) { return (isPt && r.dateMidPt) || (isEs && r.dateMidEs) || r.dateMid || ''; };
+    document.querySelectorAll('[data-r]').forEach(function (el) {
+      var parts = el.getAttribute('data-r').split('.');
+      var r = byId[parts[0]];
+      if (r && parts[1] && r[parts[1]] !== undefined) el.textContent = r[parts[1]];
+    });
+
+    /* 8 ── Discography timeline: dates + live flip ([data-tl="id"]) ── */
+    var LIVE_BADGE = isPt ? 'Single \u00b7 J\u00e1 Dispon\u00edvel' : isEs ? 'Single \u00b7 Ya Disponible' : 'Single \u00b7 Live Now';
+    var LIVE_BADGE_ALBUM = isPt ? '\u00c1lbum \u00b7 J\u00e1 Dispon\u00edvel' : isEs ? '\u00c1lbum \u00b7 Ya Disponible' : 'Album \u00b7 Live Now';
+    document.querySelectorAll('[data-tl]').forEach(function (wrap) {
+      var id = wrap.getAttribute('data-tl');
+      var r = id === 'album' ? null : byId[id];
+      var isAlbum = id === 'album';
+      var dateEl = wrap.querySelector('.tl-card-date');
+      var lockEl = wrap.querySelector('.tl-locked');
+      var pillEl = wrap.querySelector('.tl-upcoming-pill');
+      var badgeEl = wrap.querySelector('.tl-badge');
+      if (isAlbum) {
+        var aMid = (isPt && data.album.releaseDateMidPt) || (isEs && data.album.releaseDateMidEs) || data.album.releaseDateMid || '';
+        if (dateEl) dateEl.textContent = aMid;
+        if (lockEl) lockEl.textContent = lockEl.textContent.replace(/[0-9].*$/, aMid.toLowerCase ? aMid : aMid);
+        return;
+      }
+      if (!r) return;
+      var live = (r.status || '').toLowerCase() === 'live';
+      if (dateEl) dateEl.textContent = r.dateMid || '';
+      if (live) {
+        if (pillEl) pillEl.remove();
+        if (lockEl) lockEl.remove();
+        if (badgeEl) badgeEl.textContent = LIVE_BADGE;
+        wrap.classList.remove('sm-upcoming');
+      } else if (lockEl) {
+        lockEl.textContent = lockEl.textContent.replace(/[0-9].*$/, locMid(r));
+      }
+    });
+
+    /* 9 ── Sound-map mobile upcoming cards ([data-sm="id"]) ── */
+    var OUT_NOW = isPt ? 'J\u00e1 Dispon\u00edvel' : isEs ? 'Ya Disponible' : 'Out Now';
+    document.querySelectorAll('[data-sm]').forEach(function (card) {
+      var id = card.getAttribute('data-sm');
+      var lbl = card.querySelector('.sm-card-upcoming-lbl');
+      if (id === 'album') {
+        if (lbl) lbl.textContent = data.album.releaseDateMid || '';
+        return;
+      }
+      var r = byId[id];
+      if (!r || !lbl) return;
+      lbl.textContent = ((r.status || '').toLowerCase() === 'live') ? OUT_NOW : (r.dateMid || '');
+    });
+
+    /* 10 ── Desktop sound-map canvas (patch data + redraw) ── */
+    if (window.__smReleases && typeof window.__smDraw === 'function') {
+      var tsMap = {
+        'The Portrait of Us': 'portraitOfUs',
+        'You Are My Safe Chaos': 'safeChaos',
+        'The Weight of Missing You': 'weightOfMissingYou',
+        'Under the Skin of Night': 'underSkinOfNight'
+      };
+      window.__smReleases.forEach(function (n) {
+        var slug = tsMap[n.title];
+        if (slug && data.trackStats && data.trackStats[slug]) n.streams = data.trackStats[slug];
+        var rel = releases.filter(function (r) { return r.title === n.title || (n.title === 'Comet' && r.id === '__album__'); })[0];
+        if (n.title === 'Comet') {
+          /* album node: "Upcoming Sep 2026" derived from album.releaseDateMid ("4 Sep 2026") */
+          n.year = 'Upcoming ' + (data.album.releaseDateMid || '').split(' ').slice(1).join(' ');
+        } else if (rel) {
+          var live = (rel.status || '').toLowerCase() === 'live';
+          if (n.upcoming && live) { n.upcoming = false; n.year = 'Single \u00b7 ' + (rel.dateMid || '').split(' ').slice(1).join(' '); }
+          else if (n.upcoming) { n.year = 'Upcoming ' + (rel.dateMid || '').split(' ').slice(1).join(' '); }
+        }
+      });
+      window.__smDraw();
+    }
+
+    /* 11 ── comet.html release timeline ([data-rtl="id"]) ── */
+    document.querySelectorAll('[data-rtl]').forEach(function (item) {
+      var id = item.getAttribute('data-rtl');
+      var dateEl = item.querySelector('.rtl-date');
+      var dot = item.querySelector('.rtl-dot');
+      if (id === 'album') {
+        if (dateEl) dateEl.textContent = (data.album.releaseDateMid || '') + ' \u00b7 Full Album';
+        return;
+      }
+      var r = byId[id];
+      if (!r || !dateEl) return;
+      var live = (r.status || '').toLowerCase() === 'live';
+      var line = (r.dateMid || '') + ' \u00b7 ' + (r.single || '');
+      if (live) {
+        dateEl.textContent = line + ' \u00b7 Live Now';
+        dateEl.classList.add('live-label');
+        if (dot) dot.classList.add('live');
+      } else {
+        dateEl.textContent = line;
+      }
+    });
   }
 
   function boot() {
