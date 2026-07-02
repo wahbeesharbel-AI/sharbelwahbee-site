@@ -61,7 +61,7 @@
     {
       "@type": "MusicAlbum",
       "name": "Comet",
-      "datePublished": "2026-08-21"
+      "datePublished": "2026-09-04"
     }
   ]
 }
@@ -1672,128 +1672,7 @@ footer{
 </script>
 </head>
 <body>
-<script>
-/* ── Content loader: fills data-c text + renders release strip from content.json ── */
-function loadSiteContent(){
-  fetch('content.json?v=' + Date.now())
-    .then(function(res){ if(!res.ok) throw new Error('no content.json'); return res.json(); })
-    .then(function(data){
-      // 1. Text replacement for simple data-c elements (stats, album date)
-      var get = function(path){ return path.split('.').reduce(function(o,k){ return (o||{})[k]; }, data); };
-      document.querySelectorAll('[data-c]').forEach(function(el){
-        var val = get(el.getAttribute('data-c'));
-        if(val !== undefined && val !== null && typeof val !== 'object') el.textContent = val;
-      });
-
-      // 2. Render the release strip
-      var wrap = document.getElementById('strip-releases');
-      var releases = data.releases;
-      // accept both array and object formats
-      if(releases && !Array.isArray(releases)) releases = Object.keys(releases).map(function(k){ return releases[k]; });
-      if(wrap && Array.isArray(releases)){
-        var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
-        var html = '';
-        releases.forEach(function(r){
-          var link = esc(r.link||'#'), label = esc(r.linkLabel||'Abrir'), title = esc(r.title||'');
-          var status = (r.status||'').toString().trim().toLowerCase();
-          if(status === 'live'){
-            html += '<div class="strip-card">'
-              + '<span class="strip-live-dot"></span>'
-              + '<span class="strip-live-txt">No ar</span>'
-              + '<span class="strip-card-sep">·</span>'
-              + '<span class="strip-card-name">'+title+'</span>'
-              + '<a href="'+link+'" target="_blank" class="strip-ps-btn">'+label+' ↗</a>'
-              + '</div>';
-          } else {
-            html += '<div class="strip-card">'
-              + '<span class="strip-card-date">'+esc(r.dateShort||'')+'</span>'
-              + '<span class="strip-card-sep">·</span>'
-              + '<span class="strip-card-name">'+title+'</span>'
-              + '<a href="'+link+'" target="_blank" class="strip-ps-btn">'+label+' ↗</a>'
-              + '</div>';
-          }
-        });
-        if(data.album){
-          html += '<div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">'
-            + '<span class="strip-card-date">'+esc(data.album.releaseDateShort||'')+'</span>'
-            + '<span class="strip-card-sep">·</span>'
-            + '<span class="strip-card-name" style="color:rgba(255,200,120,.9);">'+esc(data.album.title||'')+' — Álbum Completo</span>'
-            + '<a href="'+esc(data.album.link||'#')+'" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">'+esc(data.album.linkLabel||'Avise-me')+' ↗</a>'
-            + '</div>';
-        }
-        wrap.innerHTML = html;
-      }
-
-      // 3. Render player tabs from content.json
-      var ptabs = document.getElementById('player-tabs');
-      if(ptabs && Array.isArray(data.player) && data.player.length){
-        var esc2 = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
-        var ph = '';
-        data.player.forEach(function(p, i){
-          if(!p.spotifyAlbumId) return;
-          var src = 'https://open.spotify.com/embed/album/' + esc2(p.spotifyAlbumId) + '?utm_source=generator&theme=0';
-          ph += '<button class="ptab' + (i===0?' active':'') + '" data-src="' + src + '">' + esc2(p.title||'Untitled') + '</button>';
-        });
-        ptabs.innerHTML = ph;
-        // Set the player iframe to the first tab
-        var frame = document.getElementById('player-frame');
-        var first = data.player[0];
-        if(frame && first && first.spotifyAlbumId){
-          frame.src = 'https://open.spotify.com/embed/album/' + first.spotifyAlbumId + '?utm_source=generator&theme=0';
-        }
-        // Re-bind tab clicks (since we replaced the buttons)
-        ptabs.querySelectorAll('.ptab').forEach(function(btn){
-          btn.addEventListener('click', function(){
-            ptabs.querySelectorAll('.ptab').forEach(function(b){ b.classList.remove('active'); });
-            btn.classList.add('active');
-            if(frame) frame.src = btn.getAttribute('data-src');
-          });
-        });
-      }
-
-      // 4. Render Comet journey timeline from content.json
-      var journey = document.getElementById('comet-journey');
-      if(journey && Array.isArray(releases)){
-        var esc3 = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
-        var jh = '';
-        releases.forEach(function(r){
-          var status = (r.status||'').toString().trim().toLowerCase();
-          var dateLine = esc3(r.dateMid||'') + ' · ' + esc3(r.single||'');
-          if(status === 'live'){
-            jh += '<div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div>'
-              + '<p class="comet-tl-date" style="color:#ffaa5c;">' + dateLine + ' · Já Disponível</p>'
-              + '<p class="comet-tl-title">' + esc3(r.title) + '</p>'
-              + '<p class="comet-tl-sub">' + esc3(r.journeySub||'') + '</p></div>';
-          } else {
-            var psLink = '';
-            if(status === 'presave' && r.link){
-              psLink = '<a href="' + esc3(r.link) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">' + esc3(r.linkLabel||'Pré-salvar') + ' ↗</a>';
-            }
-            jh += '<div class="comet-tl-item"><div class="comet-tl-dot"></div>'
-              + '<p class="comet-tl-date">' + dateLine + '</p>'
-              + '<p class="comet-tl-title">' + esc3(r.title) + '</p>'
-              + '<p class="comet-tl-sub">' + esc3(r.journeySub||'') + '</p>' + psLink + '</div>';
-          }
-        });
-        // Album finale
-        if(data.album){
-          jh += '<div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div>'
-            + '<p class="comet-tl-date">' + esc3(data.album.releaseDateMid||'') + ' · Álbum Completo</p>'
-            + '<p class="comet-tl-title">' + esc3(data.album.title||'') + ' — A Jornada Completa</p>'
-            + '<p class="comet-tl-sub">Todas as sete músicas. O arco completo. Disponível em todos os lugares.</p></div>';
-        }
-        journey.innerHTML = jh;
-      }
-    })
-    .catch(function(e){ /* fail silent — hardcoded fallback cards stay visible */ });
-}
-// Run after DOM is fully parsed so #strip-releases exists
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', loadSiteContent);
-} else {
-  loadSiteContent();
-}
-</script>
+<!-- Site data loaded by site-data.js from content.json (single source of truth). -->
 
 <div class="cur-dot" id="cur-dot"></div>
 <div class="cur-ring" id="cur-ring"></div>
@@ -1849,7 +1728,7 @@ if(document.readyState === 'loading'){
 
       <!-- Noise in My Head -->
       <div class="strip-card">
-        <span class="strip-card-date" data-c="releases.noise.dateShort">9 Jul</span>
+        <span class="strip-card-date" data-c="releases.noise.dateShort">24 Jul</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" data-c="releases.noise.title">Noise in My Head</span>
         <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Seguir ↗</a>
@@ -1857,7 +1736,7 @@ if(document.readyState === 'loading'){
 
       <!-- I Don't Need Saving -->
       <div class="strip-card">
-        <span class="strip-card-date" data-c="releases.saving.dateShort">30 Jul</span>
+        <span class="strip-card-date" data-c="releases.saving.dateShort">14 Aug</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" data-c="releases.saving.title">I Don't Need Saving</span>
         <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Seguir ↗</a>
@@ -1865,7 +1744,7 @@ if(document.readyState === 'loading'){
 
       <!-- Comet — album -->
       <div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">
-        <span class="strip-card-date" data-c="album.releaseDateShort">21 Aug</span>
+        <span class="strip-card-date" data-c="album.releaseDateShort">4 Sep</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" style="color:rgba(255,200,120,.9);">COMET — Álbum Completo</span>
         <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">Avise-me ↗</a>
@@ -1874,7 +1753,7 @@ if(document.readyState === 'loading'){
     </div>
 
     <div class="strip-right">
-      <span class="strip-album"><span data-c="album.title">COMET</span> · <span data-c="album.releaseDateMid">21 Aug 2026</span></span>
+      <span class="strip-album"><span data-c="album.title">COMET</span> · <span data-c="album.releaseDateMid">4 Sep 2026</span></span>
       <button class="strip-close-btn" id="strip-close" aria-label="Close">✕</button>
     </div>
   </div>
@@ -2277,13 +2156,13 @@ if(document.readyState === 'loading'){
       <div class="tl-col">
         <div class="tl-card">
           <div class="tl-upcoming-pill">Em Breve</div>
-          <div class="tl-card-date">9 Jul 2026</div>
+          <div class="tl-card-date">24 Jul 2026</div>
           <div class="tl-card-title">Noise in My Head</div>
           <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
           <p class="tl-desc">"O ruído incessante do excesso de pensamento transformado em algo alto e belo. Um exorcismo rock para os pensamentos que não descansam."</p>
-          <div class="tl-locked">Chega em 9 jul 2026</div>
+          <div class="tl-locked">Chega em 24 jul 2026</div>
         </div></div>
       </div>
     </div>
@@ -2294,13 +2173,13 @@ if(document.readyState === 'loading'){
       <div class="tl-col">
         <div class="tl-card tl-album">
           <div class="tl-upcoming-pill">Em Breve</div>
-          <div class="tl-card-date">21 Aug 2026</div>
+          <div class="tl-card-date">4 Sep 2026</div>
           <div class="tl-card-title">Comet</div>
           <div class="tl-meta"><span class="tl-badge">Álbum</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
           <p class="tl-desc">"Não pede permissão. Ardente, imparável — chegando com a força de algo cósmico. A coleção mais eletrizante até agora."</p>
-          <div class="tl-locked">Chega em 21 ago 2026</div>
+          <div class="tl-locked">Chega em 4 set 2026</div>
         </div></div>
       </div>
     </div>
@@ -2506,7 +2385,7 @@ if(document.readyState === 'loading'){
               <div class="sm-card-top">
                 <span class="sm-card-title">Noise in My Head</span>
                 <div class="sm-card-meta">
-                  <span class="sm-card-upcoming-lbl">9 Jul 2026</span>
+                  <span class="sm-card-upcoming-lbl">24 Jul 2026</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2518,7 +2397,7 @@ if(document.readyState === 'loading'){
               <div class="sm-card-top">
                 <span class="sm-card-title">Comet</span>
                 <div class="sm-card-meta">
-                  <span class="sm-card-upcoming-lbl">21 Aug 2026</span>
+                  <span class="sm-card-upcoming-lbl">4 Sep 2026</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2568,7 +2447,7 @@ if(document.readyState === 'loading'){
       <span class="cd-sep">·</span>
       <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Seg</span></div>
     </div>
-    <div class="comet-badge">Álbum Completo · 21 de agosto de 2026</div>
+    <div class="comet-badge">Álbum Completo · 4 de setembro de 2026</div>
   </div>
 
   <div class="comet-body">
@@ -2663,8 +2542,8 @@ if(document.readyState === 'loading'){
         <!-- Fallback (replaced by JS from content.json) -->
         <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">16 mai 2026 · Single 01 · Já Disponível</p><p class="comet-tl-title">Echoes of You</p><p class="comet-tl-sub">O primeiro sinal. O despertar do rock começou.</p></div>
         <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">18 jun 2026 · Single 02 · Já Disponível</p><p class="comet-tl-title">Built from What Broke Me</p><p class="comet-tl-sub">O primeiro Rock Statement. O som que define a era.</p><a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Ouça no Spotify ↗</a></div>
-        <div class="comet-tl-item"><div class="comet-tl-dot"></div><p class="comet-tl-date">9 jul 2026 · Single 03</p><p class="comet-tl-title">Noise in My Head</p><p class="comet-tl-sub">Onde a jornada começou — agora compartilhada com o mundo.</p></div>
-        <div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div><p class="comet-tl-date">21 ago 2026 · Álbum Completo</p><p class="comet-tl-title">COMET — A Jornada Completa</p><p class="comet-tl-sub">Todas as sete músicas. O arco completo. Disponível em todos os lugares.</p></div>
+        <div class="comet-tl-item"><div class="comet-tl-dot"></div><p class="comet-tl-date">24 jul 2026 · Single 03</p><p class="comet-tl-title">Noise in My Head</p><p class="comet-tl-sub">Onde a jornada começou — agora compartilhada com o mundo.</p></div>
+        <div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div><p class="comet-tl-date">4 set 2026 · Álbum Completo</p><p class="comet-tl-title">COMET — A Jornada Completa</p><p class="comet-tl-sub">Todas as sete músicas. O arco completo. Disponível em todos os lugares.</p></div>
       </div>
     </div>
 
@@ -2673,7 +2552,7 @@ if(document.readyState === 'loading'){
       <div class="comet-closing-rule"></div>
       <p class="comet-closing-quote">O cometa não pede permissão para se mover. Ele queima porque essa é a sua natureza. Atravessa tudo — e permanece sendo ele mesmo.</p>
       <div class="comet-closing-rule"></div>
-      <p class="comet-closing-attr">Sharbel Wahbee · Comet · 21 August 2026</p>
+      <p class="comet-closing-attr">Sharbel Wahbee · Comet · 4 September 2026</p>
     </div>
 
   </div>
@@ -2993,7 +2872,7 @@ document.querySelectorAll('.tl-rel').forEach(r=>tlObs.observe(r));
     {title:'Echoes of You',       genre:'Rock',       year:'Single · May 2026',  streams:'',     x:.79,y:.36,col:[195,75,60]},
     {title:'Built from What Broke Me',genre:'Rock',   year:'Single · Jun 2026', streams:'',     x:.84,y:.27,col:[195,75,60]},
     {title:'Noise in My Head',    genre:'Rock',       year:'Upcoming Jul 2026', streams:'',     x:.88,y:.20,col:[195,75,60],upcoming:true},
-    {title:'Comet',               genre:'Rock',       year:'Upcoming Aug 2026', streams:'',     x:.93,y:.28,col:[195,75,60],upcoming:true},
+    {title:'Comet',               genre:'Rock',       year:'Upcoming Sep 2026', streams:'',     x:.93,y:.28,col:[195,75,60],upcoming:true},
   ];
   function draw(){
     const W=canvas.parentElement.clientWidth, H=Math.round(W*.46);
@@ -3104,31 +2983,7 @@ document.querySelectorAll('.tl-rel').forEach(r=>tlObs.observe(r));
   }, { passive: true });
 })();
 
-/* ── Comet Countdown (release: 21 Aug 2026 Dubai time) ── */
-(function(){
-  // Explicit UTC ms — avoids all timezone parsing issues
-  // 21 Aug 2026 00:00 Dubai (UTC+4) = 20 Aug 2026 20:00 UTC
-  const TARGET_UTC = Date.UTC(2026, 7, 20, 20, 0, 0); // month is 0-indexed
-  const dEl=document.getElementById('cd-d'),
-        hEl=document.getElementById('cd-h'),
-        mEl=document.getElementById('cd-m'),
-        sEl=document.getElementById('cd-s');
-  if(!dEl) return;
-  function pad(n){ return String(n).padStart(2,'0'); }
-  function tick(){
-    const diff = TARGET_UTC - Date.now();
-    if(diff <= 0){
-      dEl.textContent=hEl.textContent=mEl.textContent=sEl.textContent='00';
-      return;
-    }
-    dEl.textContent = pad(Math.floor(diff / 86400000));
-    hEl.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    mEl.textContent = pad(Math.floor((diff % 3600000) / 60000));
-    sEl.textContent = pad(Math.floor((diff % 60000) / 1000));
-    setTimeout(tick, 1000);
-  }
-  tick();
-})();
+/* Countdown driven by site-data.js */
 
 /* ── Toast + Forms ── */
 function toast(m,err=false){

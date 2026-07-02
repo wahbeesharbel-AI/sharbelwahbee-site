@@ -7,11 +7,13 @@
   },
   "album": {
     "title": "COMET",
-    "releaseDateShort": "21 Aug",
-    "releaseDateFull": "21 August 2026",
-    "releaseDateMid": "21 Aug 2026",
+    "releaseDateShort": "4 Sep",
+    "releaseDateFull": "4 September 2026",
+    "releaseDateMid": "4 Sep 2026",
     "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
-    "linkLabel": "Notify Me"
+    "linkLabel": "Notify Me",
+    "releaseDateISO": "2026-09-04T00:00:00+04:00",
+    "featuredSingle": "bfwbm"
   },
   "releases": [
     {
@@ -42,9 +44,9 @@
       "id": "noise",
       "title": "Noise in My Head",
       "status": "upcoming",
-      "dateShort": "9 Jul",
-      "dateMid": "9 Jul 2026",
-      "dateFull": "9 July 2026",
+      "dateShort": "24 Jul",
+      "dateMid": "24 Jul 2026",
+      "dateFull": "24 July 2026",
       "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
       "linkLabel": "Follow",
       "single": "Single 03",
@@ -54,9 +56,9 @@
       "id": "saving",
       "title": "I Don't Need Saving",
       "status": "upcoming",
-      "dateShort": "30 Jul",
-      "dateMid": "30 Jul 2026",
-      "dateFull": "30 July 2026",
+      "dateShort": "14 Aug",
+      "dateMid": "14 Aug 2026",
+      "dateFull": "14 August 2026",
       "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
       "linkLabel": "Follow",
       "single": "Single 04",

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COMET — Sharbel Wahbee | 21 August 2026</title>
-<meta name="description" content="COMET — the new rock album by Sharbel Wahbee. Releasing 21 August 2026. Seven songs. One arc. It doesn't ask for permission to move.">
-<meta property="og:title" content="COMET — Sharbel Wahbee | 21 August 2026">
-<meta property="og:description" content="It doesn't ask for permission to move. The new rock album by Sharbel Wahbee — 21 August 2026.">
+<title>COMET — Sharbel Wahbee | 4 September 2026</title>
+<meta name="description" content="COMET — the new rock album by Sharbel Wahbee. Releasing 4 September 2026. Seven songs. One arc. It doesn't ask for permission to move.">
+<meta property="og:title" content="COMET — Sharbel Wahbee | 4 September 2026">
+<meta property="og:description" content="It doesn't ask for permission to move. The new rock album by Sharbel Wahbee — 4 September 2026.">
 <meta property="og:image" content="https://www.sharbelwahbee.com/comet-space.png">
 <meta property="og:type" content="music.album">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="COMET — Sharbel Wahbee | 21 August 2026">
+<meta name="twitter:title" content="COMET — Sharbel Wahbee | 4 September 2026">
 <meta name="twitter:image" content="https://www.sharbelwahbee.com/comet-space.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,7 +220,7 @@ footer{border-top:1px solid rgba(255,248,240,.04);padding:32px 52px;display:flex
       <span class="cd-sep">·</span>
       <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Sec</span></div>
     </div>
-    <div class="hero-badge">Full Album · 21 August 2026 · Dubai</div>
+    <div class="hero-badge">Full Album · 4 September 2026 · Dubai</div>
     <div class="hero-actions">
       <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="btn-fire">Get Notified on Drop Day</a>
       <a href="#tracklist" class="btn-ghost-fire">Explore the Album</a>
@@ -314,8 +314,8 @@ footer{border-top:1px solid rgba(255,248,240,.04);padding:32px 52px;display:flex
   <div class="rtl">
     <div class="rtl-item"><div class="rtl-dot live"></div><p class="rtl-date live-label">16 May 2026 · Single 01 · Live Now</p><p class="rtl-title">Echoes of You</p><p class="rtl-sub">The rock awakening has begun.</p></div>
     <div class="rtl-item"><div class="rtl-dot"></div><p class="rtl-date">18 Jun 2026 · Single 02</p><p class="rtl-title">Built from What Broke Me</p><p class="rtl-sub">The first Rock Statement.</p></div>
-    <div class="rtl-item"><div class="rtl-dot"></div><p class="rtl-date">16 Jul 2026 · Single 03</p><p class="rtl-title">Noise in My Head</p><p class="rtl-sub">Where the journey began.</p></div>
-    <div class="rtl-item rtl-final"><div class="rtl-dot final"></div><p class="rtl-date">21 Aug 2026 · Full Album</p><p class="rtl-title">COMET — The Complete Journey</p><p class="rtl-sub">All seven songs. The full arc. Available everywhere.</p></div>
+    <div class="rtl-item"><div class="rtl-dot"></div><p class="rtl-date">24 Jul 2026 · Single 03</p><p class="rtl-title">Noise in My Head</p><p class="rtl-sub">Where the journey began.</p></div>
+    <div class="rtl-item rtl-final"><div class="rtl-dot final"></div><p class="rtl-date">4 Sep 2026 · Full Album</p><p class="rtl-title">COMET — The Complete Journey</p><p class="rtl-sub">All seven songs. The full arc. Available everywhere.</p></div>
   </div>
 </div>
 
@@ -339,7 +339,7 @@ footer{border-top:1px solid rgba(255,248,240,.04);padding:32px 52px;display:flex
   <div class="close-rule"></div>
   <p class="close-quote">The comet does not ask permission to move. It burns because that is its nature. It passes through everything — and remains itself.</p>
   <div class="close-rule"></div>
-  <p class="close-attr">Sharbel Wahbee · Comet · 21 August 2026</p>
+  <p class="close-attr">Sharbel Wahbee · Comet · 4 September 2026</p>
 </div>
 
 <footer>
@@ -360,24 +360,7 @@ else{
   (function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
 }
 
-// Countdown — 21 Aug 2026 Dubai time (UTC+4) = 20 Aug 2026 20:00 UTC
-(function(){
-  const TARGET_UTC = Date.UTC(2026, 7, 20, 20, 0, 0);
-  const d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),
-        m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
-  if(!d)return;
-  function pad(n){return String(n).padStart(2,'0');}
-  function tick(){
-    const diff=TARGET_UTC-Date.now();
-    if(diff<=0){d.textContent=h.textContent=m.textContent=s.textContent='00';return;}
-    d.textContent=pad(Math.floor(diff/86400000));
-    h.textContent=pad(Math.floor((diff%86400000)/3600000));
-    m.textContent=pad(Math.floor((diff%3600000)/60000));
-    s.textContent=pad(Math.floor((diff%60000)/1000));
-    setTimeout(tick,1000);
-  }
-  tick();
-})();
+/* Countdown driven by site-data.js from content.json (album.releaseDateISO) */
 
 // Reveal
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.07});
