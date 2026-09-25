@@ -61,7 +61,7 @@
     {
       "@type": "MusicAlbum",
       "name": "Comet",
-      "datePublished": "2026-09-04"
+      "datePublished": "2026-09-11"
     }
   ]
 }
@@ -1661,6 +1661,27 @@ footer{
   .behind-inner{grid-template-columns:1fr;}
   #behind{padding:80px 28px;}
 }
+
+/* ── Journey in Motion + Recovery ── */
+#journey-motion{padding:110px 24px;background:var(--ink);position:relative;}
+.jm-inner{max-width:960px;margin:0 auto;text-align:center;}
+.jm-kicker{font-family:var(--sans);font-size:10px;letter-spacing:.45em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;}
+.jm-title{font-family:var(--serif);font-size:clamp(30px,5vw,46px);font-weight:400;color:#f2ede4;margin-bottom:10px;}
+.jm-title em{font-style:italic;color:var(--amber-lt);}
+.jm-sub{font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,237,228,.55);margin-bottom:40px;}
+.jm-video{width:100%;border-radius:6px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.55);}
+.jm-map{width:100%;border-radius:6px;display:block;margin-top:26px;box-shadow:0 24px 60px rgba(0,0,0,.45);}
+.jm-caption{font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(212,164,106,.85);margin-top:20px;}
+.jm-recovery{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:44px;align-items:center;margin-top:90px;text-align:left;}
+.jm-rec-cover{width:100%;border-radius:6px;box-shadow:0 24px 70px rgba(0,0,0,.55);}
+.jm-rec-kicker{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
+.jm-rec-title{font-family:var(--serif);font-size:clamp(34px,5vw,52px);font-weight:400;letter-spacing:.06em;color:#f2ede4;margin-bottom:6px;}
+.jm-rec-tag{font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(212,164,106,.9);margin-bottom:22px;}
+.jm-rec-quote{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.6;color:rgba(242,237,228,.85);margin-bottom:22px;}
+.jm-rec-note{font-family:var(--sans);font-size:12px;line-height:1.7;color:rgba(242,237,228,.5);margin-bottom:26px;}
+.jm-rec-cta{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid var(--amber-dim);color:var(--amber-lt);font-family:var(--sans);font-size:9px;letter-spacing:.28em;text-transform:uppercase;padding:13px 26px;text-decoration:none;transition:border-color .25s,color .25s;}
+.jm-rec-cta:hover{border-color:var(--amber-lt);color:#f2ede4;}
+@media(max-width:760px){.jm-recovery{grid-template-columns:1fr;gap:30px;text-align:center;}.jm-rec-cover{max-width:340px;margin:0 auto;}#journey-motion{padding:80px 18px;}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18239802603"></script>
@@ -1708,15 +1729,7 @@ footer{
     <div class="strip-releases" id="strip-releases">
 
       <!-- Fallback cards (shown if content.json fails to load; otherwise replaced by JS) -->
-      <!-- Echoes of You — live now -->
-      <div class="strip-card">
-        <span class="strip-live-dot"></span>
-        <span class="strip-live-txt">Live</span>
-        <span class="strip-card-sep">·</span>
-        <span class="strip-card-name" data-c="releases.echoes.title">Echoes of You</span>
-        <a href="https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H" target="_blank" class="strip-ps-btn">Listen ↗</a>
-      </div>
-
+      
       <!-- Built from What Broke Me — live now -->
       <div class="strip-card">
         <span class="strip-live-dot"></span>
@@ -1728,32 +1741,43 @@ footer{
 
       <!-- Noise in My Head -->
       <div class="strip-card">
-        <span class="strip-card-date" data-c="releases.noise.dateShort">24 Jul</span>
+        <span class="strip-live-dot"></span>
+        <span class="strip-live-txt">Live</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" data-c="releases.noise.title">Noise in My Head</span>
-        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Follow ↗</a>
+        <a href="https://open.spotify.com/artist/6WR63hJPJOrxD2h8rtNl8x" target="_blank" class="strip-ps-btn">Listen ↗</a>
       </div>
 
-      <!-- I Don't Need Saving -->
+      <!-- Ashes Learn to Breathe — live -->
       <div class="strip-card">
-        <span class="strip-card-date" data-c="releases.saving.dateShort">14 Aug</span>
+        <span class="strip-live-dot"></span>
+        <span class="strip-live-txt">Live</span>
         <span class="strip-card-sep">·</span>
-        <span class="strip-card-name" data-c="releases.saving.title">I Don't Need Saving</span>
-        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Follow ↗</a>
+        <span class="strip-card-name">Ashes Learn to Breathe</span>
+        <a href="https://open.spotify.com/album/33IOD3O11yW2gtu2n4x4Ff?si=iYjqDSu-QeyAeIItwwPzFQ" target="_blank" class="strip-ps-btn">Listen ↗</a>
       </div>
 
       <!-- Comet — album -->
       <div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">
-        <span class="strip-card-date" data-c="album.releaseDateShort">4 Sep</span>
+        <span class="strip-live-dot"></span>
+        <span class="strip-live-txt">Live</span>
         <span class="strip-card-sep">·</span>
         <span class="strip-card-name" style="color:rgba(255,200,120,.9);">COMET — Full Album</span>
-        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">Notify Me ↗</a>
+        <a href="https://open.spotify.com/album/6aaNzeXNZd50sOq9fH9XkQ?si=cgYhYMDLTO6n3ki4sezHhg" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">Listen ↗</a>
       </div>
 
+
+      <!-- Recovery — next album -->
+      <div class="strip-card">
+        <span class="strip-card-date">TBA</span>
+        <span class="strip-card-sep">·</span>
+        <span class="strip-card-name">Recovery — Next Album</span>
+        <a href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank" class="strip-ps-btn">Notify Me ↗</a>
+      </div>
     </div>
 
     <div class="strip-right">
-      <span class="strip-album"><span data-c="album.title">COMET</span> · <span data-c="album.releaseDateMid">4 Sep 2026</span></span>
+      <span class="strip-album"><span data-c="album.title">COMET</span> · <span data-c="album.releaseDateMid">11 Sep 2026</span></span>
       <button class="strip-close-btn" id="strip-close" aria-label="Close">✕</button>
     </div>
   </div>
@@ -2155,14 +2179,27 @@ footer{
       <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
       <div class="tl-col">
         <div class="tl-card">
-          <div class="tl-upcoming-pill">Upcoming</div>
           <div class="tl-card-date">24 Jul 2026</div>
           <div class="tl-card-title">Noise in My Head</div>
-          <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Rock</span></div>
+          <div class="tl-meta"><span class="tl-badge">Single · Live Now</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
           <p class="tl-desc">"The relentless static of over-thinking turned into something loud and beautiful. A rock exorcism for thoughts that won't rest."</p>
-          <div class="tl-locked">Coming 24 Jul 2026</div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Ashes Learn to Breathe -->
+    <div data-tl="ashes" class="tl-rel tl-left gc-rock">
+      <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
+      <div class="tl-col">
+        <div class="tl-card">
+          <div class="tl-card-date">14 Aug 2026</div>
+          <div class="tl-card-title">Ashes Learn to Breathe</div>
+          <div class="tl-meta"><span class="tl-badge">Single · Live Now</span><span class="tl-gtag">Rock</span></div>
+        </div>
+        <div class="tl-drawer"><div class="tl-drawer-inner">
+          <p class="tl-desc">"What burned down taught me how to breathe. A slow rise from the embers — survival with a pulse."</p>
         </div></div>
       </div>
     </div>
@@ -2172,14 +2209,12 @@ footer{
       <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
       <div class="tl-col">
         <div class="tl-card tl-album">
-          <div class="tl-upcoming-pill">Upcoming</div>
-          <div class="tl-card-date">4 Sep 2026</div>
+          <div class="tl-card-date">11 Sep 2026</div>
           <div class="tl-card-title">Comet</div>
-          <div class="tl-meta"><span class="tl-badge">Album</span><span class="tl-gtag">Rock</span></div>
+          <div class="tl-meta"><span class="tl-badge">Album · Live Now</span><span class="tl-gtag">Rock</span></div>
         </div>
         <div class="tl-drawer"><div class="tl-drawer-inner">
           <p class="tl-desc">"It doesn't ask for permission. Blazing, unstoppable — arriving with the force of something cosmic. The most electrifying collection yet."</p>
-          <div class="tl-locked">Coming 4 Sep 2026</div>
         </div></div>
       </div>
     </div>
@@ -2385,7 +2420,19 @@ footer{
               <div class="sm-card-top">
                 <span class="sm-card-title">Noise in My Head</span>
                 <div class="sm-card-meta">
-                  <span class="sm-card-upcoming-lbl">24 Jul 2026</span>
+                  <span class="sm-card-upcoming-lbl">Out Now</span>
+                </div>
+              </div>
+              <div class="sm-bars">
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Energy</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:88%"></div></div><span class="sm-bar-val">Intense</span></div>
+                <div class="sm-bar-row"><span class="sm-bar-lbl">Mood</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:20%"></div></div><span class="sm-bar-val">Dark</span></div>
+              </div>
+            </div>
+            <div data-sm="ashes" class="sm-card sm-upcoming" style="--gc:rgba(195,75,60,.5)">
+              <div class="sm-card-top">
+                <span class="sm-card-title">Ashes Learn to Breathe</span>
+                <div class="sm-card-meta">
+                  <span class="sm-card-upcoming-lbl">Out Now</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2397,7 +2444,7 @@ footer{
               <div class="sm-card-top">
                 <span class="sm-card-title">Comet</span>
                 <div class="sm-card-meta">
-                  <span class="sm-card-upcoming-lbl">4 Sep 2026</span>
+                  <span class="sm-card-upcoming-lbl">Out Now</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2438,16 +2485,12 @@ footer{
     <h2 class="comet-title">COMET</h2>
     <div class="comet-rule"></div>
     <p class="comet-tagline">Some things move through the dark for years<br>before the world finally sees the light they carry.</p>
-    <div class="comet-countdown" id="comet-countdown">
-      <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Days</span></div>
-      <span class="cd-sep">·</span>
-      <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Hours</span></div>
-      <span class="cd-sep">·</span>
-      <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Min</span></div>
-      <span class="cd-sep">·</span>
-      <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Sec</span></div>
+    <div class="comet-outnow" style="max-width:560px;margin:34px auto 0;">
+      <p class="comet-kicker" style="margin-bottom:16px;">Out Now</p>
+      <iframe title="COMET — Sharbel Wahbee" style="border-radius:12px" src="https://open.spotify.com/embed/album/6aaNzeXNZd50sOq9fH9XkQ?utm_source=generator&theme=0" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <a href="https://open.spotify.com/album/6aaNzeXNZd50sOq9fH9XkQ?si=cgYhYMDLTO6n3ki4sezHhg" target="_blank" style="display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--ember);color:#fff8f0;font-family:var(--sans);font-size:9px;letter-spacing:.28em;text-transform:uppercase;padding:13px 26px;text-decoration:none;">Listen on Spotify ↗</a>
     </div>
-    <div class="comet-badge">Full Album · <span data-c="album.releaseDateFull">4 September 2026</span></div>
+    <div class="comet-badge">Full Album · <span data-c="album.releaseDateFull">11 September 2026</span></div>
   </div>
 
   <div class="comet-body">
@@ -2525,8 +2568,8 @@ footer{
         <div class="comet-track"><div class="comet-track-num">01</div><div><div class="comet-track-name">Noise in My Head</div><div class="comet-track-desc">The internal war. Where the journey begins — fractured, honest, unresolved.</div></div><span class="comet-track-badge badge-s">Song</span></div>
         <div class="comet-track"><div class="comet-track-num">02</div><div><div class="comet-track-name">Built from What Broke Me</div><div class="comet-track-desc">The reconstruction. Survival not as recovery — as transformation built from the wreckage up.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
         <div class="comet-track"><div class="comet-track-num">03</div><div><div class="comet-track-name">I Don't Need Saving</div><div class="comet-track-desc">The declaration. Help offered with conditions attached is not help. Autonomy without apology.</div></div><span class="comet-track-badge badge-s">Song</span></div>
-        <div class="comet-track"><div class="comet-track-num">04</div><div><div class="comet-track-name">Standing in the Fire</div><div class="comet-track-desc">The moral stand. Choosing truth over comfort, even when it costs everything.</div></div><span class="comet-track-badge badge-s">Song</span></div>
-        <div class="comet-track"><div class="comet-track-num">05</div><div><div class="comet-track-name">Caught in Crossfire</div><div class="comet-track-desc">The cost arrives. The price of not bending — paid in full, without regret.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
+        <div class="comet-track"><div class="comet-track-num">04</div><div><div class="comet-track-name">Stand in the Fire</div><div class="comet-track-desc">The moral stand. Choosing truth over comfort, even when it costs everything.</div></div><span class="comet-track-badge badge-s">Song</span></div>
+        <div class="comet-track"><div class="comet-track-num">05</div><div><div class="comet-track-name">Caught in the crossfire</div><div class="comet-track-desc">The cost arrives. The price of not bending — paid in full, without regret.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
         <div class="comet-track"><div class="comet-track-num">06</div><div><div class="comet-track-name">Ashes Learn to Breathe</div><div class="comet-track-desc">The grief. The quiet devastation of losing someone you never outgrew. The loudest silence.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
         <div class="comet-track"><div class="comet-track-num">07</div><div><div class="comet-track-name">Still Here</div><div class="comet-track-desc">The closure. Nothing left to prove. Paid in nights and patience. Father strength, I choose.</div></div><span class="comet-track-badge badge-rs">Rock Statement</span></div>
       </div>
@@ -2540,10 +2583,11 @@ footer{
       <h3 class="comet-heading">The road<br><em>to Comet.</em></h3>
       <div class="comet-tl" id="comet-journey">
         <!-- Fallback (replaced by JS from content.json) -->
-        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">16 May 2026 · Single 01 · Live Now</p><p class="comet-tl-title">Echoes of You</p><p class="comet-tl-sub">The first signal. The rock awakening has begun.</p></div>
-        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">18 Jun 2026 · Single 02 · Live Now</p><p class="comet-tl-title">Built from What Broke Me</p><p class="comet-tl-sub">The first Rock Statement. The defining sound of the era.</p><a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Listen on Spotify ↗</a></div>
-        <div class="comet-tl-item"><div class="comet-tl-dot"></div><p class="comet-tl-date">24 Jul 2026 · Single 03</p><p class="comet-tl-title">Noise in My Head</p><p class="comet-tl-sub">Where the journey began — now shared with the world.</p></div>
-        <div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div><p class="comet-tl-date">4 Sep 2026 · Full Album</p><p class="comet-tl-title">COMET — The Complete Journey</p><p class="comet-tl-sub">All seven songs. The full arc. Available everywhere.</p></div>
+        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">18 Jun 2026 · Single 01 · Live Now</p><p class="comet-tl-title">Built from What Broke Me</p><p class="comet-tl-sub">The first Rock Statement. The defining sound of the era.</p><a href="https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Listen on Spotify ↗</a></div>
+        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">24 Jul 2026 · Single 02 · Live Now</p><p class="comet-tl-title">Noise in My Head</p><p class="comet-tl-sub">The relentless static of over-thinking, turned loud and beautiful.</p><a href="https://open.spotify.com/artist/6WR63hJPJOrxD2h8rtNl8x" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Listen on Spotify ↗</a></div>
+        <div class="comet-tl-item"><div class="comet-tl-dot" style="border-color:#ffaa5c;box-shadow:0 0 8px rgba(255,170,92,.4);"></div><p class="comet-tl-date" style="color:#ffaa5c;">14 Aug 2026 · Single 03 · Live Now</p><p class="comet-tl-title">Ashes Learn to Breathe</p><p class="comet-tl-sub">Breath by breath — rising from what burned.</p><a href="https://open.spotify.com/album/33IOD3O11yW2gtu2n4x4Ff?si=iYjqDSu-QeyAeIItwwPzFQ" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Listen on Spotify ↗</a></div>
+        <div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final" style="border-color:#ffaa5c;box-shadow:0 0 10px rgba(255,170,92,.5);"></div><p class="comet-tl-date" style="color:#ffaa5c;">11 Sep 2026 · Full Album · Live Now</p><p class="comet-tl-title">COMET — The Complete Journey</p><p class="comet-tl-sub">All seven songs. The full arc. Available everywhere.</p><a href="https://open.spotify.com/album/6aaNzeXNZd50sOq9fH9XkQ?si=cgYhYMDLTO6n3ki4sezHhg" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Listen on Spotify ↗</a></div>
+        <div class="comet-tl-item"><div class="comet-tl-dot"></div><p class="comet-tl-date">Date TBA · Next Album</p><p class="comet-tl-title">Recovery</p><p class="comet-tl-sub">The next chapter. The journey continues.</p></div>
       </div>
     </div>
 
@@ -2552,9 +2596,35 @@ footer{
       <div class="comet-closing-rule"></div>
       <p class="comet-closing-quote">The comet does not ask permission to move. It burns because that is its nature. It passes through everything — and remains itself.</p>
       <div class="comet-closing-rule"></div>
-      <p class="comet-closing-attr">Sharbel Wahbee · Comet · <span data-c="album.releaseDateFull">4 September 2026</span></p>
+      <p class="comet-closing-attr">Sharbel Wahbee · Comet · <span data-c="album.releaseDateFull">11 September 2026</span></p>
     </div>
 
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY IN MOTION + RECOVERY ══════════ -->
+<section id="journey-motion">
+  <div class="jm-inner">
+    <p class="jm-kicker">The Journey</p>
+    <h2 class="jm-title">A Journey <em>in Motion</em></h2>
+    <p class="jm-sub">Different sounds. The same soul.</p>
+    <video class="jm-video" autoplay muted loop playsinline preload="metadata" poster="journey-video-poster.jpg" aria-label="The journey in motion — from Whispers from Beyond to Recovery">
+      <source src="journey.mp4" type="video/mp4">
+    </video>
+    <img class="jm-map" src="journey-poster.jpg" alt="A Journey in Motion — five eras: Whispers from Beyond, Orbital, Echoes of You, COMET, Recovery" loading="lazy">
+    <p class="jm-caption">Same heart. New horizons.</p>
+
+    <div class="jm-recovery">
+      <img class="jm-rec-cover" src="recovery-cover.jpg" alt="RECOVERY — next album by Sharbel Wahbee" loading="lazy">
+      <div>
+        <p class="jm-rec-kicker">Next Album</p>
+        <h3 class="jm-rec-title">RECOVERY</h3>
+        <p class="jm-rec-tag">A journey, not a destination</p>
+        <p class="jm-rec-quote">“Some losses don’t end. They change us.”</p>
+        <p class="jm-rec-note">Date TBA — follow the channel for the announcement.</p>
+        <a class="jm-rec-cta" href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank">Notify Me ↗</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2871,8 +2941,9 @@ document.querySelectorAll('.tl-rel').forEach(r=>tlObs.observe(r));
     {title:'Orbital',             genre:'Pop Rock',   year:'Album · Mar 2026',  streams:'',     x:.66,y:.62,col:[210,130,110]},
     {title:'Echoes of You',       genre:'Rock',       year:'Single · May 2026',  streams:'',     x:.79,y:.36,col:[195,75,60]},
     {title:'Built from What Broke Me',genre:'Rock',   year:'Single · Jun 2026', streams:'',     x:.84,y:.27,col:[195,75,60]},
-    {title:'Noise in My Head',    genre:'Rock',       year:'Upcoming Jul 2026', streams:'',     x:.88,y:.20,col:[195,75,60],upcoming:true},
-    {title:'Comet',               genre:'Rock',       year:'Upcoming Sep 2026', streams:'',     x:.93,y:.28,col:[195,75,60],upcoming:true},
+    {title:'Noise in My Head',    genre:'Rock',       year:'Single · Jul 2026', streams:'',     x:.88,y:.20,col:[195,75,60]},
+    {title:'Ashes Learn to Breathe',genre:'Rock',  year:'Single · Aug 2026', streams:'',     x:.90,y:.42,col:[195,75,60]},
+    {title:'Comet',               genre:'Rock',       year:'Album · Sep 2026', streams:'',     x:.93,y:.28,col:[195,75,60]},
   ];
   function draw(){
     const W=canvas.parentElement.clientWidth, H=Math.round(W*.46);
