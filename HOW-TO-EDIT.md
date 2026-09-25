@@ -100,3 +100,12 @@ Each release also has `dateMidPt` / `dateMidEs` (used by the "Chega em…/Dispon
 ## Permanent limits (honest — cannot be JS-driven)
 - **Meta tags / SEO descriptions / JSON-LD / page <title>**: search engines read raw HTML, so JavaScript can never update these. When the album date changes, these need one hand edit per page (rare).
 - **licensing.html**: has no release data at all — nothing to wire.
+
+
+---
+
+## UPDATE — post-release state (11 Sept 2026)
+- **COMET is OUT.** `album.status: "live"` drives the Live dot, "Live Now" states, and the album embed replaces the countdown. `album.link` = the Spotify album.
+- **The journey is now:** BFWBM (Single 01) → Noise in My Head (Single 02) → **Ashes Learn to Breathe** (Single 03) → COMET (11 Sep). Echoes of You is a standalone single (still in the discography timeline + player, just not in the COMET journey).
+- **`nextAlbum` block = Recovery.** Change `dateLabel` (+Pt/Es) when the date is set; when it gets its own campaign, tell Claude to promote it to the full album slot.
+- **⚠ TODO for you (one line):** `releases[noise].link` currently points to the artist page — replace with the exact Noise in My Head Spotify link.

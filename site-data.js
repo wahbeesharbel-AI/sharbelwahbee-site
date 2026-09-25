@@ -35,6 +35,7 @@
 
   function run(data) {
     var releases = asArray(data.releases);
+    var albumLive = ((data.album && data.album.status) || '').toLowerCase() === 'live';
     var isEnglish = (document.documentElement.lang || 'en').toLowerCase().indexOf('en') === 0;
 
     /* 1 ── [data-c] text fills ─────────────────────────────── */
@@ -72,10 +73,23 @@
       });
       if (data.album) {
         html += '<div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">'
-          + '<span class="strip-card-date">' + esc(data.album.releaseDateShort || '') + '</span>'
+          + (albumLive
+              ? '<span class="strip-live-dot"></span><span class="strip-live-txt">Live</span>'
+              : '<span class="strip-card-date">' + esc(data.album.releaseDateShort || '') + '</span>')
           + '<span class="strip-card-sep">·</span>'
           + '<span class="strip-card-name" style="color:rgba(255,200,120,.9);">' + esc(data.album.title || '') + ' — Full Album</span>'
           + '<a href="' + esc(data.album.link || '#') + '" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">' + esc(data.album.linkLabel || 'Notify Me') + ' ↗</a>'
+          + '</div>';
+      }
+      if (data.nextAlbum) {
+        var na = data.nextAlbum;
+        var naLang = (document.documentElement.lang || 'en').toLowerCase();
+        var naDate = (naLang.indexOf('pt')===0 && na.dateLabelPt) || (naLang.indexOf('es')===0 && na.dateLabelEs) || na.dateLabel || 'TBA';
+        html += '<div class="strip-card">'
+          + '<span class="strip-card-date">' + esc(naDate) + '</span>'
+          + '<span class="strip-card-sep">·</span>'
+          + '<span class="strip-card-name">' + esc(na.title || '') + ' — Next Album</span>'
+          + '<a href="' + esc(na.link || '#') + '" target="_blank" class="strip-ps-btn">' + esc(na.linkLabel || 'Notify Me') + ' ↗</a>'
           + '</div>';
       }
       strip.innerHTML = html;
@@ -129,10 +143,18 @@
         }
       });
       if (data.album) {
-        jh += '<div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"></div>'
-          + '<p class="comet-tl-date">' + esc(data.album.releaseDateMid || '') + ' · Full Album</p>'
+        jh += '<div class="comet-tl-item comet-tl-final"><div class="comet-tl-dot final"' + (albumLive ? ' style="border-color:#ffaa5c;box-shadow:0 0 10px rgba(255,170,92,.5);"' : '') + '></div>'
+          + '<p class="comet-tl-date"' + (albumLive ? ' style="color:#ffaa5c;"' : '') + '>' + esc(data.album.releaseDateMid || '') + ' · Full Album' + (albumLive ? ' · Live Now' : '') + '</p>'
           + '<p class="comet-tl-title">' + esc(data.album.title || '') + ' — The Complete Journey</p>'
-          + '<p class="comet-tl-sub">All seven songs. The full arc. Available everywhere.</p></div>';
+          + '<p class="comet-tl-sub">All seven songs. The full arc. Available everywhere.</p>'
+          + (albumLive && data.album.link ? '<a href="' + esc(data.album.link) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,120,40,.8);text-decoration:none;border-bottom:1px solid rgba(255,100,30,.25);padding-bottom:1px;">Listen on Spotify ↗</a>' : '')
+          + '</div>';
+      }
+      if (data.nextAlbum) {
+        jh += '<div class="comet-tl-item"><div class="comet-tl-dot"></div>'
+          + '<p class="comet-tl-date">' + esc(data.nextAlbum.dateLabel || 'TBA') + ' · Next Album</p>'
+          + '<p class="comet-tl-title">' + esc(data.nextAlbum.title || '') + '</p>'
+          + '<p class="comet-tl-sub">' + esc(data.nextAlbum.journeySub || '') + '</p></div>';
       }
       journey.innerHTML = jh;
     }
@@ -210,7 +232,13 @@
       if (isAlbum) {
         var aMid = (isPt && data.album.releaseDateMidPt) || (isEs && data.album.releaseDateMidEs) || data.album.releaseDateMid || '';
         if (dateEl) dateEl.textContent = aMid;
-        if (lockEl) lockEl.textContent = lockEl.textContent.replace(/[0-9].*$/, aMid.toLowerCase ? aMid : aMid);
+        if (albumLive) {
+          if (pillEl) pillEl.remove();
+          if (lockEl) lockEl.remove();
+          if (badgeEl) badgeEl.textContent = LIVE_BADGE_ALBUM;
+        } else if (lockEl) {
+          lockEl.textContent = lockEl.textContent.replace(/[0-9].*$/, aMid);
+        }
         return;
       }
       if (!r) return;
@@ -232,7 +260,7 @@
       var id = card.getAttribute('data-sm');
       var lbl = card.querySelector('.sm-card-upcoming-lbl');
       if (id === 'album') {
-        if (lbl) lbl.textContent = data.album.releaseDateMid || '';
+        if (lbl) lbl.textContent = albumLive ? OUT_NOW : (data.album.releaseDateMid || '');
         return;
       }
       var r = byId[id];
@@ -253,8 +281,9 @@
         if (slug && data.trackStats && data.trackStats[slug]) n.streams = data.trackStats[slug];
         var rel = releases.filter(function (r) { return r.title === n.title || (n.title === 'Comet' && r.id === '__album__'); })[0];
         if (n.title === 'Comet') {
-          /* album node: "Upcoming Sep 2026" derived from album.releaseDateMid ("4 Sep 2026") */
-          n.year = 'Upcoming ' + (data.album.releaseDateMid || '').split(' ').slice(1).join(' ');
+          var monthYear = (data.album.releaseDateMid || '').split(' ').slice(1).join(' ');
+          if (albumLive) { n.upcoming = false; n.year = 'Album · ' + monthYear; }
+          else { n.year = 'Upcoming ' + monthYear; }
         } else if (rel) {
           var live = (rel.status || '').toLowerCase() === 'live';
           if (n.upcoming && live) { n.upcoming = false; n.year = 'Single \u00b7 ' + (rel.dateMid || '').split(' ').slice(1).join(' '); }
@@ -270,7 +299,9 @@
       var dateEl = item.querySelector('.rtl-date');
       var dot = item.querySelector('.rtl-dot');
       if (id === 'album') {
-        if (dateEl) dateEl.textContent = (data.album.releaseDateMid || '') + ' \u00b7 Full Album';
+        if (dateEl) dateEl.textContent = (data.album.releaseDateMid || '') + ' \u00b7 Full Album' + (albumLive ? ' \u00b7 Live Now' : '');
+        if (albumLive && dateEl) dateEl.classList.add('live-label');
+        if (albumLive && dot) dot.classList.add('live');
         return;
       }
       var r = byId[id];

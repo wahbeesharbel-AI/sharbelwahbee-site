@@ -7,33 +7,21 @@
   },
   "album": {
     "title": "COMET",
-    "releaseDateShort": "4 Sep",
-    "releaseDateFull": "4 September 2026",
-    "releaseDateMid": "4 Sep 2026",
-    "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
-    "linkLabel": "Notify Me",
-    "releaseDateISO": "2026-09-04T00:00:00+04:00",
-    "featuredSingle": "bfwbm",
-    "releaseDateMidPt": "4 set 2026",
-    "releaseDateMidEs": "4 sept 2026",
-    "releaseDateFullPt": "4 de setembro de 2026",
-    "releaseDateFullEs": "4 de septiembre de 2026"
+    "status": "live",
+    "releaseDateShort": "11 Sep",
+    "releaseDateMid": "11 Sep 2026",
+    "releaseDateFull": "11 September 2026",
+    "releaseDateISO": "2026-09-11T00:00:00+04:00",
+    "releaseDateMidPt": "11 set 2026",
+    "releaseDateMidEs": "11 sept 2026",
+    "releaseDateFullPt": "11 de setembro de 2026",
+    "releaseDateFullEs": "11 de septiembre de 2026",
+    "link": "https://open.spotify.com/album/6aaNzeXNZd50sOq9fH9XkQ?si=cgYhYMDLTO6n3ki4sezHhg",
+    "linkLabel": "Listen",
+    "spotifyAlbumId": "6aaNzeXNZd50sOq9fH9XkQ",
+    "featuredSingle": "bfwbm"
   },
   "releases": [
-    {
-      "id": "echoes",
-      "title": "Echoes of You",
-      "status": "live",
-      "dateShort": "Live",
-      "dateMid": "16 May 2026",
-      "dateFull": "16 May 2026",
-      "link": "https://open.spotify.com/album/7533hMwuvb81q1qNDvt38H",
-      "linkLabel": "Listen",
-      "single": "Single 01",
-      "journeySub": "The first signal. The rock awakening has begun.",
-      "dateMidPt": "16 mai 2026",
-      "dateMidEs": "16 may 2026"
-    },
     {
       "id": "bfwbm",
       "title": "Built from What Broke Me",
@@ -41,43 +29,51 @@
       "dateShort": "18 Jun",
       "dateMid": "18 Jun 2026",
       "dateFull": "18 June 2026",
+      "dateMidPt": "18 jun 2026",
+      "dateMidEs": "18 jun 2026",
       "link": "https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP",
       "linkLabel": "Listen",
-      "single": "Single 02",
-      "journeySub": "The first Rock Statement. The defining sound of the era.",
-      "dateMidPt": "18 jun 2026",
-      "dateMidEs": "18 jun 2026"
+      "single": "Single 01",
+      "journeySub": "The first Rock Statement. The defining sound of the era."
     },
     {
       "id": "noise",
       "title": "Noise in My Head",
-      "status": "upcoming",
+      "status": "live",
       "dateShort": "24 Jul",
       "dateMid": "24 Jul 2026",
       "dateFull": "24 July 2026",
-      "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
-      "linkLabel": "Follow",
-      "single": "Single 03",
-      "journeySub": "Where the journey began — now shared with the world.",
       "dateMidPt": "24 jul 2026",
-      "dateMidEs": "24 jul 2026"
+      "dateMidEs": "24 jul 2026",
+      "link": "https://open.spotify.com/track/3fwydwFT7emqWLQBNNNDd1?si=db0f361800364681",
+      "linkLabel": "Listen",
+      "single": "Single 02",
+      "journeySub": "The relentless static of over-thinking, turned loud and beautiful."
     },
     {
-      "id": "saving",
-      "title": "I Don't Need Saving",
-      "status": "upcoming",
+      "id": "ashes",
+      "title": "Ashes Learn to Breathe",
+      "status": "live",
       "dateShort": "14 Aug",
       "dateMid": "14 Aug 2026",
       "dateFull": "14 August 2026",
-      "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
-      "linkLabel": "Follow",
-      "single": "Single 04",
-      "journeySub": "The declaration. Autonomy without apology.",
       "dateMidPt": "14 ago 2026",
-      "dateMidEs": "14 ago 2026"
+      "dateMidEs": "14 ago 2026",
+      "link": "https://open.spotify.com/album/33IOD3O11yW2gtu2n4x4Ff?si=iYjqDSu-QeyAeIItwwPzFQ",
+      "linkLabel": "Listen",
+      "single": "Single 03",
+      "journeySub": "Breath by breath — rising from what burned."
     }
   ],
   "player": [
+    {
+      "title": "COMET",
+      "spotifyAlbumId": "6aaNzeXNZd50sOq9fH9XkQ"
+    },
+    {
+      "title": "Ashes Learn to Breathe",
+      "spotifyAlbumId": "33IOD3O11yW2gtu2n4x4Ff"
+    },
     {
       "title": "Orbital",
       "spotifyAlbumId": "3NG9toZECFCRFrQpEN1sbJ"
@@ -105,5 +101,15 @@
     "portraitOfUs": "30K",
     "safeChaos": "25K",
     "whenyournameturnstofire": "22K"
+  },
+  "nextAlbum": {
+    "title": "Recovery",
+    "status": "announced",
+    "dateLabel": "Date TBA",
+    "dateLabelPt": "Data em breve",
+    "dateLabelEs": "Fecha por anunciar",
+    "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
+    "linkLabel": "Notify Me",
+    "journeySub": "The next chapter. The journey continues."
   }
 }
