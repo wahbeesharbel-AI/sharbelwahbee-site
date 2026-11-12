@@ -1,9 +1,9 @@
 {
   "_comment": "EDIT THIS FILE to update the site (commit to GitHub, Vercel auto-deploys). stats = global numbers (monthly listeners, top streams, followers) shown on the homepage + EPK. trackStats = per-song stream counts shown in the EPK, timeline, and sound map. releases = each single (status live/presave/upcoming, link, dates). album = the COMET record + countdown (releaseDateISO drives the clock). player = Spotify album IDs for the inline player.",
   "stats": {
-    "monthlyListeners": "15K",
-    "topTrackStreams": "180K+",
-    "followers": "1,473"
+    "monthlyListeners": "13.8K",
+    "topTrackStreams": "240K+",
+    "followers": "2,626"
   },
   "album": {
     "title": "COMET",
@@ -34,7 +34,8 @@
       "link": "https://open.spotify.com/track/1RbWNXNcirT4oUnOJZoFNP",
       "linkLabel": "Listen",
       "single": "Single 01",
-      "journeySub": "The first Rock Statement. The defining sound of the era."
+      "journeySub": "The first Rock Statement. The defining sound of the era.",
+      "era": "comet"
     },
     {
       "id": "noise",
@@ -48,7 +49,8 @@
       "link": "https://open.spotify.com/track/3fwydwFT7emqWLQBNNNDd1?si=db0f361800364681",
       "linkLabel": "Listen",
       "single": "Single 02",
-      "journeySub": "The relentless static of over-thinking, turned loud and beautiful."
+      "journeySub": "The relentless static of over-thinking, turned loud and beautiful.",
+      "era": "comet"
     },
     {
       "id": "ashes",
@@ -62,7 +64,38 @@
       "link": "https://open.spotify.com/album/33IOD3O11yW2gtu2n4x4Ff?si=iYjqDSu-QeyAeIItwwPzFQ",
       "linkLabel": "Listen",
       "single": "Single 03",
-      "journeySub": "Breath by breath — rising from what burned."
+      "journeySub": "Breath by breath — rising from what burned.",
+      "era": "comet"
+    },
+    {
+      "id": "wnowl",
+      "era": "recovery",
+      "title": "When No One Was Looking",
+      "status": "live",
+      "dateShort": "22 Oct",
+      "dateMid": "22 Oct 2026",
+      "dateFull": "22 October 2026",
+      "dateMidPt": "22 out 2026",
+      "dateMidEs": "22 oct 2026",
+      "link": "https://open.spotify.com/track/50jE5dLBO9Iy4GslXI4vhp?si=Y8eBm9k0Tcm4CNdlVDRBQw&utm_source=copy-link",
+      "linkLabel": "Listen",
+      "single": "Recovery · Single 01",
+      "journeySub": "The first glimpse of Recovery — what we become when no one is watching."
+    },
+    {
+      "id": "ehkwil",
+      "era": "recovery",
+      "title": "Every Heart Keeps What It Loses",
+      "status": "presave",
+      "dateShort": "19 Nov",
+      "dateMid": "19 Nov 2026",
+      "dateFull": "19 November 2026",
+      "dateMidPt": "19 nov 2026",
+      "dateMidEs": "19 nov 2026",
+      "link": "https://hypeddit.com/sharbel-wahbee/every-heart-keeps-what-it-loses",
+      "linkLabel": "Pre-Save",
+      "single": "Recovery · Single 02",
+      "journeySub": "What loss leaves behind, kept alive in sound."
     }
   ],
   "player": [
@@ -96,7 +129,7 @@
     }
   ],
   "trackStats": {
-    "weightOfMissingYou": "180K",
+    "weightOfMissingYou": "240K",
     "underSkinOfNight": "36K",
     "portraitOfUs": "30K",
     "safeChaos": "25K",
@@ -104,12 +137,17 @@
   },
   "nextAlbum": {
     "title": "Recovery",
-    "status": "announced",
+    "status": "campaign",
     "dateLabel": "Date TBA",
     "dateLabelPt": "Data em breve",
     "dateLabelEs": "Fecha por anunciar",
     "link": "https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27",
     "linkLabel": "Notify Me",
     "journeySub": "The next chapter. The journey continues."
+  },
+  "playlist": {
+    "title": "Sharbel Wahbee Universe",
+    "saves": "4,650",
+    "link": "https://open.spotify.com/playlist/3BjvEbmX98cajoJt3M4qwB?si=httRw4IBRXe5_Kv77knGqA&utm_source=copy-link&pi=DojGdfdQTaupq"
   }
 }

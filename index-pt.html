@@ -1682,6 +1682,18 @@ footer{
 .jm-rec-cta{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid var(--amber-dim);color:var(--amber-lt);font-family:var(--sans);font-size:9px;letter-spacing:.28em;text-transform:uppercase;padding:13px 26px;text-decoration:none;transition:border-color .25s,color .25s;}
 .jm-rec-cta:hover{border-color:var(--amber-lt);color:#f2ede4;}
 @media(max-width:760px){.jm-recovery{grid-template-columns:1fr;gap:30px;text-align:center;}.jm-rec-cover{max-width:340px;margin:0 auto;}#journey-motion{padding:80px 18px;}}
+
+/* ── Recovery campaign singles ── */
+.jm-rec-singles{margin:24px 0;display:flex;flex-direction:column;gap:10px;}
+.rec-single{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid rgba(184,134,78,.25);background:rgba(184,134,78,.05);}
+.rec-s-dot{width:7px;height:7px;border-radius:50%;background:rgba(184,134,78,.4);flex:none;}
+.rec-s-dot.live{background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.6);}
+.rec-s-name{font-family:var(--serif);font-size:15px;color:#f2ede4;flex:1;}
+.rec-s-when{font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(212,164,106,.9);white-space:nowrap;}
+.rec-s-btn{font-family:var(--sans);font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber-lt);text-decoration:none;border:1px solid var(--amber-dim);padding:7px 12px;flex:none;}
+.rec-s-btn:hover{border-color:var(--amber-lt);color:#f2ede4;}
+.metric-link{display:inline-block;margin-top:6px;font-family:var(--sans);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-lt);text-decoration:none;border-bottom:1px solid rgba(184,134,78,.35);padding-bottom:1px;}
+@media(max-width:560px){.rec-single{flex-wrap:wrap;}.rec-s-name{flex-basis:100%;}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18239802603"></script>
@@ -1848,8 +1860,12 @@ footer{
         <p class="jm-rec-kicker">Próximo Álbum</p>
         <h3 class="jm-rec-title">RECOVERY</h3>
         <p class="jm-rec-tag">Uma jornada, não um destino</p>
+        <div class="jm-rec-singles" data-rec-singles>
+          <div class="rec-single rec-live"><span class="rec-s-dot live"></span><span class="rec-s-name">When No One Was Looking</span><span class="rec-s-when">Já Disponível</span><a class="rec-s-btn" target="_blank" href="https://open.spotify.com/track/50jE5dLBO9Iy4GslXI4vhp?si=Y8eBm9k0Tcm4CNdlVDRBQw&utm_source=copy-link">Ouvir ↗</a></div>
+          <div class="rec-single"><span class="rec-s-dot"></span><span class="rec-s-name">Every Heart Keeps What It Loses</span><span class="rec-s-when">19 Nov 2026</span><a class="rec-s-btn" target="_blank" href="https://hypeddit.com/sharbel-wahbee/every-heart-keeps-what-it-loses">Pré-Salvar ↗</a></div>
+        </div>
         <p class="jm-rec-quote">“Algumas perdas não terminam. Elas nos transformam.”</p>
-        <p class="jm-rec-note">Data em breve — siga o canal para o anúncio.</p>
+        <p class="jm-rec-note">Data do álbum em breve — os singles de Recovery estão sendo lançados.</p>
         <a class="jm-rec-cta" href="https://whatsapp.com/channel/0029Vb7W9Ee8vd1MQnA0iz27" target="_blank">Avise-me ↗</a>
       </div>
     </div>
@@ -1877,11 +1893,11 @@ footer{
       <p class="feat-desc">As forças invisíveis que aproximam e afastam as pessoas — amor, perda e a gravidade de tudo o que carregamos. Não são músicas. É um sistema em movimento.</p>
       <div class="feat-stats">
         <div>
-          <div class="feat-stat-n" data-c="stats.monthlyListeners">18K</div>
+          <div class="feat-stat-n" data-c="stats.monthlyListeners">13.8K</div>
           <div class="feat-stat-l">Ouvintes Mensais</div>
         </div>
         <div>
-          <div class="feat-stat-n" data-c="stats.topTrackStreams">160K+</div>
+          <div class="feat-stat-n" data-c="stats.topTrackStreams">240K+</div>
           <div class="feat-stat-l">Streams da Faixa Principal</div>
         </div>
         <div>
@@ -1989,16 +2005,21 @@ footer{
 
     <div class="metrics reveal">
       <div class="metric">
-        <div class="metric-n" data-c="stats.monthlyListeners">18K</div>
+        <div class="metric-n" data-c="stats.monthlyListeners">13.8K</div>
         <div class="metric-l">Ouvintes Mensais</div>
       </div>
       <div class="metric">
-        <div class="metric-n" data-c="stats.topTrackStreams">160K+</div>
+        <div class="metric-n" data-c="stats.topTrackStreams">240K+</div>
         <div class="metric-l">Streams da Faixa Principal</div>
       </div>
       <div class="metric">
-        <div class="metric-n" data-c="stats.followers">1,290</div>
+        <div class="metric-n" data-c="stats.followers">2,626</div>
         <div class="metric-l">Seguidores no Spotify</div>
+      </div>
+      <div class="metric">
+        <div class="metric-n" data-c="playlist.saves">4,650</div>
+        <div class="metric-l">Universe · Salvamentos da Playlist</div>
+        <a class="metric-link" href="https://open.spotify.com/playlist/3BjvEbmX98cajoJt3M4qwB?si=httRw4IBRXe5_Kv77knGqA&utm_source=copy-link&pi=DojGdfdQTaupq" target="_blank">Abrir no Spotify ↗</a>
       </div>
       <div class="metric">
         <div class="metric-n">100%</div>
@@ -2244,6 +2265,38 @@ footer{
         </div></div>
       </div>
     </div>
+
+    <!-- When No One Was Looking -->
+    <div data-tl="wnowl" class="tl-rel tl-right gc-rock">
+      <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
+      <div class="tl-col">
+        <div class="tl-card">
+          <div class="tl-card-date">22 Oct 2026</div>
+          <div class="tl-card-title">When No One Was Looking</div>
+          <div class="tl-meta"><span class="tl-badge">Single · Já Disponível</span><span class="tl-gtag">Alt Rock</span></div>
+        </div>
+        <div class="tl-drawer"><div class="tl-drawer-inner">
+          <p class="tl-desc">"Escrita nas horas silenciosas — a canção que abriu Recovery. O que nos tornamos quando ninguém está olhando."</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Every Heart Keeps What It Loses -->
+    <div data-tl="ehkwil" class="tl-rel tl-left gc-rock">
+      <div class="tl-node"><div class="tl-ni"></div><div class="tl-nr"></div></div>
+      <div class="tl-col">
+        <div class="tl-card">
+          <div class="tl-upcoming-pill">Em Breve</div>
+          <div class="tl-card-date">19 Nov 2026</div>
+          <div class="tl-card-title">Every Heart Keeps What It Loses</div>
+          <div class="tl-meta"><span class="tl-badge">Single</span><span class="tl-gtag">Alt Rock</span></div>
+          <div class="tl-locked">Chega em 19 nov 2026</div>
+        </div>
+        <div class="tl-drawer"><div class="tl-drawer-inner">
+          <p class="tl-desc">"Todo coração guarda o que perde. Uma canção sobre o peso que levamos adiante — e por que o levamos."</p>
+        </div></div>
+      </div>
+    </div>
   </div>
 
   <div class="tl-legend">
@@ -2327,7 +2380,7 @@ footer{
                 <span class="sm-card-title">The Portrait of Us</span>
                 <div class="sm-card-meta">
                   <span class="sm-card-year">Single · Jan 2026</span>
-                  <span class="sm-card-streams"><span data-c="trackStats.portraitOfUs">21K</span> streams</span>
+                  <span class="sm-card-streams"><span data-c="trackStats.portraitOfUs">30K</span> streams</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2350,7 +2403,7 @@ footer{
                 <span class="sm-card-title">You Are My Safe Chaos</span>
                 <div class="sm-card-meta">
                   <span class="sm-card-year">Single · Jan 2026</span>
-                  <span class="sm-card-streams"><span data-c="trackStats.safeChaos">17K</span> streams</span>
+                  <span class="sm-card-streams"><span data-c="trackStats.safeChaos">25K</span> streams</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2363,7 +2416,7 @@ footer{
                 <span class="sm-card-title">Under the Skin of Night</span>
                 <div class="sm-card-meta">
                   <span class="sm-card-year">Single · Feb 2026</span>
-                  <span class="sm-card-streams"><span data-c="trackStats.underSkinOfNight">22K</span> streams</span>
+                  <span class="sm-card-streams"><span data-c="trackStats.underSkinOfNight">36K</span> streams</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2386,7 +2439,7 @@ footer{
                 <span class="sm-card-title">The Weight of Missing You</span>
                 <div class="sm-card-meta">
                   <span class="sm-card-year">Single · Feb 2026</span>
-                  <span class="sm-card-streams"><span data-c="trackStats.weightOfMissingYou">160K</span> streams</span>
+                  <span class="sm-card-streams"><span data-c="trackStats.weightOfMissingYou">240K</span> streams</span>
                 </div>
               </div>
               <div class="sm-bars">
@@ -2477,6 +2530,16 @@ footer{
                 <div class="sm-bar-row"><span class="sm-bar-lbl">Energia</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:93%"></div></div><span class="sm-bar-val">Intenso</span></div>
                 <div class="sm-bar-row"><span class="sm-bar-lbl">Humor</span><div class="sm-bar-track"><div class="sm-bar-fill" style="width:28%"></div></div><span class="sm-bar-val">Escuro</span></div>
               </div>
+            </div>
+            <div data-sm="wnowl" class="sm-card" style="--gc:rgba(200,150,90,.5)">
+              <div class="sm-card-title">When No One Was Looking</div>
+              <div class="sm-card-genre">Alt Rock</div>
+              <span class="sm-card-upcoming-lbl">Já Disponível</span>
+            </div>
+            <div data-sm="ehkwil" class="sm-card sm-upcoming" style="--gc:rgba(200,150,90,.5)">
+              <div class="sm-card-title">Every Heart Keeps What It Loses</div>
+              <div class="sm-card-genre">Alt Rock</div>
+              <span class="sm-card-upcoming-lbl">19 Nov 2026</span>
             </div>
           </div>
         </div>
@@ -2943,6 +3006,8 @@ document.querySelectorAll('.tl-rel').forEach(r=>tlObs.observe(r));
     {title:'Built from What Broke Me',genre:'Rock',   year:'Single · Jun 2026', streams:'',     x:.84,y:.27,col:[195,75,60]},
     {title:'Noise in My Head',    genre:'Rock',       year:'Single · Jul 2026', streams:'',     x:.88,y:.20,col:[195,75,60]},
     {title:'Ashes Learn to Breathe',genre:'Rock',  year:'Single · Aug 2026', streams:'',     x:.90,y:.42,col:[195,75,60]},
+    {title:'When No One Was Looking',genre:'Alt Rock', year:'Single · Oct 2026', streams:'',  x:.86,y:.50,col:[200,150,90]},
+    {title:'Every Heart Keeps What It Loses',genre:'Alt Rock', year:'Upcoming Nov 2026', streams:'', x:.92,y:.56,col:[200,150,90],upcoming:true},
     {title:'Comet',               genre:'Rock',       year:'Album · Sep 2026', streams:'',     x:.93,y:.28,col:[195,75,60]},
   ];
   function draw(){

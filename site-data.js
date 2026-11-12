@@ -47,30 +47,32 @@
       if (val !== undefined && val !== null && typeof val !== 'object') el.textContent = val;
     });
 
-    /* 2 ── Release strip ───────────────────────────────────── */
+    /* 2 ── Release strip (era-aware: COMET singles → COMET → Recovery singles → Recovery) ── */
     var strip = document.getElementById('strip-releases');
     if (strip && releases.length) {
-      var html = '';
-      releases.forEach(function (r) {
+      var cardFor = function (r) {
         var link = esc(r.link || '#'), label = esc(r.linkLabel || 'Open'), title = esc(r.title || '');
         var status = (r.status || '').toString().trim().toLowerCase();
         if (status === 'live') {
-          html += '<div class="strip-card">'
+          return '<div class="strip-card">'
             + '<span class="strip-live-dot"></span>'
             + '<span class="strip-live-txt">Live</span>'
             + '<span class="strip-card-sep">·</span>'
             + '<span class="strip-card-name">' + title + '</span>'
             + '<a href="' + link + '" target="_blank" class="strip-ps-btn">' + label + ' ↗</a>'
             + '</div>';
-        } else {
-          html += '<div class="strip-card">'
-            + '<span class="strip-card-date">' + esc(r.dateShort || '') + '</span>'
-            + '<span class="strip-card-sep">·</span>'
-            + '<span class="strip-card-name">' + title + '</span>'
-            + '<a href="' + link + '" target="_blank" class="strip-ps-btn">' + label + ' ↗</a>'
-            + '</div>';
         }
-      });
+        return '<div class="strip-card">'
+          + '<span class="strip-card-date">' + esc(r.dateShort || '') + '</span>'
+          + '<span class="strip-card-sep">·</span>'
+          + '<span class="strip-card-name">' + title + '</span>'
+          + '<a href="' + link + '" target="_blank" class="strip-ps-btn">' + label + ' ↗</a>'
+          + '</div>';
+      };
+      var cometR = releases.filter(function (r) { return (r.era || 'comet') !== 'recovery'; });
+      var recR = releases.filter(function (r) { return r.era === 'recovery'; });
+      var html = '';
+      cometR.forEach(function (r) { html += cardFor(r); });
       if (data.album) {
         html += '<div class="strip-card" style="border-color:rgba(255,100,30,.3);background:rgba(255,69,0,.1);">'
           + (albumLive
@@ -81,6 +83,7 @@
           + '<a href="' + esc(data.album.link || '#') + '" target="_blank" class="strip-ps-btn" style="color:#ffcc80;border-color:rgba(255,150,60,.5);">' + esc(data.album.linkLabel || 'Notify Me') + ' ↗</a>'
           + '</div>';
       }
+      recR.forEach(function (r) { html += cardFor(r); });
       if (data.nextAlbum) {
         var na = data.nextAlbum;
         var naLang = (document.documentElement.lang || 'en').toLowerCase();
@@ -123,7 +126,7 @@
     var journey = document.getElementById('comet-journey');
     if (journey && releases.length) {
       var jh = '';
-      releases.forEach(function (r) {
+      releases.filter(function (r) { return (r.era || 'comet') !== 'recovery'; }).forEach(function (r) {
         var status = (r.status || '').toString().trim().toLowerCase();
         var dateLine = esc(r.dateMid || '') + ' · ' + esc(r.single || '');
         if (status === 'live') {
@@ -316,6 +319,28 @@
         dateEl.textContent = line;
       }
     });
+
+    /* 12 ── Recovery campaign singles ([data-rec-singles]) ── */
+    var recWrap = document.querySelector('[data-rec-singles]');
+    if (recWrap) {
+      var recs = releases.filter(function (r) { return r.era === 'recovery'; });
+      if (recs.length) {
+        var rh = '';
+        recs.forEach(function (r) {
+          var rLive = (r.status || '').toLowerCase() === 'live';
+          var when = rLive ? OUT_NOW : locMid(r);
+          var lbl = rLive ? (isPt ? 'Ouvir' : isEs ? 'Escuchar' : 'Listen')
+                          : (isPt ? 'Pré-Salvar' : isEs ? 'Pre-Guardar' : (r.linkLabel || 'Pre-Save'));
+          rh += '<div class="rec-single' + (rLive ? ' rec-live' : '') + '">'
+            + '<span class="rec-s-dot' + (rLive ? ' live' : '') + '"></span>'
+            + '<span class="rec-s-name">' + esc(r.title) + '</span>'
+            + '<span class="rec-s-when">' + esc(when) + '</span>'
+            + '<a class="rec-s-btn" target="_blank" href="' + esc(r.link || '#') + '">' + esc(lbl) + ' ↗</a>'
+            + '</div>';
+        });
+        recWrap.innerHTML = rh;
+      }
+    }
   }
 
   function boot() {
